@@ -1,0 +1,199 @@
+#notebook_utils.py
+
+# Step 1: Required Libraries
+import requests
+from bs4 import BeautifulSoup, Tag, NavigableString
+import json
+
+proxies = {
+    "http": "http://www-proxy.us.oracle.com:80",
+    "https": "http://www-proxy.us.oracle.com:80"
+}
+
+# Fetch the html content
+def fetch_html(url):
+    response = requests.get(url)
+    response.raise_for_status()
+    return response.text
+
+# Extract the title
+def get_notebook_title_from_html(html_content):
+    soup = BeautifulSoup(html_content, 'html.parser')
+    h2_tag = soup.find('h2')
+    if h2_tag:
+        return h2_tag.get_text(strip=True)
+    return "Untitled Notebook"
+
+# Coding the first paragraph: Containing the heading as h2, the paragraph as its content and a copyright at the footer.
+def extract_h2_with_paragraphs(html_content, url=None):
+    soup = BeautifulSoup(html_content, 'html.parser')
+    output_paragraphs = []
+
+    for h2 in soup.find_all('h2'):
+        markdown_lines = ["%md", ""]
+
+        # Add the H2 heading as Markdown
+        h2_text = h2.get_text(strip=True)
+        markdown_lines.append(f"## {h2_text}")
+        markdown_lines.append("")
+
+        # Add the next <p> if it exists
+        next_p = h2.find_next_sibling()
+        while next_p and not (isinstance(next_p, Tag) and next_p.name == 'p'):
+            next_p = next_p.find_next_sibling()
+
+        if next_p:
+            p_text = next_p.get_text(strip=True)
+            markdown_lines.append(p_text)
+            markdown_lines.append("")
+
+        output_paragraphs.append({
+            "title": None,
+            "hasTitle": False,
+            "message": markdown_lines
+        })
+
+    # Add the final footer block if URL or attribution is needed
+    if url:
+        footer_lines = ["%md", ""]
+        footer_lines.append(f"[Source]({url})")
+        footer_lines.append("")
+        footer_lines.append("*made by dhanish with help of chatgpt and internet copyright 2025*")
+        output_paragraphs.append({
+            "title": None,
+            "hasTitle": False,
+            "message": footer_lines
+        })
+
+    return output_paragraphs
+
+
+
+# Will extract any table and its link as it is in markdown format and the paragraph table b4 it as the title.
+
+def extract_markdown_tables_with_headings(html_content):
+    soup = BeautifulSoup(html_content, 'html.parser')
+    tables = soup.find_all('table')
+    table_paragraphs = []
+
+    for table in tables:
+        # Get the table's heading (if it has one)
+        headings = []
+        headers = table.find_all('th')
+        for header in headers:
+            headings.append(header.get_text(strip=True))
+
+        if headings:
+            table_paragraphs.append({
+                "title": "Table: " + ", ".join(headings),
+                "hasTitle": True,
+                "message": ["%md", "", f"| {' | '.join(headings)} |", "| --- |" * len(headings)]
+            })
+
+        # Extract the rows of the table
+        rows = table.find_all('tr')
+        for row in rows:
+            columns = row.find_all('td')
+            column_data = [col.get_text(strip=True) for col in columns]
+
+            if column_data:
+                table_paragraphs.append({
+                    "title": None,
+                    "hasTitle": False,
+                    "message": [f"| {' | '.join(column_data)} |"]
+                })
+
+    return table_paragraphs
+
+# Removes any unwanted things between related content and the next header (h3) - Load data
+
+def filter_irrelevant_content(html_content, start_marker, end_marker):
+    soup = BeautifulSoup(html_content, 'html.parser')
+    
+    # Find the start and end markers
+    start_element = soup.find(string=start_marker)
+    end_element = soup.find(string=end_marker)
+
+    if not start_element or not end_element:
+        return html_content  # Return original content if markers are not found
+
+    # Extract content between the markers
+    start_tag = start_element.find_parent()
+    end_tag = end_element.find_parent()
+
+    content_before = soup.find_all(True, {'class': True}, limit=start_tag)
+    content_after = soup.find_all(True, {'class': True}, limit=end_tag)
+
+    # We can choose to remove irrelevant content (returning filtered HTML)
+    # Here I’m just returning the content before and after
+    filtered_content = ''.join(str(element) for element in content_before + content_after)
+    
+    return filtered_content
+
+
+# Parses <h3> and <h4> tags and adds them as Markdown headers along with 4 or 5 paragraph.
+def extract_h3_h4_with_paragraphs(html_content, max_paragraphs=5):
+    soup = BeautifulSoup(html_content, 'html.parser')
+    headers = soup.find_all(['h3', 'h4'])
+
+    notebook_paragraphs = []
+
+    for header in headers:
+        header_level = '###' if header.name == 'h3' else '####'
+        markdown_lines = ["%md", "", f"{header_level} {header.get_text(strip=True)}"]
+
+        # Collect up to N paragraphs after the header
+        paragraph_count = 0
+        current = header.find_next_sibling()
+        while current and paragraph_count < max_paragraphs:
+            if current.name == 'p':
+                text = current.get_text(strip=True)
+                if text:
+                    markdown_lines.append("")
+                    markdown_lines.append(text)
+                    paragraph_count += 1
+            current = current.find_next_sibling()
+
+        notebook_paragraphs.append({
+            "title": None,
+            "hasTitle": False,
+            "message": markdown_lines
+        })
+
+    return notebook_paragraphs
+
+# Extract the ul or ol as new paragraph  for each li. The span as the title and the code as the content of the paragraph.
+def li_to_custom_paragraph(html_content):
+    soup = BeautifulSoup(html_content, 'html.parser')
+    list_items = soup.find_all('li')
+
+    notebook_paragraphs = []
+
+    for li in list_items:
+        # Get the span text as title
+        span = li.find('span')
+        if not span:
+            continue  # skip if there's no title
+
+        title_text = span.get_text(strip=True)
+        has_title = True if title_text else False
+
+        # Search for code blocks in <code> or <pre><code>
+        code_block = li.find('pre')
+        if not code_block or 'nocopybutton' in code_block.get('class', []):
+            continue  # Skip if it's not a proper code block or marked as ignorable
+
+        code_element = code_block.find('code') or code_block
+        code_text = code_element.get_text()
+
+        # Construct the paragraph
+        paragraph = {
+            "title": title_text,
+            "hasTitle": has_title,
+            "message": ["%python", ""] + code_text.strip().splitlines()
+        }
+
+        notebook_paragraphs.append(paragraph)
+
+    return notebook_paragraphs
+

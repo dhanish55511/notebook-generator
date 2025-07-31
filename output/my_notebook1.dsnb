@@ -1,0 +1,310 @@
+[
+  {
+    "name": "Classification Use Case Scenario",
+    "paragraphs": [
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "%md",
+          "",
+          "## Classification Use Case Scenario",
+          ""
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "%md",
+          "",
+          "[Source](https://docs.oracle.com/en/database/oracle/machine-learning/oml4sql/23/mlsql/classification2.html)",
+          "",
+          "*made by dhanish with help of chatgpt and internet copyright 2025*"
+        ]
+      },
+      {
+        "title": "Table: Topic, Link",
+        "hasTitle": true,
+        "message": [
+          "%md",
+          "",
+          "| Topic | Link |",
+          "| --- || --- |"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "| OML4SQL GitHub Example | Classification - Random Forest |"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "| CREATE_MODEL2Procedure | CREATE_MODEL2 Procedure |"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "| Generic Model Settings | DBMS_DATA_MINING - Model Settings |"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "| Random Forest Settings | DBMS_DATA_MINING - Algorithm Settings: Random Forest |"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "| Data Dictionary Settings | Oracle Machine Learning Data Dictionary Views |"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "| Random Forest - Model Detail Views | Model Detail Views for Random Forest |"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "| About Classification | About Classification |"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "| About Random Forest (RF) | About Random Forest |"
+        ]
+      },
+      {
+        "title": "Table: Attribute Name, Information",
+        "hasTitle": true,
+        "message": [
+          "%md",
+          "",
+          "| Attribute Name | Information |",
+          "| --- || --- |"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "| CUST_ID | The ID of the customer |"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "| EDUCATION | Educational information of the customer |"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "| OCCUPATION | Occupation of the customer |"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "| HOUSEHOLD_SIZE | People per house |"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "| YRS_RESIDENCE | Number of years of residence |"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "| AFFINITY_CARD | Whether the customer holds an affinity card |"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "| BULK_PACK_DISKETTES | Product. Indicates whether the customer already owns the product.1 means Yes. 0 means No |"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "| FLAT_PANEL_MONITOR | Product. Indicates whether the customer already owns the product.1 means Yes. 0 means No |"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "| HOME_THEATER_PACKAGE | Product. Indicates whether the customer already owns the product.1 means Yes. 0 means No |"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "| BOOKKEEPING_APPLICATION | Product. Indicates whether the customer already owns the product.1 means Yes. 0 means No |"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "| PRINTER_SUPPLIES | Product. Indicates whether the customer already owns the product.1 means Yes. 0 means No |"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "| Y_BOX_GAMES | Product. Indicates whether the customer already owns the product.1 means Yes. 0 means No |"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "| OS_DOC_SET_KANJI | Product. Indicates whether the customer already owns the product.1 means Yes. 0 means No |"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "| COMMENTS | Product. Indicates whether the customer already owns the product.1 means Yes. 0 means No |"
+        ]
+      },
+      {
+        "title": "Table: View Name, Description",
+        "hasTitle": true,
+        "message": [
+          "%md",
+          "",
+          "| View Name | Description |",
+          "| --- || --- |"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "| ALL_MINING_MODELS | Provides information about all accessible machine learning models |"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "| ALL_MINING_MODEL_ATTRIBUTES | Provides information about the attributes of all accessible machine learning models |"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "| ALL_MINING_MODEL_SETTINGS | Provides information about the configuration settings for all accessible machine learning models |"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "| ALL_MINING_MODEL_VIEWS | Provides information about the model views for all accessible machine learning models |"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "| ALL_MINING_MODEL_XFORMS | Provides the user-specified transformations embedded in all accessible machine learning models. |"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "%md",
+          "",
+          "### Load Data"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "%md",
+          "",
+          "### Explore Data"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "%md",
+          "",
+          "### Build Model"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "%md",
+          "",
+          "### Evaluate"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "%md",
+          "",
+          "#### Dictionary and Model Views"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "%md",
+          "",
+          "#### Test Your Model"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "%md",
+          "",
+          "### Score"
+        ]
+      }
+    ]
+  }
+]

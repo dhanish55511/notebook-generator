@@ -1,0 +1,142 @@
+<div class="sect2"><a id="GUID-1C6B7E9B-57DB-4271-83E4-92EC32EE714D" name="GUID-1C6B7E9B-57DB-4271-83E4-92EC32EE714D"></a><h3 class="sect3" id="MLSQL-GUID-1C6B7E9B-57DB-4271-83E4-92EC32EE714D">Explore Data</h3>
+<div>
+<p>Explore the data to understand and assess the quality of the data. At this stage assess the data to identify data types and noise in the data. Look for missing values and numeric outlier values.</p>
+<div class="section">
+<p class="subhead2" id="GUID-1C6B7E9B-57DB-4271-83E4-92EC32EE714D__d180e200">Assess Data Quality</p>
+<p>To assess the data, first, you must be able to view the data in your database. For this reason, you will use SQL statements to query the <code class="codeph">SH.CUSTOMERS</code> and the <code class="codeph">SH.SUPPLEMENTARY_DEMOGRAPHICS</code> table. 
+                     </p>
+<div class="p">If you are working with Oracle Autonomous Database, you can use the Oracle Machine Learning (OML) Notebooks for your data science project, including assessing data quality. If you are using on-premise Oracle Database, you can use the Oracle SQL Developer to assess data quality. Query the <code class="codeph">SH</code> schema as described. 
+                        <div class="infoboxnote" id="GUID-1C6B7E9B-57DB-4271-83E4-92EC32EE714D__d180e216">
+<p class="notep1">Note:</p>Each record in the database is called a case and each case is identified by a <code class="codeph">case_id</code>. In this use case, <code class="codeph">CUST_ID</code> is the <code class="codeph">case_id</code>.
+                        </div>
+</div>
+</div>
+<ol>
+<li class="stepexpand"><span>View the data in the <code class="codeph">SH.CUSTOMERS</code> table by running the following statement:</span><div><pre class="pre codeblock"><code>SELECT * FROM SH.CUSTOMERS;</code></pre></div>
+</li>
+<li class="stepexpand"><span>To see distinct data from the table, run the following statement:</span><div><pre class="pre codeblock"><code>SELECT DISTINCT * FROM SH.CUSTOMERS;</code></pre></div>
+<div><img alt="Customers table" height="439" id="GUID-1C6B7E9B-57DB-4271-83E4-92EC32EE714D__IMAGE_ARM_VMB_Q4B" src="img/classification_distinct_customers.png" title="Customers table" width="1758"/></div>
+</li>
+<li class="stepexpand"><span>Find the <code class="codeph">COUNT</code> of rows in the data set by running the following statement:</span><div><pre class="pre codeblock"><code>SELECT COUNT(*) from SH.CUSTOMERS;</code></pre></div>
+<div><pre class="nocopybutton"><code>
+COUNT(*)   
+     55500 
+---------------------------</code></pre></div>
+</li>
+<li class="stepexpand"><span>To identify distinct or unique customers in the table, run the following statement:</span><div><pre class="pre codeblock"><code>
+%script
+SELECT COUNT (DISTINCT CUST_ID) FROM SH.CUSTOMERS; </code></pre></div>
+<div><pre class="nocopybutton"><code>
+COUNT(DISTINCTCUST_ID)   
+                   55500 
+---------------------------</code></pre></div>
+</li>
+<li class="stepexpand"><span>Similarly, query the <code class="codeph">SH.SUPPLEMENTARY_DEMOGRAPHICS</code> table.</span><div><pre class="pre codeblock"><code>SELECT * FROM SH.SUPPLEMENTARY_DEMOGRAPHICS;</code></pre></div>
+<div><img alt="SH.SUPPLIMENTARY_DEMOGRAPHICS table" height="418" id="GUID-1C6B7E9B-57DB-4271-83E4-92EC32EE714D__IMAGE_Z4G_2NB_Q4B" src="img/clustering_demographics_table.png" title="SH.SUPPLIMENTARY_DEMOGRAPHICS table" width="3504"/></div>
+</li>
+<li class="stepexpand"><span>To view the count of <code class="codeph">SH.SUPPLEMENTARY_DEMOGRAPHICS</code>, run the following statement:</span><div><pre class="pre codeblock"><code>SELECT COUNT(*) from SH.SUPPLEMENTARY_DEMOGRAPHICS;
+</code></pre></div>
+<div><pre class="nocopybutton"><code>
+COUNT(*)   
+      4500 
+---------------------------
+</code></pre></div>
+</li>
+<li class="stepexpand"><span>Create a table called <code class="codeph">CUSTOMERDATA</code> by selecting the required columns from the <code class="codeph">SH.CUSTOMERS</code> and the <code class="codeph">SH.SUPPLIMENTARY_DEMOGRAPHICS</code> tables. </span><div><pre class="oac_no_warn" dir="ltr">%script
+CREATE TABLE CUSTOMERDATA AS
+   SELECT a.CUST_ID,
+         a.CUST_INCOME_LEVEL, a.CUST_CREDIT_LIMIT,
+          b.HOUSEHOLD_SIZE, b.OCCUPATION, b.HOME_THEATER_PACKAGE
+   FROM SH.CUSTOMERS a, SH.SUPPLEMENTARY_DEMOGRAPHICS b
+   WHERE a.CUST_ID = b.CUST_ID;
+ </pre></div>
+<div><pre class="nocopybutton"><code>
+Table CUSTOMERDATA created.</code></pre></div>
+</li>
+<li class="stepexpand"><span>View the <code class="codeph">CUSTOMERDATA</code> table.</span><div><pre class="pre codeblock"><code>SELECT * FROM CUSTOMERDATA;</code></pre></div>
+<div><img alt="CUSTOMERDATA table" height="460" id="GUID-1C6B7E9B-57DB-4271-83E4-92EC32EE714D__IMAGE_O2H_ZNB_Q4B" src="img/classification_customerdata.png" title="CUSTOMERDATA table" width="1863"/></div>
+</li>
+<li class="stepexpand"><span>Find the count of rows in the new table <code class="codeph">CUSTOMERDATA</code>:</span><div><pre class="pre codeblock"><code>SELECT COUNT(*) FROM CUSTOMERDATA;</code></pre></div>
+<div><pre class="nocopybutton"><code>
+COUNT(*)   
+      4500 
+---------------------------</code></pre></div>
+</li>
+<li class="stepexpand"><span>To view the data type of the columns, run the following script:</span><div><pre class="oac_no_warn" dir="ltr">%script
+DESCRIBE CUSTOMERDATA;
+</pre></div>
+<div><pre class="nocopybutton"><code>
+Name                 Null?    Type         
+-------------------- -------- ------------ 
+CUST_ID        NOT NULL NUMBER 
+CUST_INCOME_LEVEL          VARCHAR2(30) 
+CUST_CREDIT_LIMIT          NUMBER 
+HOUSEHOLD_SIZE          VARCHAR2(21) 
+OCCUPATION          VARCHAR2(21) 
+HOME_THEATER_PACKAGE          NUMBER(10) 
+
+---------------------------</code></pre></div>
+</li>
+<li class="stepexpand"><span>To check if there are any missing values (NULL values), run the following statement:</span><div><pre class="oac_no_warn" dir="ltr">SELECT COUNT(*) FROM CUSTOMERDATA WHERE CUST_ID=NULL OR CUST_GENDER=NULL
+ OR CUST_MARITAL_STATUS=NULL OR CUST_YEAR_OF_BIRTH=NULL OR CUST_INCOME_LEVEL=NULL
+ OR CUST_CREDIT_LIMIT=NULL OR HOUSEHOLD_SIZE=NULL OR YRS_RESIDENCE=NULL OR Y_BOX_GAMES=NULL;
+
+</pre></div>
+<div><pre class="nocopybutton"><code>
+COUNT(*)   
+         0 
+---------------------------</code></pre><p>NULLs, if found, are automatically handled by the OML algorithms. Alternately, you can manually replace NULLs with <code class="codeph">NVL</code> SQL function. 
+                           </p>
+</div>
+</li>
+<li class="stepexpand"><span>To know the income level of customers who responded to <code class="codeph">HOME_THEATER_PACKAGE</code>, run the following statement:</span><div><pre class="oac_no_warn" dir="ltr">SELECT COUNT(CUST_ID) AS NUM_CUSTOMERS, CUST_INCOME_LEVEL, HOME_THEATER_PACKAGE
+FROM   CUSTOMERDATA
+GROUP BY CUST_INCOME_LEVEL, HOME_THEATER_PACKAGE;
+</pre></div>
+<div><pre class="nocopybutton"><code>
+NUM_CUSTOMERS   CUST_INCOME_LEVEL      HOME_THEATER_PACKAGE   
+            214 K: 250,000 - 299,999                        0 
+            315 L: 300,000 and above                        1 
+            114 E: 90,000 - 109,999                         0 
+             27 A: Below 30,000                             0 
+             61 A: Below 30,000                             1 
+            206 F: 110,000 - 129,999                        1 
+            446 J: 190,000 - 249,999                        0 
+            196 E: 90,000 - 109,999                         1 
+             90 B: 30,000 - 49,999                          0 
+             99 C: 50,000 - 69,999                          1 
+            319 I: 170,000 - 189,999                        1 
+            165 I: 170,000 - 189,999                        0 
+            179 K: 250,000 - 299,999                        1 
+            142 H: 150,000 - 169,999                        0 
+
+NUM_CUSTOMERS   CUST_INCOME_LEVEL      HOME_THEATER_PACKAGE   
+            163 F: 110,000 - 129,999                        0 
+             83 D: 70,000 - 89,999                          1 
+             50 D: 70,000 - 89,999                          0 
+            328 L: 300,000 and above                        0 
+            519 J: 190,000 - 249,999                        1 
+            189 G: 130,000 - 149,999                        1 
+            150 G: 130,000 - 149,999                        0 
+            132 B: 30,000 - 49,999                          1 
+             72 C: 50,000 - 69,999                          0 
+            241 H: 150,000 - 169,999                        1 
+
+
+24 rows selected. 
+---------------------------</code></pre></div>
+</li>
+</ol>
+<div class="section">
+<p>This completes the data exploration stage. OML supports Automatic Data Preparation (ADP). ADP is enabled through the model settings. When ADP is enabled, the transformations required by the algorithm are performed automatically and embedded in the model. This step is done during the Build Model stage. The commonly used methods of data preparation are binning, normalization, and missing value treatment.</p>
+</div>
+</div>
+<div>
+<div class="relinfo">
+<p><strong>Related Topics</strong></p>
+<ul>
+<li><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMPRG-GUID-BCEF5F92-D129-4550-A4EF-85C509E68DE4" target="_blank">How ADP Transforms the Data</a></li>
+</ul>
+</div>
+</div>
+</div>

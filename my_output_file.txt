@@ -1,0 +1,232 @@
+The result is: [<div class="section">
+<p class="subhead1" id="GUID-DBA5A69C-714A-4583-81D6-546B7081FD1D__TITLE_O1M_PMJ_BVB">Related Content</p>
+<div class="tblformalwide" id="GUID-DBA5A69C-714A-4583-81D6-546B7081FD1D__TABLE_TSR_BWL_V5B">
+<table border="1" cellpadding="4" cellspacing="0" class="FormalWide" frame="hsides" rules="rows" summary="Here is a table of related content for Regression" title="" width="100%">
+<thead>
+<tr align="left" valign="top">
+<th align="left" id="d30750e38" valign="bottom" width="0%">Topic </th>
+<th align="left" id="d30750e40" valign="bottom" width="0%">Link</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e38" id="d30750e44" valign="top" width="0%">OML4SQL GitHub Example</td>
+<td align="left" headers="d30750e44 d30750e40" valign="top" width="0%"><a href="https://github.com/oracle-samples/oracle-db-examples/blob/main/machine-learning/sql/21c/oml4sql-classification-random-forest.sql" target="_blank">Classification - Random Forest</a></td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e38" id="d30750e51" valign="top" width="0%"><code class="codeph">CREATE_MODEL2</code> Procedure
+                              </td>
+<td align="left" headers="d30750e51 d30750e40" valign="top" width="0%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMPRG-GUID-560517E9-646A-4C20-8814-63FDA763BFD9" target="_blank">CREATE_MODEL2 Procedure</a></td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e38" id="d30750e60" valign="top" width="0%">Generic Model Settings</td>
+<td align="left" headers="d30750e60 d30750e40" valign="top" width="0%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=ARPLS-GUID-8987EE6F-41A9-4DF9-997C-129B41FDC59A" target="_blank">DBMS_DATA_MINING - Model Settings</a></td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e38" id="d30750e67" valign="top" width="0%">Random Forest Settings</td>
+<td align="left" headers="d30750e67 d30750e40" valign="top" width="0%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=ARPLS-GUID-481B6C67-B26E-4689-AD4C-98062D5A2117" target="_blank">DBMS_DATA_MINING - Algorithm Settings: Random Forest</a></td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e38" id="d30750e74" valign="top" width="0%">Data Dictionary Settings</td>
+<td align="left" headers="d30750e74 d30750e40" valign="top" width="0%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMPRG-GUID-06AF74F5-39D7-4B0F-996E-35CA4C904EA0" target="_blank">Oracle Machine Learning Data Dictionary Views</a></td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e38" id="d30750e81" valign="top" width="0%">Random Forest - Model Detail Views</td>
+<td align="left" headers="d30750e81 d30750e40" valign="top" width="0%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMPRG-GUID-AEE0ADDE-AF4F-4F33-B5D7-F4A1805A989A" target="_blank">Model Detail Views for Random Forest</a></td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e38" id="d30750e88" valign="top" width="0%">About Classification</td>
+<td align="left" headers="d30750e88 d30750e40" valign="top" width="0%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMCON-GUID-9F922514-0F8D-42F5-BEB1-F59A09FA1CD2" target="_blank">About Classification</a></td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e38" id="d30750e95" valign="top" width="0%">About Random Forest (RF)</td>
+<td align="left" headers="d30750e95 d30750e40" valign="top" width="0%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMCON-GUID-B8AA4B0A-EE14-4507-9D6E-08DA1DAC632E" target="_blank">About Random Forest</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>, <div class="section">
+<div class="infoboxnote" id="GUID-7D686C49-8F59-47C4-8CAA-1CE59CCD7D95__GUID-DC05744A-62B2-47A6-86B3-70851FC55556">
+<p class="notep1">Remember:</p>
+<p>The data set used for this use case is from the SH schema. The SH schema can be readily accessed in Oracle Autonomous Database. For on-premises databases, the schema is installed during the installation or can be manually installed by downloading the scripts. See <a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=COMSC-GUID-3820972A-08D7-4033-9524-1E36676594EE" target="_blank">Installing the Sample Schemas</a>.
+                        </p>
+</div>
+</div>, <div class="section">
+<div class="p">To understand the data, you will perform the following:
+                        <ul id="GUID-7D686C49-8F59-47C4-8CAA-1CE59CCD7D95__d180e62" style="list-style-type: disc;">
+<li>Access the data.</li>
+<li>Examine the various attributes or columns of the data set.</li>
+<li>Assess data quality (by exploring the data).</li>
+</ul>
+</div>
+</div>, <div class="section">
+<p class="subhead2" id="GUID-7D686C49-8F59-47C4-8CAA-1CE59CCD7D95__GUID-B64E4366-8C28-41C9-BD72-2C6F55B66C27">Access Data</p>
+<p>You will use <code class="codeph">CUSTOMERS</code> and <code class="codeph">SUPPLEMENTARY_DEMOGRAPHICS</code> table data from the SH schema.
+                     </p>
+</div>, <div class="section">
+<p class="subhead2" id="GUID-7D686C49-8F59-47C4-8CAA-1CE59CCD7D95__d180e70">Examine Data</p>
+<p>The following table displays information about the attributes from <code class="codeph">SUPPLEMENTARY_DEMOGRAPHICS</code>:
+                     </p>
+<div class="tblformal" id="GUID-7D686C49-8F59-47C4-8CAA-1CE59CCD7D95__d180e77">
+<table border="1" cellpadding="4" cellspacing="0" class="Formal" frame="hsides" rules="rows" summary="The SUPPLEMENTARY_DEMOGRAPHICS table displays attributes of the table and the description" title="">
+<thead>
+<tr align="left" valign="top">
+<th align="left" id="d30750e234" valign="bottom" width="40%">Attribute Name</th>
+<th align="left" id="d30750e236" valign="bottom" width="60%">Information</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e240" valign="top" width="40%"><code class="codeph">CUST_ID</code></td>
+<td align="left" headers="d30750e240 d30750e236" valign="top" width="60%">The ID of the customer</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e246" valign="top" width="40%"><code class="codeph">EDUCATION</code></td>
+<td align="left" headers="d30750e246 d30750e236" valign="top" width="60%">Educational information of the customer</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e252" valign="top" width="40%"><code class="codeph">OCCUPATION</code></td>
+<td align="left" headers="d30750e252 d30750e236" valign="top" width="60%">Occupation of the customer</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e258" valign="top" width="40%"><code class="codeph">HOUSEHOLD_SIZE</code></td>
+<td align="left" headers="d30750e258 d30750e236" valign="top" width="60%">People per house</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e264" valign="top" width="40%"><code class="codeph">YRS_RESIDENCE</code></td>
+<td align="left" headers="d30750e264 d30750e236" valign="top" width="60%">Number of years of residence</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e270" valign="top" width="40%"><code class="codeph">AFFINITY_CARD</code></td>
+<td align="left" headers="d30750e270 d30750e236" valign="top" width="60%">Whether the customer holds an affinity card</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e276" valign="top" width="40%"><code class="codeph">BULK_PACK_DISKETTES</code></td>
+<td align="left" headers="d30750e276 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e285" valign="top" width="40%"><code class="codeph">FLAT_PANEL_MONITOR</code></td>
+<td align="left" headers="d30750e285 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e294" valign="top" width="40%"><code class="codeph">HOME_THEATER_PACKAGE</code></td>
+<td align="left" headers="d30750e294 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e303" valign="top" width="40%"><code class="codeph">BOOKKEEPING_APPLICATION</code></td>
+<td align="left" headers="d30750e303 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e312" valign="top" width="40%"><code class="codeph">PRINTER_SUPPLIES</code></td>
+<td align="left" headers="d30750e312 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e322" valign="top" width="40%"><code class="codeph">Y_BOX_GAMES</code></td>
+<td align="left" headers="d30750e322 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e331" valign="top" width="40%"><code class="codeph">OS_DOC_SET_KANJI</code></td>
+<td align="left" headers="d30750e331 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e340" valign="top" width="40%"><code class="codeph">COMMENTS</code></td>
+<td align="left" headers="d30750e340 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>, <div class="section">
+<p class="subhead2" id="GUID-1C6B7E9B-57DB-4271-83E4-92EC32EE714D__d180e200">Assess Data Quality</p>
+<p>To assess the data, first, you must be able to view the data in your database. For this reason, you will use SQL statements to query the <code class="codeph">SH.CUSTOMERS</code> and the <code class="codeph">SH.SUPPLEMENTARY_DEMOGRAPHICS</code> table. 
+                     </p>
+<div class="p">If you are working with Oracle Autonomous Database, you can use the Oracle Machine Learning (OML) Notebooks for your data science project, including assessing data quality. If you are using on-premise Oracle Database, you can use the Oracle SQL Developer to assess data quality. Query the <code class="codeph">SH</code> schema as described. 
+                        <div class="infoboxnote" id="GUID-1C6B7E9B-57DB-4271-83E4-92EC32EE714D__d180e216">
+<p class="notep1">Note:</p>Each record in the database is called a case and each case is identified by a <code class="codeph">case_id</code>. In this use case, <code class="codeph">CUST_ID</code> is the <code class="codeph">case_id</code>.
+                        </div>
+</div>
+</div>, <div class="section">
+<p>This completes the data exploration stage. OML supports Automatic Data Preparation (ADP). ADP is enabled through the model settings. When ADP is enabled, the transformations required by the algorithm are performed automatically and embedded in the model. This step is done during the Build Model stage. The commonly used methods of data preparation are binning, normalization, and missing value treatment.</p>
+</div>, <div class="section">
+<p>For a supervised learning, like Classification, before creating the model, split the data into training and test data. Although you can use the entire data set to build a model, it is difficult to validate the model unless there are new data sets available. Therefore, to evaluate the model and to accurately assess the performance of the model on the same data, you generally split or separate the data into training and test data. You use the training data set to train the model and then use the test data set to test the accuracy of the model by running prediction queries. The testing data set already contains known values for the attribute that you want to predict. It is thus easy to determine whether the predictions of the model are correct. </p>
+</div>, <div class="section">
+<p class="subhead2" id="GUID-B2AF509E-03AD-40BE-A7CF-A2109FAC5DE5__GUID-A680E01E-E8AE-4701-A513-1EB6CD132993">Algorithm Selection</p>
+<p>Before you build a model, choose the suitable algorithm. You can choose one of the following algorithms to solve a classification problem:</p>
+<ul id="GUID-B2AF509E-03AD-40BE-A7CF-A2109FAC5DE5__UL_XPK_VCD_H4B" style="list-style-type: disc;">
+<li>Decision Tree</li>
+<li>Explicit Semantic Analysis (ESM)</li>
+<li>Generalized Linear Model (GLM)</li>
+<li>Naive Bayes</li>
+<li>Random Forest</li>
+<li>Support Vector Machine (SVM)</li>
+<li>XGBoost</li>
+</ul>
+<p>From the above algorithms, ESM is more about Natural Language Processing (NLP) and text mining. ESM does not apply to this use case and data. If you were to select a relatively simple linear model like GLM, the prediction accuracy can be further improved by the Random Forest algorithm. Random Forest is an ensemble method that builds multiple decision trees on subsets of the data re-sampled at each time (bagging). This avoids the overfitting for a single decision tree. The random forest model is a widely used ensemble method that is known to have higher accuracy than linear models. Thus, Random Forest is selected for this use case.</p>
+<p>For this use case, split the data into 60/40 as training and test data. You build the model using the training data and once the model is built, score the test data using the model. </p>
+<p>The following steps guide you to split your data and build your model with the selected algorithm.</p>
+</div>, <div class="section">
+<p>The data dictionary views for Oracle Machine Learning are listed in the following table. A database administrator (DBA) and USER versions of the views are also available.</p>
+<div class="tblformal" id="GUID-94527B67-D960-4506-942F-FD759589E89D__d180e253">
+<table border="1" cellpadding="4" cellspacing="0" class="Formal" frame="hsides" rules="rows" summary="This table describes the data dictionary views available for machine learning" title="">
+<thead>
+<tr align="left" valign="top">
+<th align="left" id="d30750e827" valign="bottom" width="40%">View Name</th>
+<th align="left" id="d30750e829" valign="bottom" width="60%">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e827" id="d30750e833" valign="top" width="40%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMAPI-GUID-955402B6-B52E-494A-865B-7BCAFDB124B2" target="_blank">ALL_MINING_MODELS</a></td>
+<td align="left" headers="d30750e833 d30750e829" valign="top" width="60%">Provides information about all accessible machine learning models</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e827" id="d30750e840" valign="top" width="40%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMAPI-GUID-E18029D5-09BB-41CB-82BA-894A0528E5EF" target="_blank">ALL_MINING_MODEL_ATTRIBUTES</a></td>
+<td align="left" headers="d30750e840 d30750e829" valign="top" width="60%">Provides information about the attributes of all accessible machine learning models</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e827" id="d30750e847" valign="top" width="40%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMAPI-GUID-8262B256-1DFD-40C1-B56C-8E391B5AA303" target="_blank">ALL_MINING_MODEL_SETTINGS</a></td>
+<td align="left" headers="d30750e847 d30750e829" valign="top" width="60%">Provides information about the configuration settings for all accessible machine learning models</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e827" id="d30750e854" valign="top" width="40%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMAPI-GUID-69D3A987-CCD8-435A-B624-B3FD0583F02B" target="_blank">ALL_MINING_MODEL_VIEWS</a></td>
+<td align="left" headers="d30750e854 d30750e829" valign="top" width="60%">Provides information about the model views for all accessible machine learning models</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e827" id="d30750e861" valign="top" width="40%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMAPI-GUID-40EB4505-47A6-4C1B-85F8-A49BA0906D07" target="_blank">ALL_MINING_MODEL_XFORMS</a></td>
+<td align="left" headers="d30750e861 d30750e829" valign="top" width="60%">Provides the user-specified transformations embedded in all accessible machine learning models.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Model detail views are specific to the algorithm. You can obtain more insights about the model you created by viewing the model detail views. The names of model detail views begin with DM$xx where xx corresponds to the view prefix. See <a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMPRG-GUID-AF7C531D-5327-4456-854C-9D6424C5F9EC" target="_blank">Model Detail Views</a>.
+                        </p>
+</div>, <div class="section">
+<p>The following steps help you to view different dictionary views and model detail views.</p>
+</div>, <div class="section">Test metrics are used to assess how accurately the model predicts the known values. If the model performs well and meets your business requirements, it can then be applied to new data to predict the future. These matrices can help you to compare models to arrive at one model that satisfies your evaluation criteria.
+                        <p>Lift measures the degree to which the predictions of a classification model are better than randomly-generated predictions. Lift can be understood as a ratio of two percentages: the percentage of correct positive classifications made by the model to the percentage of actual positive classifications in the test data. </p>
+<p>A confusion matrix displays the number of correct and incorrect predictions made by the model compared with the actual classifications in the test data. The matrix is n-by-n, where n is the number of classes. </p>
+</div>, <div class="section">The accuracy percentage of 69% shows that the model is fairly good for this use case.</div>, <div class="section"></div>, <div class="section">To conclude, you have successfully identified customers who are likely to purchase <code class="codeph">HOME_THEATER_PACKAGE</code>. This prediction helps to promote and offer home theater package to the target customers. 
+                  </div>]

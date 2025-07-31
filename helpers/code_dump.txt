@@ -1,0 +1,648 @@
+def parse_html_in_order(html_content, url=None):
+    from bs4 import BeautifulSoup, Tag
+    html_content1 = transform_infobox_notes(html_content)
+    html_content2 = preprocess_sect2_content(html_content1)
+    modified_html_content = preserve_code_in_paragraphs(html_content2)
+    soup = BeautifulSoup(modified_html_content, 'html.parser')
+    body = soup.body or soup
+
+    # with open("my_output_file.txt", "w") as outfile:
+    #     print("Starting the script...", file=outfile)
+    #     print(f"The result is: {body}", file=outfile)
+    #     print("Script execution complete.", file=outfile)
+
+
+    paragraphs = []
+    handled = set()
+    first_paragraph_found = False
+    processing_content_after_header = False
+
+    for element in body.descendants:
+        if not isinstance(element, Tag) or element in handled:
+            continue
+
+        # --- H2 and its following paragraph ---
+        if element.name == "h2":
+            h2_tag = element
+            p_tag = get_first_paragraph_in_next_sibling_descendants(h2_tag)
+            h2_html = str(h2_tag)
+            if p_tag:
+                h2_html += str(p_tag)
+                handled.add(p_tag)
+            block = extract_h2_with_paragraphs(h2_html, url)
+            paragraphs.extend(block)
+            handled.add(h2_tag)
+            if block and block[0] and block[0]['message']:
+                first_paragraph_found = True
+            processing_content_after_header = False
+            continue
+
+        # --- H3 and the immediately following text content ---
+        elif element.name == 'h3' and 'sect3' in element.get('class', []):
+            paragraphs.append({
+                "title": None,
+                "hasTitle": False,
+                "message": ["%md", "", f"### {element.get_text(strip=True)}"]
+            })
+            handled.add(element)
+            next_sibling = element.find_next_sibling()
+            if next_sibling and next_sibling.name == 'p' and next_sibling not in handled:
+                # print(next_sibling)
+                with open("my_output_file.txt", "w") as outfile:
+                        print("Starting the script...", file=outfile)
+                        print(f"The result is: {next_sibling}", file=outfile)
+                        print("Script execution complete.", file=outfile)
+
+                text_content = "".join(next_sibling.stripped_strings)
+                if text_content:
+                    # print(text_content) #so text_content contains all the text within the class="sect2".
+                    paragraphs.append({
+                        "title": None,
+                        "hasTitle": False,
+                        "message": ["%md", "", text_content]
+                    })
+                    handled.add(next_sibling)
+            continue
+
+        # --- Paragraphs with bold text (process independently) ---
+        elif element.name == 'p' and element.find('b') is not None:
+            text_content = "".join(element.stripped_strings)
+            if text_content:
+                paragraphs.append({
+                    "title": None,
+                    "hasTitle": False,
+                    "message": ["%md", "", text_content]
+                })
+                handled.add(element)
+            continue
+
+        # --- Regular paragraphs (only if not after a header and not already handled) ---
+        elif element.name == 'p' and not processing_content_after_header:
+            text = element.get_text(strip=True)
+            if text:
+                paragraph_data = {
+                    "title": None,
+                    "hasTitle": False,
+                    "message": ["%md", "", text]
+                }
+                if not first_paragraph_found:
+                    paragraphs.append(paragraph_data)
+                    first_paragraph_found = True
+                else:
+                    paragraphs.append(paragraph_data)
+                handled.add(element)
+            continue
+
+        # --- Tables ---
+        elif element.name == "table":
+            block = extract_markdown_tables_with_headings(str(element))
+            paragraphs.extend(block)
+            handled.add(element)
+            if block and block[0] and block[0]['message'] and not first_paragraph_found:
+                first_paragraph_found = True
+            processing_content_after_header = False
+            continue
+
+        # --- List items ---
+        elif element.name == "li":
+            block = li_to_custom_paragraph(str(element))
+            paragraphs.extend(block)
+            handled.add(element)
+            if block and block[0] and block[0]['message'] and not first_paragraph_found:
+                first_paragraph_found = True
+            processing_content_after_header = False
+            continue
+
+        # Update processing_content_after_header
+        if element.name == 'h2':
+            processing_content_after_header = True
+        elif processing_content_after_header and element.name in ['h2', 'h3']:
+            processing_content_after_header = False
+
+    return paragraphs
+
+
+
+def handle_table(tag: Tag, paragraphs: list, handled: set):
+    """
+    Processes a <table> tag and appends it as a new paragraph.
+    """
+    if tag in handled:
+        return
+    table_html = str(tag)
+    print(table_html)
+    paragraphs.append({
+        "title": None,
+        "hasTitle": False,
+        "message": ["%md", "", table_html]
+    })
+    handled.add(tag)
+
+def handle_stepexpand_list(tag: Tag, paragraphs: list, handled: set):
+    """
+    Processes <ol> or <ul> tags containing <li> elements with class 'stepexpand'.
+    Each <li> is added as a separate paragraph with its <span> text as the title.
+    """
+    if tag in handled:
+        return
+    for li in tag.find_all('li', class_='stepexpand'):
+        span = li.find('span')
+        title = span.get_text(strip=True) if span else None
+        content = " ".join(li.stripped_strings)
+        paragraphs.append({
+            "title": title,
+            "hasTitle": bool(title),
+            "message": ["%md", "", content]
+        })
+    handled.add(tag)
+
+def handle_subhead2(tag: Tag, paragraphs: list, handled: set):
+    """
+    Processes elements with class 'subhead2' and wraps their text in bold formatting.
+    """
+    if tag in handled:
+        return
+    text = tag.get_text(strip=True)
+    if text:
+        paragraphs.append({
+            "title": None,
+            "hasTitle": False,
+            "message": ["%md", "", f"**{text}**"]
+        })
+    handled.add(tag)
+
+# def process_next_sibling(next_sibling: Tag, paragraphs: list, handled: set):
+    """
+    Determines the type of the next_sibling and processes it accordingly.
+    """
+    if next_sibling.name == 'table':
+        handle_table(next_sibling, paragraphs, handled)
+    elif next_sibling.name in ['ul', 'ol']:
+        li_with_stepexpand = next_sibling.find('li', class_='stepexpand')
+        if li_with_stepexpand:
+            handle_stepexpand_list(next_sibling, paragraphs, handled)
+        else:
+            # Handle as a regular list
+            list_items = [li.get_text(strip=True) for li in next_sibling.find_all('li')]
+            content = "\n".join(f"- {item}" for item in list_items)
+            paragraphs.append({
+                "title": None,
+                "hasTitle": False,
+                "message": ["%md", "", content]
+            })
+            handled.add(next_sibling)
+    elif 'subhead2' in next_sibling.get('class', []):
+        handle_subhead2(next_sibling, paragraphs, handled)
+    elif next_sibling.name == 'p':
+        text_content = " ".join(next_sibling.stripped_strings)
+        if text_content:
+            paragraphs.append({
+                "title": None,
+                "hasTitle": False,
+                "message": ["%md", "", text_content]
+            })
+            handled.add(next_sibling)
+
+
+
+def parse_html_in_order(html_content, url=None):
+    from bs4 import BeautifulSoup, Tag
+    html_content1 = transform_infobox_notes(html_content)
+    html_content2 = preprocess_sect2_content(html_content1)
+    modified_html_content = preserve_code_in_paragraphs(html_content2)
+    soup = BeautifulSoup(modified_html_content, 'html.parser')
+    body = soup.body or soup
+
+    # with open("my_output_file.txt", "w") as outfile:
+    #     print("Starting the script...", file=outfile)
+    #     print(f"The result is: {body}", file=outfile)
+    #     print("Script execution complete.", file=outfile)
+
+
+    paragraphs = []
+    handled = set()
+    first_paragraph_found = False
+    processing_content_after_header = False
+
+    for element in body.descendants:
+        if not isinstance(element, Tag) or element in handled:
+            continue
+
+        # --- H2 and its following paragraph ---
+        if element.name == "h2":
+            h2_tag = element
+            p_tag = get_first_paragraph_in_next_sibling_descendants(h2_tag)
+            h2_html = str(h2_tag)
+            if p_tag:
+                h2_html += str(p_tag)
+                handled.add(p_tag)
+            block = extract_h2_with_paragraphs(h2_html, url)
+            paragraphs.extend(block)
+            handled.add(h2_tag)
+            if block and block[0] and block[0]['message']:
+                first_paragraph_found = True
+            processing_content_after_header = False
+            continue
+
+        # --- H3 and the immediately following text content ---
+        # elif element.name == 'h3' and 'sect3' in element.get('class', []):
+        #     paragraphs.append({
+        #         "title": None,
+        #         "hasTitle": False,
+        #         "message": ["%md", "", f"### {element.get_text(strip=True)}"]
+        #     })
+        #     handled.add(element)
+        #     next_sibling = element.find_next_sibling()
+        #     if next_sibling and next_sibling.name == 'p' and next_sibling not in handled:
+        #         # print(next_sibling)
+        #         # with open("my_output_file.txt", "w") as outfile:
+        #         #         print("Starting the script...", file=outfile)
+        #         #         print(f"The result is: {element}", file=outfile)
+        #         #         print(f"The result is: {next_sibling}", file=outfile)
+        #         #         print("Script execution complete.", file=outfile)
+        #         text_content = " ".join(next_sibling.stripped_strings)
+        #         if text_content:
+        #             # print(text_content) #so text_content contains all the text within the class="sect2".
+        #             paragraphs.append({
+        #                 "title": None,
+        #                 "hasTitle": False,
+        #                 "message": ["%md", "", text_content]
+        #             })
+        #             handled.add(next_sibling)
+        #     continue
+
+        elif element.name == 'h3' and 'sect3' in element.get('class', []):
+            paragraphs.append({
+                "title": None,
+                "hasTitle": False,
+                "message": ["%md", "", f"### {element.get_text(strip=True)}"]
+            })
+            handled.add(element)
+            next_sibling = element.find_next_sibling()
+            if next_sibling and next_sibling not in handled:
+                process_next_sibling(next_sibling, paragraphs, handled)
+            continue
+
+        # --- Paragraphs with bold text (process independently) ---
+        elif element.name == 'p' and element.find('b') is not None:
+            text_content = "".join(element.stripped_strings)
+            if text_content:
+                paragraphs.append({
+                    "title": None,
+                    "hasTitle": False,
+                    "message": ["%md", "", text_content]
+                })
+                handled.add(element)
+            continue
+
+        # --- Regular paragraphs (only if not after a header and not already handled) ---
+        # elif element.name == 'p' and not processing_content_after_header:
+        #     text = element.get_text(strip=True)
+        #     if text:
+        #         paragraph_data = {
+        #             "title": None,
+        #             "hasTitle": False,
+        #             "message": ["%md", "", text]
+        #         }
+        #         if not first_paragraph_found:
+        #             paragraphs.append(paragraph_data)
+        #             first_paragraph_found = True
+        #         else:
+        #             paragraphs.append(paragraph_data)
+        #         handled.add(element)
+        #     continue
+
+        # # --- Tables ---
+        # elif element.name == "table":
+        #     block = extract_markdown_tables_with_headings(str(element))
+        #     paragraphs.extend(block)
+        #     handled.add(element)
+        #     if block and block[0] and block[0]['message'] and not first_paragraph_found:
+        #         first_paragraph_found = True
+        #     processing_content_after_header = False
+        #     continue
+
+        # # --- List items ---
+        # elif element.name == "li":
+        #     block = li_to_custom_paragraph(str(element))
+        #     paragraphs.extend(block)
+        #     handled.add(element)
+        #     if block and block[0] and block[0]['message'] and not first_paragraph_found:
+        #         first_paragraph_found = True
+        #     processing_content_after_header = False
+        #     continue
+
+        # # Update processing_content_after_header
+        # if element.name == 'h2':
+        #     processing_content_after_header = True
+        # elif processing_content_after_header and element.name in ['h2', 'h3']:
+        #     processing_content_after_header = False
+
+    return paragraphs
+
+
+
+
+
+
+
+# def parse_html_in_order(html_content, url=None):
+#     from bs4 import BeautifulSoup, Tag
+#     # Process the entire HTML to convert <codeph> inside <p> to backticks
+#     html_content1 = transform_infobox_notes(html_content)
+#     html_content2 = preprocess_sect2_content(html_content1)
+#     modified_html_content = preserve_code_in_paragraphs(html_content2)
+#     # with open("my_output_file.txt", "w") as outfile:
+#     #     print("Starting the script...", file=outfile)
+#     #     print(f"The result is: {modified_html_content}", file=outfile)
+#     #     print("Script execution complete.", file=outfile)
+
+#     soup = BeautifulSoup(modified_html_content, 'html.parser')
+#     body = soup.body or soup  #type is <class 'bs4.element.Tag'> which means its a parsed bs object.
+
+#     # Update the links within the soup object
+#     base_url = "https://docs.oracle.com"
+#     updated_soup = update_links(soup, base_url)
+
+#     # h3_tags = soup.find_all('h3')
+#     # for h3 in h3_tags:
+#     #     print(h3)
+
+
+#     paragraphs = []
+#     handled = set()
+#     first_paragraph_found = False
+#     processing_content_after_header = False
+#     header_markdown_lines = []
+#     paragraph_count = 0
+
+#     for element in body.descendants:
+#         if not isinstance(element, Tag):
+#             continue
+
+#         if element in handled:
+#             continue
+
+#         # --- H2 and its paragraph ---
+#         if element.name == "h2":
+#             h2_tag = element
+#             p_tag = get_first_paragraph_in_next_sibling_descendants(h2_tag)
+#             h2_html = str(h2_tag)
+#             if p_tag:
+#                 h2_html += str(p_tag)
+#                 handled.add(p_tag)
+
+#             block = extract_h2_with_paragraphs(h2_html, url)
+#             paragraphs.extend(block)
+#             handled.add(h2_tag)
+#             if block and block[0] and block[0]['message']:
+#                 first_paragraph_found = True
+#             processing_content_after_header = False
+#             header_markdown_lines = []
+#             paragraph_count = 0
+
+#         # --- H3 and H4 ---
+#         # elif element.name in ["h3", "h4"]:
+#         #     header = element
+#         #     block = extract_h3_h4_with_paragraphs(header)
+#         #     paragraphs.append(block)
+#         #     handled.add(header)
+#         #     if block and block['message'] and len(block['message']) > 3 and not first_paragraph_found:
+#         #         first_paragraph_found = True
+#         #     processing_content_after_header = True
+#         #     header_markdown_lines = ["%md", "", f"{'###' if header.name == 'h3' else '####'} {header.get_text(strip=True)}"]
+#         #     paragraph_count = 0
+
+#         # --- Transformed sect2 content (now h3 and p tags) ---
+#         elif element.name == 'h3' and 'sect3' in element.get('class', []) and element not in handled:
+#             paragraphs.append({
+#                 "title": None,
+#                 "hasTitle": False,
+#                 "message": ["%md", "", f"### {element.get_text(strip=True)}"]
+#             })
+#             handled.add(element)
+#         elif element.name == 'p' and element.find('b') is not None and element not in handled:
+#             text_content = "".join(element.stripped_strings)
+#             if text_content:
+#                 paragraphs.append({
+#                     "title": None,
+#                     "hasTitle": False,
+#                     "message": ["%md", "", text_content]
+#                 })
+#                 handled.add(element)
+#         elif element.name == 'p' and element not in handled and not processing_content_after_header:
+#             text = element.get_text(strip=True)
+#             if text:
+#                 paragraph_data = {
+#                     "title": None,
+#                     "hasTitle": False,
+#                     "message": ["%md", "", text]
+#                 }
+#                 if not first_paragraph_found:
+#                     paragraphs.append(paragraph_data)
+#                     first_paragraph_found = True
+#                 else:
+#                     paragraphs.append(paragraph_data)
+#                 handled.add(element)
+
+#         # --- Tables ---
+#         elif isinstance(element, Tag) and element.name == "table":
+#             block = extract_markdown_tables_with_headings(str(element))
+#             paragraphs.extend(block)
+#             handled.add(element)
+#             if block and block[0] and block[0]['message'] and not first_paragraph_found:
+#                 first_paragraph_found = True
+#             processing_content_after_header = False
+#             header_markdown_lines = []
+#             paragraph_count = 0
+
+#         # --- List items with code ---
+#         elif isinstance(element, Tag) and element.name == "li":
+#             block = li_to_custom_paragraph(str(element))
+#             paragraphs.extend(block)
+#             handled.add(element)
+#             if block and block[0] and block[0]['message'] and not first_paragraph_found:
+#                 first_paragraph_found = True
+#             processing_content_after_header = False
+#             header_markdown_lines = []
+#             paragraph_count = 0
+
+#     # Handle any remaining content after the last header
+#     if processing_content_after_header and header_markdown_lines:
+#         paragraphs.append({
+#             "title": None,
+#             "hasTitle": False,
+#             "message": header_markdown_lines
+#         })
+
+#     return paragraphs
+
+#     #working but not completely.
+#     # paragraphs = []
+#     # handled = set()
+
+#     # for element in body.descendants:  #body.descendants is an iterator and when printed
+#     #     if not isinstance(element, Tag):
+#     #         continue
+
+#     #     if element in handled:
+#     #         continue
+
+#     #     # --- H2 and its paragraph ---
+#     #     if element.name == "h2":
+#     #         h2_tag = element
+#     #         p_tag = get_first_paragraph_in_next_sibling_descendants(h2_tag)
+#     #         h2_html = str(h2_tag)
+#     #         if p_tag:
+#     #             h2_html += str(p_tag)
+#     #             handled.add(p_tag)
+
+#     #         block = extract_h2_with_paragraphs(h2_html, url)
+#     #         paragraphs.extend(block)
+#     #         handled.add(h2_tag)
+
+#     #     # H3 tag
+#     #     if element.name == "h3":
+#     #                 h3_tag = element
+#     #                 p3_tag = get_first_paragraph_in_next_sibling_descendants(h3_tag)
+#     #                 h3_html = str(h3_tag)
+#     #                 if p3_tag:
+#     #                     h3_html += str(p3_tag)
+#     #                     # print(h3_html)
+#     #                     handled.add(p3_tag)
+
+#     #                 block = extract_h2_with_paragraphs(h3_html, url)
+#     #                 paragraphs.extend(block)
+#     #                 handled.add(h3_tag)
+
+
+#     #     # --- H3 and H4 ---
+#     #     # elif element.name in ["h3", "h4"]:
+#     #     #     block = extract_h3_h4_with_paragraphs(str(element))
+#     #     #     paragraphs.extend(block)
+#     #     #     handled.add(element)
+
+
+#     #     # --- Tables ---
+#     #     elif element.name == "table":
+#     #         block = extract_markdown_tables_with_headings(str(element))
+#     #         paragraphs.extend(block)
+#     #         handled.add(element)
+
+#     #     # --- List items with code ---
+#     #     elif element.name == "li":
+#     #         block = li_to_custom_paragraph(str(element))
+#     #         paragraphs.extend(block)
+#     #         handled.add(element)
+
+#     #     # --- Independent <p> tags ---
+#     #     elif element.name == "p" and element not in handled:
+#     #         text = element.get_text(strip=True)
+#     #         if text:
+#     #             paragraphs.append({
+#     #                 "title": None,
+#     #                 "hasTitle": False,
+#     #                 "message": ["%md", "", text]
+#     #             })
+#     #             handled.add(element)
+#     # return paragraphs
+
+def parse_html_in_order(html_content, url=None):
+    from bs4 import BeautifulSoup, Tag
+    html_content1 = transform_infobox_notes(html_content)
+    html_content2 = preprocess_sect2_content(html_content1)
+    modified_html_content = preserve_code_in_paragraphs(html_content2)
+    soup = BeautifulSoup(modified_html_content, 'html.parser')
+    body = soup.body or soup
+
+    paragraphs = []
+    handled = set()
+    first_paragraph_found = False
+    processing_content_after_header = False
+
+    for element in body.descendants:
+        if not isinstance(element, Tag) or element in handled:
+            continue
+
+        # --- H2 and its following paragraph (highest priority) ---
+        if element.name == "h2":
+            h2_tag = element
+            p_tag = get_first_paragraph_in_next_sibling_descendants(h2_tag)
+            h2_html = str(h2_tag)
+            if p_tag:
+                h2_html += str(p_tag)
+                handled.add(p_tag)
+            block = extract_h2_with_paragraphs(h2_html, url)
+            paragraphs.extend(block)
+            handled.add(h2_tag)
+            if block and block[0] and block[0]['message']:
+                first_paragraph_found = True
+            processing_content_after_header = False
+            continue # Move to the next element
+
+        # --- Transformed sect2 content (h3 with class sect3) ---
+        elif element.name == 'h3' and 'sect3' in element.get('class', []):
+            paragraphs.append({
+                "title": None,
+                "hasTitle": False,
+                "message": ["%md", "", f"### {element.get_text(strip=True)}"]
+            })
+            handled.add(element)
+            continue
+
+        # --- Paragraphs with bold text ---
+        elif element.name == 'p' and element.find('b') is not None:
+            text_content = "".join(element.stripped_strings)
+            if text_content:
+                paragraphs.append({
+                    "title": None,
+                    "hasTitle": False,
+                    "message": ["%md", "", text_content]
+                })
+                handled.add(element)
+            continue
+
+        # --- Regular paragraphs (only if not after a header) ---
+        elif element.name == 'p' and not processing_content_after_header:
+            text = element.get_text(strip=True)
+            if text:
+                paragraph_data = {
+                    "title": None,
+                    "hasTitle": False,
+                    "message": ["%md", "", text]
+                }
+                if not first_paragraph_found:
+                    paragraphs.append(paragraph_data)
+                    first_paragraph_found = True
+                else:
+                    paragraphs.append(paragraph_data)
+                handled.add(element)
+            continue
+
+        # --- Tables ---
+        elif element.name == "table":
+            block = extract_markdown_tables_with_headings(str(element))
+            paragraphs.extend(block)
+            handled.add(element)
+            if block and block[0] and block[0]['message'] and not first_paragraph_found:
+                first_paragraph_found = True
+            processing_content_after_header = False
+            continue
+
+        # --- List items ---
+        elif element.name == "li":
+            block = li_to_custom_paragraph(str(element))
+            paragraphs.extend(block)
+            handled.add(element)
+            if block and block[0] and block[0]['message'] and not first_paragraph_found:
+                first_paragraph_found = True
+            processing_content_after_header = False
+            continue
+
+        # Update processing_content_after_header based on encountering h2
+        if element.name == 'h2':
+            processing_content_after_header = True
+        elif processing_content_after_header and element.name in ['h2', 'h3']:
+            processing_content_after_header = False
+
+    return paragraphs

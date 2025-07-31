@@ -1,0 +1,119 @@
+[
+  {
+    "name": "Classification Use Case Scenario",
+    "paragraphs": [
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "%md",
+          "",
+          "Related Content\n\n| Topic | Link |\n| --- | --- |\n|  |\n| OML4SQL GitHub Example | Classification - Random Forest |\n| CREATE_MODEL2Procedure | CREATE_MODEL2 Procedure |\n| Generic Model Settings | DBMS_DATA_MINING - Model Settings |\n| Random Forest Settings | DBMS_DATA_MINING - Algorithm Settings: Random Forest |\n| Data Dictionary Settings | Oracle Machine Learning Data Dictionary Views |\n| Random Forest - Model Detail Views | Model Detail Views for Random Forest |\n| About Classification | About Classification |\n| About Random Forest (RF) | About Random Forest |",
+          "",
+          "[Source](https://docs.oracle.com/en/database/oracle/machine-learning/oml4sql/23/mlsql/classification2.html)",
+          "",
+          "*In the business since: (2021/2025)*"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "%md",
+          "",
+          "Remember:\n\nThe data set used for this use case is from the SH schema. The SH schema can be readily accessed in Oracle Autonomous Database. For on-premises databases, the schema is installed during the installation or can be manually installed by downloading the scripts. SeeInstalling the Sample Schemas."
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "%md",
+          "",
+          "- Access the data.\n- Examine the various attributes or columns of the data set.\n- Assess data quality (by exploring the data)."
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "%md",
+          "",
+          "**Access Data**\n\nYou will useCUSTOMERSandSUPPLEMENTARY_DEMOGRAPHICStable data from the SH schema."
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "%md",
+          "",
+          "**Examine Data**\n\nThe following table displays information about the attributes fromSUPPLEMENTARY_DEMOGRAPHICS:\n\n| Attribute Name | Information |\n| --- | --- |\n|  |\n| CUST_ID | The ID of the customer |\n| EDUCATION | Educational information of the customer |\n| OCCUPATION | Occupation of the customer |\n| HOUSEHOLD_SIZE | People per house |\n| YRS_RESIDENCE | Number of years of residence |\n| AFFINITY_CARD | Whether the customer holds an affinity card |\n| BULK_PACK_DISKETTES | Product. Indicates whether the customer already owns the product.1 means Yes. 0 means No |\n| FLAT_PANEL_MONITOR | Product. Indicates whether the customer already owns the product.1 means Yes. 0 means No |\n| HOME_THEATER_PACKAGE | Product. Indicates whether the customer already owns the product.1 means Yes. 0 means No |\n| BOOKKEEPING_APPLICATION | Product. Indicates whether the customer already owns the product.1 means Yes. 0 means No |\n| PRINTER_SUPPLIES | Product. Indicates whether the customer already owns the product.1 means Yes. 0 means No |\n| Y_BOX_GAMES | Product. Indicates whether the customer already owns the product.1 means Yes. 0 means No |\n| OS_DOC_SET_KANJI | Product. Indicates whether the customer already owns the product.1 means Yes. 0 means No |\n| COMMENTS | Product. Indicates whether the customer already owns the product.1 means Yes. 0 means No |\n\nProduct. Indicates whether the customer already owns the product.\n\n1 means Yes. 0 means No\n\nProduct. Indicates whether the customer already owns the product.\n\n1 means Yes. 0 means No\n\nProduct. Indicates whether the customer already owns the product.\n\n1 means Yes. 0 means No\n\nProduct. Indicates whether the customer already owns the product.\n\n1 means Yes. 0 means No\n\nProduct. Indicates whether the customer already owns the product.\n\n1 means Yes. 0 means No\n\nProduct. Indicates whether the customer already owns the product.\n\n1 means Yes. 0 means No\n\nProduct. Indicates whether the customer already owns the product.\n\n1 means Yes. 0 means No\n\nProduct. Indicates whether the customer already owns the product.\n\n1 means Yes. 0 means No"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "%md",
+          "",
+          "**Assess Data Quality**\n\nTo assess the data, first, you must be able to view the data in your database. For this reason, you will use SQL statements to query theSH.CUSTOMERSand theSH.SUPPLEMENTARY_DEMOGRAPHICStable.\n\nNote:"
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "%md",
+          "",
+          "This completes the data exploration stage. OML supports Automatic Data Preparation (ADP). ADP is enabled through the model settings. When ADP is enabled, the transformations required by the algorithm are performed automatically and embedded in the model. This step is done during the Build Model stage. The commonly used methods of data preparation are binning, normalization, and missing value treatment."
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "%md",
+          "",
+          "For a supervised learning, like Classification, before creating the model, split the data into training and test data. Although you can use the entire data set to build a model, it is difficult to validate the model unless there are new data sets available. Therefore, to evaluate the model and to accurately assess the performance of the model on the same data, you generally split or separate the data into training and test data. You use the training data set to train the model and then use the test data set to test the accuracy of the model by running prediction queries. The testing data set already contains known values for the attribute that you want to predict. It is thus easy to determine whether the predictions of the model are correct."
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "%md",
+          "",
+          "**Algorithm Selection**\n\nBefore you build a model, choose the suitable algorithm. You can choose one of the following algorithms to solve a classification problem:\n\n- Decision Tree\n- Explicit Semantic Analysis (ESM)\n- Generalized Linear Model (GLM)\n- Naive Bayes\n- Random Forest\n- Support Vector Machine (SVM)\n- XGBoost\n\nFrom the above algorithms, ESM is more about Natural Language Processing (NLP) and text mining. ESM does not apply to this use case and data. If you were to select a relatively simple linear model like GLM, the prediction accuracy can be further improved by the Random Forest algorithm. Random Forest is an ensemble method that builds multiple decision trees on subsets of the data re-sampled at each time (bagging). This avoids the overfitting for a single decision tree. The random forest model is a widely used ensemble method that is known to have higher accuracy than linear models. Thus, Random Forest is selected for this use case.\n\nFor this use case, split the data into 60/40 as training and test data. You build the model using the training data and once the model is built, score the test data using the model.\n\nThe following steps guide you to split your data and build your model with the selected algorithm."
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "%md",
+          "",
+          "The data dictionary views for Oracle Machine Learning are listed in the following table. A database administrator (DBA) and USER versions of the views are also available.\n\n| View Name | Description |\n| --- | --- |\n|  |\n| ALL_MINING_MODELS | Provides information about all accessible machine learning models |\n| ALL_MINING_MODEL_ATTRIBUTES | Provides information about the attributes of all accessible machine learning models |\n| ALL_MINING_MODEL_SETTINGS | Provides information about the configuration settings for all accessible machine learning models |\n| ALL_MINING_MODEL_VIEWS | Provides information about the model views for all accessible machine learning models |\n| ALL_MINING_MODEL_XFORMS | Provides the user-specified transformations embedded in all accessible machine learning models. |\n\nModel detail views are specific to the algorithm. You can obtain more insights about the model you created by viewing the model detail views. The names of model detail views begin with DM$xx where xx corresponds to the view prefix. SeeModel Detail Views."
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "%md",
+          "",
+          "The following steps help you to view different dictionary views and model detail views."
+        ]
+      },
+      {
+        "title": null,
+        "hasTitle": false,
+        "message": [
+          "%md",
+          "",
+          "Lift measures the degree to which the predictions of a classification model are better than randomly-generated predictions. Lift can be understood as a ratio of two percentages: the percentage of correct positive classifications made by the model to the percentage of actual positive classifications in the test data.\n\nA confusion matrix displays the number of correct and incorrect predictions made by the model compared with the actual classifications in the test data. The matrix is n-by-n, where n is the number of classes."
+        ]
+      }
+    ]
+  }
+]

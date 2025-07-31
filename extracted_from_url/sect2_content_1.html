@@ -1,0 +1,123 @@
+<div class="sect2"><a id="GUID-7D686C49-8F59-47C4-8CAA-1CE59CCD7D95" name="GUID-7D686C49-8F59-47C4-8CAA-1CE59CCD7D95"></a><h3 class="sect3" id="MLSQL-GUID-7D686C49-8F59-47C4-8CAA-1CE59CCD7D95">Load Data</h3>
+<div>
+<p>Access the data set from the SH Schema and explore the data to understand the attributes.</p>
+<div class="section">
+<div class="infoboxnote" id="GUID-7D686C49-8F59-47C4-8CAA-1CE59CCD7D95__GUID-DC05744A-62B2-47A6-86B3-70851FC55556">
+<p class="notep1">Remember:</p>
+<p>The data set used for this use case is from the SH schema. The SH schema can be readily accessed in Oracle Autonomous Database. For on-premises databases, the schema is installed during the installation or can be manually installed by downloading the scripts. See <a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=COMSC-GUID-3820972A-08D7-4033-9524-1E36676594EE" target="_blank">Installing the Sample Schemas</a>.
+                        </p>
+</div>
+</div>
+<div class="section">
+<div class="p">To understand the data, you will perform the following:
+                        <ul id="GUID-7D686C49-8F59-47C4-8CAA-1CE59CCD7D95__d180e62" style="list-style-type: disc;">
+<li>Access the data.</li>
+<li>Examine the various attributes or columns of the data set.</li>
+<li>Assess data quality (by exploring the data).</li>
+</ul>
+</div>
+</div>
+<div class="section">
+<p class="subhead2" id="GUID-7D686C49-8F59-47C4-8CAA-1CE59CCD7D95__GUID-B64E4366-8C28-41C9-BD72-2C6F55B66C27">Access Data</p>
+<p>You will use <code class="codeph">CUSTOMERS</code> and <code class="codeph">SUPPLEMENTARY_DEMOGRAPHICS</code> table data from the SH schema.
+                     </p>
+</div>
+<div class="section">
+<p class="subhead2" id="GUID-7D686C49-8F59-47C4-8CAA-1CE59CCD7D95__d180e70">Examine Data</p>
+<p>The following table displays information about the attributes from <code class="codeph">SUPPLEMENTARY_DEMOGRAPHICS</code>:
+                     </p>
+<div class="tblformal" id="GUID-7D686C49-8F59-47C4-8CAA-1CE59CCD7D95__d180e77">
+<table border="1" cellpadding="4" cellspacing="0" class="Formal" frame="hsides" rules="rows" summary="The SUPPLEMENTARY_DEMOGRAPHICS table displays attributes of the table and the description" title="">
+<thead>
+<tr align="left" valign="top">
+<th align="left" id="d30750e234" valign="bottom" width="40%">Attribute Name</th>
+<th align="left" id="d30750e236" valign="bottom" width="60%">Information</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e240" valign="top" width="40%"><code class="codeph">CUST_ID</code></td>
+<td align="left" headers="d30750e240 d30750e236" valign="top" width="60%">The ID of the customer</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e246" valign="top" width="40%"><code class="codeph">EDUCATION</code></td>
+<td align="left" headers="d30750e246 d30750e236" valign="top" width="60%">Educational information of the customer</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e252" valign="top" width="40%"><code class="codeph">OCCUPATION</code></td>
+<td align="left" headers="d30750e252 d30750e236" valign="top" width="60%">Occupation of the customer</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e258" valign="top" width="40%"><code class="codeph">HOUSEHOLD_SIZE</code></td>
+<td align="left" headers="d30750e258 d30750e236" valign="top" width="60%">People per house</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e264" valign="top" width="40%"><code class="codeph">YRS_RESIDENCE</code></td>
+<td align="left" headers="d30750e264 d30750e236" valign="top" width="60%">Number of years of residence</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e270" valign="top" width="40%"><code class="codeph">AFFINITY_CARD</code></td>
+<td align="left" headers="d30750e270 d30750e236" valign="top" width="60%">Whether the customer holds an affinity card</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e276" valign="top" width="40%"><code class="codeph">BULK_PACK_DISKETTES</code></td>
+<td align="left" headers="d30750e276 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e285" valign="top" width="40%"><code class="codeph">FLAT_PANEL_MONITOR</code></td>
+<td align="left" headers="d30750e285 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e294" valign="top" width="40%"><code class="codeph">HOME_THEATER_PACKAGE</code></td>
+<td align="left" headers="d30750e294 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e303" valign="top" width="40%"><code class="codeph">BOOKKEEPING_APPLICATION</code></td>
+<td align="left" headers="d30750e303 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e312" valign="top" width="40%"><code class="codeph">PRINTER_SUPPLIES</code></td>
+<td align="left" headers="d30750e312 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e322" valign="top" width="40%"><code class="codeph">Y_BOX_GAMES</code></td>
+<td align="left" headers="d30750e322 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e331" valign="top" width="40%"><code class="codeph">OS_DOC_SET_KANJI</code></td>
+<td align="left" headers="d30750e331 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e340" valign="top" width="40%"><code class="codeph">COMMENTS</code></td>
+<td align="left" headers="d30750e340 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
