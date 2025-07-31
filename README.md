@@ -40,4 +40,4 @@ To generate a notebook, simply run:
 ```
     python main.py
 ```
-The generated .dsnb notebook will appear in the /output directory (or your configured output path).
+The generated .dsnb notebook will appear in the output directory.
