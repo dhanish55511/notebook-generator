@@ -20,7 +20,7 @@ A simple Python-based tool to generate `.dsnb` notebooks dynamically from the pu
 2. Run the following command to download Python (replace `<python_download_link>` with the actual link):
    ```bash
    wget <python_download_link>
-````
+   ````
 
 3. Follow the instructions to install it.
 
