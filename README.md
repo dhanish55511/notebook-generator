@@ -103,17 +103,3 @@ The generated `.dsnb` notebook will appear in the `output` directory.
 5. Open a Pull Request.
 
 ---
-
-## 📜 License
-
-This project is licensed under the [MIT License](LICENSE).
-
-```
-
-This layout:  
-- Follows the **standard GitHub README structure**.  
-- Groups installation, usage, and contribution logically.  
-- Uses **clear step-by-step formatting** so beginners won’t get lost.  
-
-If you want, I can also **add a "Quick Start" section at the very top** so advanced users can install & run in just two commands without reading the full instructions. That way, both beginners and pros are happy.
-```
