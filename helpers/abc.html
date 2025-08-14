@@ -1,0 +1,280 @@
+ <div class="p">
+                  <p>Before you start </p>
+                  <ul>
+                     <li>Data Set
+                        <p>The data set used. See <a href="https://abc.com">Installing the Sample Schemas</a>.
+                        </p>
+                     </li>
+                     <li>Database 
+                        <div class="p">Select or create database out of the following options: 
+                           <ul >
+                              <li>Get your FREE cloud account</li>
+                              <li>Download the latest version.</li>
+                           </ul>
+                        </div>
+                     </li>
+                     <li>Machine Learning Tools
+                        <div class="p">Depending on your database selection,
+                           <ul>
+                              <li>Use OML Notebooks for Oracle Autonomous Database.</li>
+                              <li>Install and use Oracle SQL Developer.</li>
+                           </ul>
+                        </div>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+
+
+
+
+
+<div class="ind">
+   <div>
+      <p>You are working in a</p>
+      <div class="section">
+         <p class="subhead1">Related Content</p>
+         </div>
+      </div>
+   <div class="sect2"><a></a><h3 class="sect3">Load Data</h3>
+      <div>
+         <p>Access the data set from the SH Schema and explore the data to understand the attributes.</p>
+         <div class="section">
+            <div class="infoboxnote">
+               <p class="notep1">Remember:</p>
+               <p>The data set used for this use case is from the SH schema. The SH schema can be readily accessed in Oracle Autonomous Database. For on-premises databases, the schema is installed during the installation or can be manually installed by downloading the scripts. See <a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=COMSC-GUID-3820972A-08D7-4033-9524-1E36676594EE" target="_blank">Installing the Sample Schemas</a>.
+               </p>
+            </div>
+         </div>
+         <div class="section">
+            <p class="subhead2" id="GUID-7D686C49-8F59-47C4-8CAA-1CE59CCD7D95__d180e70">Examine Data</p>
+            <p>The following table displays information about the attributes from <code class="codeph">SUPPLEMENTARY_DEMOGRAPHICS</code>:
+            </p>
+      </div>
+   </div>
+   </div>
+</div>
+
+
+
+<li class="stepexpand"><span>Create a result table to store the predictions</span>
+   <div><pre class="oac_no_warn" dir="ltr">%script
+ 
+   BEGIN EXECUTE IMMEDIATE</pre></div>
+                              <div><pre class="nocopybutton"><code>
+   PL/SQL procedure successfully completed.
+   </code></pre><p>Examine the script:</p>
+                                 <p>APPLY_RESULT: is a table that stores the results of the prediction.
+                                 </p>
+                                 <p>TABLE(PREDICTION_SET(MODEL_RF USING *)): is a table that has results.
+                                 </p>
+                              </div>
+                           </li>
+
+
+                           html_content1 = """
+<div class="sect2"><a ></a><h3 class="sect3" >Load Data</h3>
+  <div>
+  <p>Access the data set.</p>
+  <div class="section">
+  <div class="infoboxnote">
+  <p class="notep1">Remember:</p>
+  <p>The data set used.</p>
+  </div>
+  </div>
+  <div class="section">
+  <div class="p">To understand the data, you will perform the following:
+                          <ul>
+  <li>Access the data.</li>
+  <li>Examine the various attributes or columns of the data set.</li>
+  <li>Assess data quality (by exploring the data).</li>
+  </ul>
+  </div>
+  </div>
+  <div class="section">
+  <p class="subhead2" >Access Data</p>
+  <p>You will use the table data from the SH schema.</p>
+  </div>
+  <div class="section">
+  <p class="subhead2">Examine Data</p>
+  <p>The following table:</p>
+  <ol>
+  <li class="stepexpand"><span>View the data in the</span><div><pre class="pre codeblock"><code>SELECT * FROM SH.CUSTOMERS;</code></pre></div>
+  </li>
+  <li class="stepexpand"><span>To see distinct data from the table, run the following statement:</span><div><pre class="pre codeblock"><code>SELECT DISTINCT * FROM SH.CUSTOMERS;</code></pre></div>
+     <div><img ></div>
+  </li>
+  <li class="stepexpand"><span>Find the COUNT</span><div><pre class="pre codeblock"><code>SELECT COUNT(*) from SH.CUSTOMERS;</code></pre></div>
+     <div><pre class="nocopybutton"><code>
+COUNT(*)
+55500
+---------------------------</code></pre></div>
+  </li>
+  <li class="stepexpand"><span>To identify distinct or unique customers in the table, run the following statement:</span><div><pre class="pre codeblock"><code>
+%script
+SELECT COUNT (DISTINCT CUST_ID) FROM SH.CUSTOMERS; </code></pre></div>
+     <div><pre class="nocopybutton"><code>
+COUNT(DISTINCTCUST_ID)
+55500
+---------------------------</code></pre></div>
+  </li>
+  <li class="stepexpand"><span>Similarly, query the <code class="codeph">SH.SUPPLEMENTARY_DEMOGRAPHICS</code> table.</span><div><pre class="pre codeblock"><code>SELECT * FROM SH.SUPPLEMENTARY_DEMOGRAPHICS;</code></pre></div>
+     <div><img ></div>
+  </li>
+  <li class="stepexpand"><span>To see distinct data from the table, run the following statement:</span><div><pre class="pre codeblock"><code>SELECT DISTINCT * FROM SH.SUPPLEMENTARY_DEMOGRAPHICS;</code></pre></div>
+</ol>
+  <div class="tblformal">
+  <table border="1" cellpadding="4" cellspacing="0" class="Formal" frame="hsides" rules="rows" summary="The SUPPLEMENTARY_DEMOGRAPHICS table displays attributes of the table and the description" title="">
+<thead>
+<tr align="left" valign="top">
+<th align="left" id="d30750e234" valign="bottom" width="40%">Attribute Name</th>
+<th align="left" id="d30750e236" valign="bottom" width="60%">Information</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e240" valign="top" width="40%">`CUST_ID`</td>
+<td align="left" headers="d30750e240 d30750e236" valign="top" width="60%">The ID of the customer</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e246" valign="top" width="40%">`EDUCATION`</td>
+<td align="left" headers="d30750e246 d30750e236" valign="top" width="60%">Educational information of the customer</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e252" valign="top" width="40%">`OCCUPATION`</td>
+<td align="left" headers="d30750e252 d30750e236" valign="top" width="60%">Occupation of the customer</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e258" valign="top" width="40%">`HOUSEHOLD_SIZE`</td>
+<td align="left" headers="d30750e258 d30750e236" valign="top" width="60%">People per house</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e264" valign="top" width="40%">`YRS_RESIDENCE`</td>
+<td align="left" headers="d30750e264 d30750e236" valign="top" width="60%">Number of years of residence</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e270" valign="top" width="40%">`AFFINITY_CARD`</td>
+<td align="left" headers="d30750e270 d30750e236" valign="top" width="60%">Whether the customer holds an affinity card</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e276" valign="top" width="40%">`BULK_PACK_DISKETTES`</td>
+<td align="left" headers="d30750e276 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e285" valign="top" width="40%">`FLAT_PANEL_MONITOR`</td>
+<td align="left" headers="d30750e285 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e294" valign="top" width="40%">`HOME_THEATER_PACKAGE`</td>
+<td align="left" headers="d30750e294 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e303" valign="top" width="40%">`BOOKKEEPING_APPLICATION`</td>
+<td align="left" headers="d30750e303 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e312" valign="top" width="40%">`PRINTER_SUPPLIES`</td>
+<td align="left" headers="d30750e312 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e322" valign="top" width="40%">`Y_BOX_GAMES`</td>
+<td align="left" headers="d30750e322 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e331" valign="top" width="40%">`OS_DOC_SET_KANJI`</td>
+<td align="left" headers="d30750e331 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e340" valign="top" width="40%">`COMMENTS`</td>
+<td align="left" headers="d30750e340 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+</tbody>
+</table>
+  </div>
+  </div>
+  </div>
+  </div>
+"""
+
+
+<div>
+   <p>Examine the script:</p>
+   <ul style="list-style-type: disc;" id="GUID-B2AF509E-03AD-40BE-A7CF-A2109FAC5DE5__UL_FFS_3CX_J4B">
+      <li>v_setlist is a variable to store.</li>
+   </ul>
+   <p>The CREATE_MODEL2procedure takes the following parameters:
+   </p>
+   <ul>
+      <li>
+         <p>MODEL_NAME: A unique model name.</p>
+      </li>
+   </ul>
+   <div class="p">
+      <div class="infoboxnote" id="GUID-B2AF509E-03AD-40BE-A7CF-A2109FAC5DE5__GUID-7D7BD600-DE48-4558-AC5D-A00B82715E04">
+         <p class="notep1">Note:</p>OML uses either system-determined or default values for any parameters or settings not specified.
+      </div>
+   </div>
+</div>
+
+
+[
+   {
+      'title': 'Load Data', 
+      'hasTitle': True, 
+      'message': ['%md', '', '### Load Data\n']
+   }, 
+   {
+      'title': 'To see distinct data from the table, run the following statement:', 
+      'hasTitle': True, 
+      'message': ['%python', '', 'SELECT DISTINCT * FROM SH.CUSTOMERS;']
+   }, 
+   {
+      'hasTitle': False, 
+      'message': ['%md', '', 'Examine the script:\n\nAPPLY_RESULT: is a table that stores the results of the prediction.\n\nTABLE(PREDICTION_SET(MODEL_RF USING *)): is a table that has results from the PREDICTION_SET query. The PREDICTION_SET query returns probabilities for each row.']
+   }, 
+   {
+      'title': 'Find the COUNT', 
+      'hasTitle': True, 
+      'message': ['%python', '', 'SELECT COUNT(*) from SH.CUSTOMERS;']
+   }, 
+   {
+      'title': 'To identify distinct or unique customers in the table, run the following statement:', 
+      'hasTitle': True, 
+      'message': ['%python', '', '%script\nSELECT COUNT (DISTINCT CUST_ID) FROM SH.CUSTOMERS;']
+   }, 
+   {
+      'title': 'Similarly, query theSH.SUPPLEMENTARY_DEMOGRAPHICStable.', 
+      'hasTitle': True, 
+      'message': ['%python', '', 'SELECT * FROM SH.SUPPLEMENTARY_DEMOGRAPHICS;']
+   }, 
+   {
+      'title': None, 
+      'hasTitle': False, 
+      'message': ['%md', '', '* v_setlist is a variable to store.\n* MODEL_NAME: A unique model name.']
+   }
+]
+
