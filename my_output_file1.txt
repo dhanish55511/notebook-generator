@@ -1,0 +1,775 @@
+===================================
+<div><div>
+
+</div><div class="sect2"><a id="GUID-7D686C49-8F59-47C4-8CAA-1CE59CCD7D95" name="GUID-7D686C49-8F59-47C4-8CAA-1CE59CCD7D95"></a><h3 class="sect3" id="MLSQL-GUID-7D686C49-8F59-47C4-8CAA-1CE59CCD7D95">Load Data</h3>
+<div>
+<p>Access the data set from the SH Schema and explore the data to understand the attributes.</p>
+<div class="section">
+<p><b>Remember:</b> <p>The data set used for this use case is from the SH schema. The SH schema can be readily accessed in Oracle Autonomous Database. For on-premises databases, the schema is installed during the installation or can be manually installed by downloading the scripts. See <a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=COMSC-GUID-3820972A-08D7-4033-9524-1E36676594EE" target="_blank">Installing the Sample Schemas</a>.
+                        </p></p>
+</div>
+<div class="section">
+<div class="p">To understand the data, you will perform the following:
+                        <ul id="GUID-7D686C49-8F59-47C4-8CAA-1CE59CCD7D95__d180e62" style="list-style-type: disc;">
+<li>Access the data.</li>
+<li>Examine the various attributes or columns of the data set.</li>
+<li>Assess data quality (by exploring the data).</li>
+</ul>
+</div>
+</div>
+<div class="section">
+<p class="subhead2" id="GUID-7D686C49-8F59-47C4-8CAA-1CE59CCD7D95__GUID-B64E4366-8C28-41C9-BD72-2C6F55B66C27">Access Data</p>
+<p>You will use `CUSTOMERS` and `SUPPLEMENTARY_DEMOGRAPHICS` table data from the SH schema.
+                     </p>
+</div>
+<div class="section">
+<p class="subhead2" id="GUID-7D686C49-8F59-47C4-8CAA-1CE59CCD7D95__d180e70">Examine Data</p>
+<p>The following table displays information about the attributes from `SUPPLEMENTARY_DEMOGRAPHICS`:
+                     </p>
+<div class="tblformal" id="GUID-7D686C49-8F59-47C4-8CAA-1CE59CCD7D95__d180e77">
+<table border="1" cellpadding="4" cellspacing="0" class="Formal" frame="hsides" rules="rows" summary="The SUPPLEMENTARY_DEMOGRAPHICS table displays attributes of the table and the description" title="">
+<thead>
+<tr align="left" valign="top">
+<th align="left" id="d30750e234" valign="bottom" width="40%">Attribute Name</th>
+<th align="left" id="d30750e236" valign="bottom" width="60%">Information</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e240" valign="top" width="40%">`CUST_ID`</td>
+<td align="left" headers="d30750e240 d30750e236" valign="top" width="60%">The ID of the customer</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e246" valign="top" width="40%">`EDUCATION`</td>
+<td align="left" headers="d30750e246 d30750e236" valign="top" width="60%">Educational information of the customer</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e252" valign="top" width="40%">`OCCUPATION`</td>
+<td align="left" headers="d30750e252 d30750e236" valign="top" width="60%">Occupation of the customer</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e258" valign="top" width="40%">`HOUSEHOLD_SIZE`</td>
+<td align="left" headers="d30750e258 d30750e236" valign="top" width="60%">People per house</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e264" valign="top" width="40%">`YRS_RESIDENCE`</td>
+<td align="left" headers="d30750e264 d30750e236" valign="top" width="60%">Number of years of residence</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e270" valign="top" width="40%">`AFFINITY_CARD`</td>
+<td align="left" headers="d30750e270 d30750e236" valign="top" width="60%">Whether the customer holds an affinity card</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e276" valign="top" width="40%">`BULK_PACK_DISKETTES`</td>
+<td align="left" headers="d30750e276 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e285" valign="top" width="40%">`FLAT_PANEL_MONITOR`</td>
+<td align="left" headers="d30750e285 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e294" valign="top" width="40%">`HOME_THEATER_PACKAGE`</td>
+<td align="left" headers="d30750e294 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e303" valign="top" width="40%">`BOOKKEEPING_APPLICATION`</td>
+<td align="left" headers="d30750e303 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e312" valign="top" width="40%">`PRINTER_SUPPLIES`</td>
+<td align="left" headers="d30750e312 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e322" valign="top" width="40%">`Y_BOX_GAMES`</td>
+<td align="left" headers="d30750e322 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e331" valign="top" width="40%">`OS_DOC_SET_KANJI`</td>
+<td align="left" headers="d30750e331 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e234" id="d30750e340" valign="top" width="40%">`COMMENTS`</td>
+<td align="left" headers="d30750e340 d30750e236" valign="top" width="60%">
+<p>Product. Indicates whether the customer already owns the product.</p>
+<p>1 means Yes. 0 means No</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div><div class="sect2"><a id="GUID-1C6B7E9B-57DB-4271-83E4-92EC32EE714D" name="GUID-1C6B7E9B-57DB-4271-83E4-92EC32EE714D"></a><h3 class="sect3" id="MLSQL-GUID-1C6B7E9B-57DB-4271-83E4-92EC32EE714D">Explore Data</h3>
+<div>
+<p>Explore the data to understand and assess the quality of the data. At this stage assess the data to identify data types and noise in the data. Look for missing values and numeric outlier values.</p>
+<div class="section">
+<p class="subhead2" id="GUID-1C6B7E9B-57DB-4271-83E4-92EC32EE714D__d180e200">Assess Data Quality</p>
+<p>To assess the data, first, you must be able to view the data in your database. For this reason, you will use SQL statements to query the `SH.CUSTOMERS` and the `SH.SUPPLEMENTARY_DEMOGRAPHICS` table. 
+                     </p>
+<div class="p">If you are working with Oracle Autonomous Database, you can use the Oracle Machine Learning (OML) Notebooks for your data science project, including assessing data quality. If you are using on-premise Oracle Database, you can use the Oracle SQL Developer to assess data quality. Query the `SH` schema as described. 
+                        <p><b>Note:</b> Each record in the database is called a case and each case is identified by a `case_id`. In this use case, `CUST_ID` is the `case_id`.
+                        </p>
+</div>
+</div>
+<ol>
+<li class="stepexpand"><span>View the data in the `SH.CUSTOMERS` table by running the following statement:</span><div><pre class="pre codeblock"><code>SELECT * FROM SH.CUSTOMERS;</code></pre></div>
+</li>
+<li class="stepexpand"><span>To see distinct data from the table, run the following statement:</span><div><pre class="pre codeblock"><code>SELECT DISTINCT * FROM SH.CUSTOMERS;</code></pre></div>
+<div><img alt="Customers table" height="439" id="GUID-1C6B7E9B-57DB-4271-83E4-92EC32EE714D__IMAGE_ARM_VMB_Q4B" src="img/classification_distinct_customers.png" title="Customers table" width="1758"/></div>
+</li>
+<li class="stepexpand"><span>Find the `COUNT` of rows in the data set by running the following statement:</span><div><pre class="pre codeblock"><code>SELECT COUNT(*) from SH.CUSTOMERS;</code></pre></div>
+<div><pre class="nocopybutton"><code>
+COUNT(*)   
+     55500 
+---------------------------</code></pre></div>
+</li>
+<li class="stepexpand"><span>To identify distinct or unique customers in the table, run the following statement:</span><div><pre class="pre codeblock"><code>
+%script
+SELECT COUNT (DISTINCT CUST_ID) FROM SH.CUSTOMERS; </code></pre></div>
+<div><pre class="nocopybutton"><code>
+COUNT(DISTINCTCUST_ID)   
+                   55500 
+---------------------------</code></pre></div>
+</li>
+<li class="stepexpand"><span>Similarly, query the `SH.SUPPLEMENTARY_DEMOGRAPHICS` table.</span><div><pre class="pre codeblock"><code>SELECT * FROM SH.SUPPLEMENTARY_DEMOGRAPHICS;</code></pre></div>
+<div><img alt="SH.SUPPLIMENTARY_DEMOGRAPHICS table" height="418" id="GUID-1C6B7E9B-57DB-4271-83E4-92EC32EE714D__IMAGE_Z4G_2NB_Q4B" src="img/clustering_demographics_table.png" title="SH.SUPPLIMENTARY_DEMOGRAPHICS table" width="3504"/></div>
+</li>
+<li class="stepexpand"><span>To view the count of `SH.SUPPLEMENTARY_DEMOGRAPHICS`, run the following statement:</span><div><pre class="pre codeblock"><code>SELECT COUNT(*) from SH.SUPPLEMENTARY_DEMOGRAPHICS;
+</code></pre></div>
+<div><pre class="nocopybutton"><code>
+COUNT(*)   
+      4500 
+---------------------------
+</code></pre></div>
+</li>
+<li class="stepexpand"><span>Create a table called `CUSTOMERDATA` by selecting the required columns from the `SH.CUSTOMERS` and the `SH.SUPPLIMENTARY_DEMOGRAPHICS` tables. </span><div><pre class="oac_no_warn" dir="ltr">%script
+CREATE TABLE CUSTOMERDATA AS
+   SELECT a.CUST_ID,
+         a.CUST_INCOME_LEVEL, a.CUST_CREDIT_LIMIT,
+          b.HOUSEHOLD_SIZE, b.OCCUPATION, b.HOME_THEATER_PACKAGE
+   FROM SH.CUSTOMERS a, SH.SUPPLEMENTARY_DEMOGRAPHICS b
+   WHERE a.CUST_ID = b.CUST_ID;
+ </pre></div>
+<div><pre class="nocopybutton"><code>
+Table CUSTOMERDATA created.</code></pre></div>
+</li>
+<li class="stepexpand"><span>View the `CUSTOMERDATA` table.</span><div><pre class="pre codeblock"><code>SELECT * FROM CUSTOMERDATA;</code></pre></div>
+<div><img alt="CUSTOMERDATA table" height="460" id="GUID-1C6B7E9B-57DB-4271-83E4-92EC32EE714D__IMAGE_O2H_ZNB_Q4B" src="img/classification_customerdata.png" title="CUSTOMERDATA table" width="1863"/></div>
+</li>
+<li class="stepexpand"><span>Find the count of rows in the new table `CUSTOMERDATA`:</span><div><pre class="pre codeblock"><code>SELECT COUNT(*) FROM CUSTOMERDATA;</code></pre></div>
+<div><pre class="nocopybutton"><code>
+COUNT(*)   
+      4500 
+---------------------------</code></pre></div>
+</li>
+<li class="stepexpand"><span>To view the data type of the columns, run the following script:</span><div><pre class="oac_no_warn" dir="ltr">%script
+DESCRIBE CUSTOMERDATA;
+</pre></div>
+<div><pre class="nocopybutton"><code>
+Name                 Null?    Type         
+-------------------- -------- ------------ 
+CUST_ID        NOT NULL NUMBER 
+CUST_INCOME_LEVEL          VARCHAR2(30) 
+CUST_CREDIT_LIMIT          NUMBER 
+HOUSEHOLD_SIZE          VARCHAR2(21) 
+OCCUPATION          VARCHAR2(21) 
+HOME_THEATER_PACKAGE          NUMBER(10) 
+
+---------------------------</code></pre></div>
+</li>
+<li class="stepexpand"><span>To check if there are any missing values (NULL values), run the following statement:</span><div><pre class="oac_no_warn" dir="ltr">SELECT COUNT(*) FROM CUSTOMERDATA WHERE CUST_ID=NULL OR CUST_GENDER=NULL
+ OR CUST_MARITAL_STATUS=NULL OR CUST_YEAR_OF_BIRTH=NULL OR CUST_INCOME_LEVEL=NULL
+ OR CUST_CREDIT_LIMIT=NULL OR HOUSEHOLD_SIZE=NULL OR YRS_RESIDENCE=NULL OR Y_BOX_GAMES=NULL;
+
+</pre></div>
+<div><pre class="nocopybutton"><code>
+COUNT(*)   
+         0 
+---------------------------</code></pre><p>NULLs, if found, are automatically handled by the OML algorithms. Alternately, you can manually replace NULLs with `NVL` SQL function. 
+                           </p>
+</div>
+</li>
+<li class="stepexpand"><span>To know the income level of customers who responded to `HOME_THEATER_PACKAGE`, run the following statement:</span><div><pre class="oac_no_warn" dir="ltr">SELECT COUNT(CUST_ID) AS NUM_CUSTOMERS, CUST_INCOME_LEVEL, HOME_THEATER_PACKAGE
+FROM   CUSTOMERDATA
+GROUP BY CUST_INCOME_LEVEL, HOME_THEATER_PACKAGE;
+</pre></div>
+<div><pre class="nocopybutton"><code>
+NUM_CUSTOMERS   CUST_INCOME_LEVEL      HOME_THEATER_PACKAGE   
+            214 K: 250,000 - 299,999                        0 
+            315 L: 300,000 and above                        1 
+            114 E: 90,000 - 109,999                         0 
+             27 A: Below 30,000                             0 
+             61 A: Below 30,000                             1 
+            206 F: 110,000 - 129,999                        1 
+            446 J: 190,000 - 249,999                        0 
+            196 E: 90,000 - 109,999                         1 
+             90 B: 30,000 - 49,999                          0 
+             99 C: 50,000 - 69,999                          1 
+            319 I: 170,000 - 189,999                        1 
+            165 I: 170,000 - 189,999                        0 
+            179 K: 250,000 - 299,999                        1 
+            142 H: 150,000 - 169,999                        0 
+
+NUM_CUSTOMERS   CUST_INCOME_LEVEL      HOME_THEATER_PACKAGE   
+            163 F: 110,000 - 129,999                        0 
+             83 D: 70,000 - 89,999                          1 
+             50 D: 70,000 - 89,999                          0 
+            328 L: 300,000 and above                        0 
+            519 J: 190,000 - 249,999                        1 
+            189 G: 130,000 - 149,999                        1 
+            150 G: 130,000 - 149,999                        0 
+            132 B: 30,000 - 49,999                          1 
+             72 C: 50,000 - 69,999                          0 
+            241 H: 150,000 - 169,999                        1 
+
+
+24 rows selected. 
+---------------------------</code></pre></div>
+</li>
+</ol>
+<div class="section">
+<p>This completes the data exploration stage. OML supports Automatic Data Preparation (ADP). ADP is enabled through the model settings. When ADP is enabled, the transformations required by the algorithm are performed automatically and embedded in the model. This step is done during the Build Model stage. The commonly used methods of data preparation are binning, normalization, and missing value treatment.</p>
+</div>
+</div>
+<div>
+
+</div>
+</div><div class="sect2"><a id="GUID-B2AF509E-03AD-40BE-A7CF-A2109FAC5DE5" name="GUID-B2AF509E-03AD-40BE-A7CF-A2109FAC5DE5"></a><h3 class="sect3" id="MLSQL-GUID-B2AF509E-03AD-40BE-A7CF-A2109FAC5DE5">Build Model</h3>
+<div>
+<p>Build your model using the training data set. Use the `DBMS_DATA_MINING.CREATE_MODEL2` procedure to build your model and specify the model settings. 
+                  </p>
+<div class="section">
+<p>For a supervised learning, like Classification, before creating the model, split the data into training and test data. Although you can use the entire data set to build a model, it is difficult to validate the model unless there are new data sets available. Therefore, to evaluate the model and to accurately assess the performance of the model on the same data, you generally split or separate the data into training and test data. You use the training data set to train the model and then use the test data set to test the accuracy of the model by running prediction queries. The testing data set already contains known values for the attribute that you want to predict. It is thus easy to determine whether the predictions of the model are correct. </p>
+</div>
+<div class="section">
+<p class="subhead2" id="GUID-B2AF509E-03AD-40BE-A7CF-A2109FAC5DE5__GUID-A680E01E-E8AE-4701-A513-1EB6CD132993">Algorithm Selection</p>
+<p>Before you build a model, choose the suitable algorithm. You can choose one of the following algorithms to solve a classification problem:</p>
+<ul id="GUID-B2AF509E-03AD-40BE-A7CF-A2109FAC5DE5__UL_XPK_VCD_H4B" style="list-style-type: disc;">
+<li>Decision Tree</li>
+<li>Explicit Semantic Analysis (ESM)</li>
+<li>Generalized Linear Model (GLM)</li>
+<li>Naive Bayes</li>
+<li>Random Forest</li>
+<li>Support Vector Machine (SVM)</li>
+<li>XGBoost</li>
+</ul>
+<p>From the above algorithms, ESM is more about Natural Language Processing (NLP) and text mining. ESM does not apply to this use case and data. If you were to select a relatively simple linear model like GLM, the prediction accuracy can be further improved by the Random Forest algorithm. Random Forest is an ensemble method that builds multiple decision trees on subsets of the data re-sampled at each time (bagging). This avoids the overfitting for a single decision tree. The random forest model is a widely used ensemble method that is known to have higher accuracy than linear models. Thus, Random Forest is selected for this use case.</p>
+<p>For this use case, split the data into 60/40 as training and test data. You build the model using the training data and once the model is built, score the test data using the model. </p>
+<p>The following steps guide you to split your data and build your model with the selected algorithm.</p>
+</div>
+<ol>
+<li class="stepexpand"><span>To create the training and test data with 60/40 split, run the following statement:</span><div><pre class="oac_no_warn" dir="ltr">CREATE OR REPLACE VIEW TRAINING_DATA AS SELECT * FROM CUSTOMERDATA SAMPLE (60) SEED (1);
+--DBMS_OUTPUT.PUT_LINE ('Created TRAINING_DATA');
+CREATE OR REPLACE VIEW TEST_DATA AS SELECT * FROM CUSTOMERDATA MINUS SELECT * FROM TRAINING_DATA;
+--DBMS_OUTPUT.PUT_LINE ('Created TEST_DATA');
+ </pre></div>
+<div><pre class="nocopybutton"><code>
+View TRAINING_DATA created.
+---------------------------
+View TEST_DATA created.</code></pre></div>
+</li>
+<li class="stepexpand"><span>To view the data in the `training_data` view, run the following statement:</span><div class="tabbed-interface" data-example-id="togglable-tabs">
+<ul class="nav nav-tabs" id="myTabs01_d30750e619" role="tablist"></ul>
+<div class="tab-content" id="tabbedContent"></div>
+</div>
+<div><pre class="pre codeblock"><code>SELECT * FROM TRAINING_DATA;</code></pre></div>
+<div><img alt="training_data view" height="439" id="GUID-B2AF509E-03AD-40BE-A7CF-A2109FAC5DE5__IMAGE_Y5Q_QPB_Q4B" src="img/classification_training_data.png" title="training_data view" width="1788"/></div>
+</li>
+<li class="stepexpand"><span>To view the data in the `test_data` view, run the following statement:</span><div><pre class="pre codeblock"><code>SELECT* FROM TEST_DATA;</code></pre></div>
+<div><img alt="TEST_DATA view" height="441" id="GUID-B2AF509E-03AD-40BE-A7CF-A2109FAC5DE5__IMAGE_PVQ_TPB_Q4B" src="img/classification_test_data.png" title="TEST_DATA view" width="1788"/></div>
+</li>
+<li class="stepexpand"><span>To view the distribution of `HOME_THEATER_PACKAGE` (target) owners, run the following script:</span><div><pre class="pre codeblock"><code>%script
+select HOME_THEATER_PACKAGE, count(1)
+from training_data
+group by HOME_THEATER_PACKAGE;</code></pre></div>
+<div><pre class="nocopybutton"><code>
+HOME_THEATER_PACKAGE   COUNT(1)   
+                     1       1506 
+                     0       1208 
+
+---------------------------</code></pre></div>
+</li>
+<li class="stepexpand"><span>Build your model using the `CREATE_MODEL2` procedure. First, declare a variable to store model settings or hyperparameters. Run the following script:</span><div>
+<pre class="pre codeblock"><code>%script
+ 
+BEGIN DBMS_DATA_MINING.DROP_MODEL('MODEL_RF');
+EXCEPTION WHEN OTHERS THEN NULL; END;
+/
+DECLARE
+    v_setlist DBMS_DATA_MINING.SETTING_LIST;
+     
+BEGIN
+    v_setlist('PREP_AUTO') := 'ON';
+    v_setlist('ALGO_NAME') := 'ALGO_RANDOM_FOREST';
+    v_setlist('RFOR_NUM_TREES') := '25';
+     
+    DBMS_DATA_MINING.CREATE_MODEL2(
+      MODEL_NAME          =&gt;  'MODEL_RF',
+      MINING_FUNCTION     =&gt; 'CLASSIFICATION',
+      DATA_QUERY          =&gt;  'SELECT * FROM TRAINING_DATA',
+      SET_LIST            =&gt;  v_setlist,
+      CASE_ID_COLUMN_NAME =&gt;  'CUST_ID',
+      TARGET_COLUMN_NAME  =&gt;  'HOME_THEATER_PACKAGE');
+END;
+ </code></pre>
+</div>
+<div><pre class="nocopybutton"><code>
+PL/SQL procedure successfully completed.
+
+---------------------------
+ 
+PL/SQL procedure successfully completed.</code></pre></div>
+<div>
+<p>Examine the script:</p>
+<ul id="GUID-B2AF509E-03AD-40BE-A7CF-A2109FAC5DE5__UL_FFS_3CX_J4B" style="list-style-type: disc;">
+<li>`v_setlist` is a variable to store `SETTING_LIST`.
+                              </li>
+<li>`SETTING_LIST` defines model settings or hyperparameters for your model. 
+                              </li>
+<li>`DBMS_DATA_MINING` is the PL/SQL package used for machine learning. These settings are described in <a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=ARPLS-GUID-8987EE6F-41A9-4DF9-997C-129B41FDC59A" target="_blank">DBMS_DATA_MINING - Model Settings</a>.
+                              </li>
+<li>`ALGO_NAME` specifies the algorithm name. Since you are using Random Forest as the algorithm, set `ALGO_RANDOM_FOREST`.
+                              </li>
+<li>`PREP_AUTO` is the setting used for Automatic Data Preparation. Here, enable Automatic Data Preparation. The value of the setting is `ON`.
+                              </li>
+<li>`RFOR_NUM_TREES` is the number of trees in the forest. The value here is `25`. Random forest resolves the overfitting problem by training multiple trees on distinct sampled subsets of the data instead of on the same, entire training set. The more trees you select, the more accuracy it can obtain. However, keep in mind that more trees mean more computation load and longer model building time. You need to do a trade-off between the time cost and model accuracy here. Choosing the number of trees equal to 25 allows you to build the model in a reasonably short time and obtain an accurate enough model. 
+                              </li>
+</ul>
+<p>The `CREATE_MODEL2` procedure takes the following parameters:
+                           </p>
+<ul id="GUID-B2AF509E-03AD-40BE-A7CF-A2109FAC5DE5__UL_GFS_3CX_J4B" style="list-style-type: disc;">
+<li>
+<p>`MODEL_NAME`: A unique model name that you will give to the model. The name of the model is in the form [schema_name.]model_name. If you do not specify a schema, then your own schema is used. Here, the model name is `MODEL_RF`</p>
+</li>
+<li>
+<p>`MINING_FUNCTION`: Specifies the machine learning function. Since it is a classification problem in this use case, select `CLASSIFICATION`.
+                                 </p>
+</li>
+<li>
+<p>`DATA_QUERY`: A query that provides training data for building the model. Here, the query is `SELECT * FROM TRAINING_DATA`.
+                                 </p>
+</li>
+<li>`SET_LIST`: Specifies `SETTING_LIST`.
+                              </li>
+<li>
+<p>`CASE_ID_COLUMN_NAME`: A unique case identifier column in the build data. In this use case, case_id is `CUST_ID`. If there is a composite key, you must create a new attribute before creating the model. The `CASE_ID` assists with reproducible results, joining scores for individual customers with other data in, example, scoring data table.
+                                 </p>
+</li>
+</ul>
+<div class="p">
+<p><b>Note:</b> OML uses either system-determined or default values for any parameters or settings not specified.
+                              </p>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div><div class="sect2"><a id="GUID-CA77A99B-2419-4922-A441-AFB85905C0D0" name="GUID-CA77A99B-2419-4922-A441-AFB85905C0D0"></a><h3 class="sect3" id="MLSQL-GUID-CA77A99B-2419-4922-A441-AFB85905C0D0">Evaluate</h3>
+<div>
+<p>Evaluate your model by viewing diagnostic metrics and performing quality checks. </p>
+<p>Sometimes querying dictionary views and model detail views is sufficient to measure your model's performance. However, you can evaluate your model by computing test metrics such as Mean Absolute Error (MAE), Root Mean Squared Error (RMSE), confusion matrix, lift statistics, cost matrix, and so on. For Association Rules, you can inspect various rules to see if they reveal new insights for item dependencies (antecedent itemset implying consequent) or for unexpected relationships among items.</p>
+</div>
+<div class="sect3"><a id="GUID-94527B67-D960-4506-942F-FD759589E89D" name="GUID-94527B67-D960-4506-942F-FD759589E89D"></a><h4 class="sect4" id="MLSQL-GUID-94527B67-D960-4506-942F-FD759589E89D">Dictionary and Model Views</h4>
+<div>
+<p>To obtain information about the model and view model settings, you can query data dictionary views and model detail views. Specific views in model detail views display model statistics which can help you evaluate the model. </p>
+<div class="section">
+<p>The data dictionary views for Oracle Machine Learning are listed in the following table. A database administrator (DBA) and USER versions of the views are also available.</p>
+<div class="tblformal" id="GUID-94527B67-D960-4506-942F-FD759589E89D__d180e253">
+<table border="1" cellpadding="4" cellspacing="0" class="Formal" frame="hsides" rules="rows" summary="This table describes the data dictionary views available for machine learning" title="">
+<thead>
+<tr align="left" valign="top">
+<th align="left" id="d30750e827" valign="bottom" width="40%">View Name</th>
+<th align="left" id="d30750e829" valign="bottom" width="60%">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e827" id="d30750e833" valign="top" width="40%"><a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMAPI-GUID-955402B6-B52E-494A-865B-7BCAFDB124B2" target="_blank">ALL_MINING_MODELS</a></td>
+<td align="left" headers="d30750e833 d30750e829" valign="top" width="60%">Provides information about all accessible machine learning models</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e827" id="d30750e840" valign="top" width="40%"><a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMAPI-GUID-E18029D5-09BB-41CB-82BA-894A0528E5EF" target="_blank">ALL_MINING_MODEL_ATTRIBUTES</a></td>
+<td align="left" headers="d30750e840 d30750e829" valign="top" width="60%">Provides information about the attributes of all accessible machine learning models</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e827" id="d30750e847" valign="top" width="40%"><a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMAPI-GUID-8262B256-1DFD-40C1-B56C-8E391B5AA303" target="_blank">ALL_MINING_MODEL_SETTINGS</a></td>
+<td align="left" headers="d30750e847 d30750e829" valign="top" width="60%">Provides information about the configuration settings for all accessible machine learning models</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e827" id="d30750e854" valign="top" width="40%"><a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMAPI-GUID-69D3A987-CCD8-435A-B624-B3FD0583F02B" target="_blank">ALL_MINING_MODEL_VIEWS</a></td>
+<td align="left" headers="d30750e854 d30750e829" valign="top" width="60%">Provides information about the model views for all accessible machine learning models</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e827" id="d30750e861" valign="top" width="40%"><a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMAPI-GUID-40EB4505-47A6-4C1B-85F8-A49BA0906D07" target="_blank">ALL_MINING_MODEL_XFORMS</a></td>
+<td align="left" headers="d30750e861 d30750e829" valign="top" width="60%">Provides the user-specified transformations embedded in all accessible machine learning models.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Model detail views are specific to the algorithm. You can obtain more insights about the model you created by viewing the model detail views. The names of model detail views begin with DM$xx where xx corresponds to the view prefix. See <a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMPRG-GUID-AF7C531D-5327-4456-854C-9D6424C5F9EC" target="_blank">Model Detail Views</a>.
+                        </p>
+</div>
+<div class="section">
+<p>The following steps help you to view different dictionary views and model detail views.</p>
+</div>
+<ol>
+<li class="stepexpand"><span>Run the following statement to view the settings in `USER_MINING_MODEL_SETTINGS`:</span><div><pre class="pre codeblock"><code>%script
+
+SELECT SETTING_NAME, SETTING_VALUE 
+  FROM USER_MINING_MODEL_SETTINGS
+  WHERE MODEL_NAME='MODEL_RF'
+  ORDER BY SETTING_NAME;</code></pre></div>
+<div><pre class="nocopybutton"><code>
+SETTING_NAME                   SETTING_VALUE             
+ALGO_NAME                      ALGO_RANDOM_FOREST        
+CLAS_MAX_SUP_BINS              32                        
+CLAS_WEIGHTS_BALANCED          OFF                       
+ODMS_DETAILS                   ODMS_ENABLE               
+ODMS_MISSING_VALUE_TREATMENT   ODMS_MISSING_VALUE_AUTO   
+ODMS_RANDOM_SEED               0                         
+ODMS_SAMPLING                  ODMS_SAMPLING_DISABLE     
+PREP_AUTO                      ON                        
+RFOR_NUM_TREES                 25                        
+RFOR_SAMPLING_RATIO            .5                        
+TREE_IMPURITY_METRIC           TREE_IMPURITY_GINI        
+TREE_TERM_MAX_DEPTH            16                        
+TREE_TERM_MINPCT_NODE          .05                       
+TREE_TERM_MINPCT_SPLIT         .1                        
+
+SETTING_NAME             SETTING_VALUE   
+TREE_TERM_MINREC_NODE    10              
+TREE_TERM_MINREC_SPLIT   20              
+
+
+16 rows selected. 
+---------------------------</code></pre></div>
+</li>
+<li class="stepexpand"><span>Run the following statement to see attribute information in `USER_MINING_MODEL_ATTRIBUTES` view:</span><div><pre class="pre codeblock"><code>%script
+SELECT ATTRIBUTE_NAME, ATTRIBUTE_TYPE 
+FROM USER_MINING_MODEL_ATTRIBUTES 
+WHERE MODEL_NAME = 'MODEL_RF' 
+ORDER BY ATTRIBUTE_NAME;</code></pre></div>
+<div><pre class="nocopybutton"><code>
+ATTRIBUTE_NAME         ATTRIBUTE_TYPE   
+CUST_CREDIT_LIMIT      NUMERICAL        
+HOME_THEATER_PACKAGE   CATEGORICAL      
+HOUSEHOLD_SIZE         CATEGORICAL      
+OCCUPATION             CATEGORICAL      
+
+---------------------------</code></pre></div>
+</li>
+<li class="stepexpand"><span>Run the following statement to view various model detail views from `USER_MINING_MODEL_VIEWS`:</span><div><pre class="oac_no_warn" dir="ltr">%script
+SELECT VIEW_NAME, VIEW_TYPE
+  FROM USER_MINING_MODEL_VIEWS
+  WHERE MODEL_NAME='MODEL_RF'
+  ORDER BY VIEW_NAME;</pre></div>
+<div><pre class="nocopybutton"><code>
+VIEW_NAME       VIEW_TYPE                 
+DM$VAMODEL_RF   Variable Importance       
+DM$VCMODEL_RF   Scoring Cost Matrix       
+DM$VGMODEL_RF   Global Name-Value Pairs   
+DM$VSMODEL_RF   Computed Settings         
+DM$VTMODEL_RF   Classification Targets    
+DM$VWMODEL_RF   Model Build Alerts        
+
+
+6 rows selected. 
+---------------------------</code></pre></div>
+</li>
+<li class="stepexpand"><span>Now, view the Classification targets view. This view describes the target (`HOME_THEATER_PACKAGE`) distribution for classification models.</span><div><pre class="pre codeblock"><code>%script
+SELECT* from DM$VTMODEL_RF;</code></pre></div>
+<div><pre class="nocopybutton"><code>
+PARTITION_NAME   TARGET_VALUE   TARGET_COUNT   TARGET_WEIGHT   
+                              0           1178                 
+                              1           1549                 
+
+---------------------------</code></pre><p>The distribution value from this view validates the earlier target distribution that was obtained from the training data. The difference in the values is minimal.</p>
+</div>
+</li>
+</ol>
+</div>
+<div>
+
+</div>
+</div>
+<div class="sect3"><a id="GUID-D7516357-0333-4B6F-8D11-7B042C6FC2D2" name="GUID-D7516357-0333-4B6F-8D11-7B042C6FC2D2"></a><h4 class="sect4" id="MLSQL-GUID-D7516357-0333-4B6F-8D11-7B042C6FC2D2">Test Your Model</h4>
+<div>
+<p>In this use case, you are evaluating a classification model by computing Lift and Confusion Matrix on the test data with known target values and comparing the predicted values with the known values. </p>
+<div class="section">Test metrics are used to assess how accurately the model predicts the known values. If the model performs well and meets your business requirements, it can then be applied to new data to predict the future. These matrices can help you to compare models to arrive at one model that satisfies your evaluation criteria.
+                        <p>Lift measures the degree to which the predictions of a classification model are better than randomly-generated predictions. Lift can be understood as a ratio of two percentages: the percentage of correct positive classifications made by the model to the percentage of actual positive classifications in the test data. </p>
+<p>A confusion matrix displays the number of correct and incorrect predictions made by the model compared with the actual classifications in the test data. The matrix is n-by-n, where n is the number of classes. </p>
+</div>
+<ol>
+<li class="stepexpand"><span>Create a result table to store the predictions for each row with likely and unlikely probabilities. Run the following script:</span><div><pre class="oac_no_warn" dir="ltr">%script
+ 
+BEGIN EXECUTE IMMEDIATE 'DROP TABLE APPLY_RESULT PURGE';
+EXCEPTION WHEN OTHERS THEN NULL; END;
+/
+ 
+CREATE TABLE APPLY_RESULT AS
+    SELECT cust_id, t.prediction, t.probability
+    FROM TEST_DATA, TABLE(PREDICTION_SET(MODEL_RF USING *)) t;
+ </pre></div>
+<div><pre class="nocopybutton"><code>
+PL/SQL procedure successfully completed.
+---------------------------
+Table APPLY_RESULT created.
+---------------------------</code></pre><p>Examine the script:</p>
+<p>`APPLY_RESULT`: is a table that stores the results of the prediction.
+                              </p>
+<p>`TABLE(PREDICTION_SET(MODEL_RF USING *))`: is a table that has results from the `PREDICTION_SET` query. The `PREDICTION_SET` query returns probabilities for each row.
+                              </p>
+</div>
+</li>
+<li class="stepexpand"><span>Compute lift by using the `DBMS_DATA_MINING.APPLY` and the `DBMS_DATA_MINING.COMPUTE_LIFT` procedures:</span><div><pre class="oac_no_warn" dir="ltr">%script
+ 
+BEGIN EXECUTE IMMEDIATE 'DROP TABLE APPLY_RESULT PURGE';
+EXCEPTION WHEN OTHERS THEN NULL; END;
+/
+ 
+BEGIN
+  DBMS_DATA_MINING.APPLY('MODEL_RF','TEST_DATA','CUST_ID','APPLY_RESULT');
+   
+                                  
+     
+       DBMS_DATA_MINING.COMPUTE_LIFT (
+          apply_result_table_name           =&gt; 'APPLY_RESULT',
+          target_table_name                  =&gt; 'TEST_DATA',
+          case_id_column_name               =&gt; 'CUST_ID',
+          target_column_name                 =&gt; 'HOME_THEATER_PACKAGE',
+          lift_table_name                       =&gt; 'LIFT_TABLE',
+          positive_target_value           =&gt;  to_char(1),
+          score_column_name                  =&gt; 'PREDICTION',
+          score_criterion_column_name    =&gt; 'PROBABILITY',
+          num_quantiles                       =&gt;  10,
+          cost_matrix_table_name             =&gt;  null,
+          apply_result_schema_name         =&gt;  null,
+          target_schema_name                 =&gt;  null,
+          cost_matrix_schema_name           =&gt;  null,
+          score_criterion_type             =&gt;  'PROBABILITY');
+     
+                                  
+END;
+ </pre></div>
+<div><pre class="nocopybutton"><code>
+PL/SQL procedure successfully completed.
+---------------------------
+PL/SQL procedure successfully completed.</code></pre><p>Examine the script:</p>
+<ul id="GUID-D7516357-0333-4B6F-8D11-7B042C6FC2D2__UL_Y3W_K24_N4B" style="list-style-type: disc;">
+<li>`DBMS_DATA_MINING.APPLY`: This procedure creates a table in the user's schema to hold the results. The `APPLY` procedure generates predictions (scores) in a target column.
+                                    <p>The `APPLY` procedure has the following parameters:
+                                    </p>
+<ul id="GUID-D7516357-0333-4B6F-8D11-7B042C6FC2D2__UL_NW2_GGG_PPB" style="list-style-type: disc;">
+<li>`model_name`: Name of the model in the form [schema_name.]model_name. If you do not specify a schema, then your own schema is used. Here, the model name is `MODEL_RF`.
+                                       </li>
+<li>`data_table_name`: Name of table or view containing the data to be scored. Here, you are using `TEST_DATA`.
+                                       </li>
+<li>`case_id_column_name`: Name of the case identifier column. The case ID is `CUST_ID`.
+                                       </li>
+<li>`result_table_name`: Name of the table in which to store apply results. Here, the result table name is `APPLY_RESULT`.
+                                       </li>
+</ul>
+</li>
+<li>`DBMS_DATA_MINING.COMPUTE_LIFT`: This procedure computes lift and stores them in the user's schema. To compute lift, one of the target values must be designated as the positive class.
+                                    <div class="p">The `COMPUTE_LIFT` procedure has the following parameters:
+                                       <ul id="GUID-D7516357-0333-4B6F-8D11-7B042C6FC2D2__UL_TJG_Y3G_PPB" style="list-style-type: disc;">
+<li>`apply_result_table_name`: Table containing the predictions. For this use case, it is `APPLY_RESULT`.
+                                          </li>
+<li>`target_table_name`: Table containing the known target values from the test data. In this use case, the target table name is `TEST_DATA`. 
+                                          </li>
+<li>`case_id_column_name`: Case ID column in the apply results table. Must match the case identifier in the targets table. The case ID column is `CUST_ID`.
+                                          </li>
+<li>`target_column_name`: Target column in the targets table. Contains the known target values from the test data. In this use case, the target is `HOME_THEATER_PACKAGE`.
+                                          </li>
+<li>`lift_table_name`: Table containing the lift statistics. The table will be created by the procedure in the user's schema. Type `LIFT_TABLE`.
+                                          </li>
+<li>`positive_target_value`: The positive class. This should be the class of interest, for which you want to calculate lift. If the target column is a `NUMBER`, you can use the `TO_CHAR()` operator to provide the value as a string. 
+                                          </li>
+<li>`score_column_name`: Column containing the predictions in the apply results table. The default column name is `'PREDICTION'`, which is the default name created by the `APPLY` procedure. 
+                                          </li>
+<li>`score_criterion_column_name`: Column containing the scoring criterion in the apply results table. Contains either the probabilities or the costs that determine the predictions. By default, scoring is based on probability; the class with the highest probability is predicted for each case. If scoring is based on cost, the class with the lowest cost is predicted. The `score_criterion_type` parameter indicates whether probabilities or costs will be used for scoring. The default column name is `'PROBABILITY'`, which is the default name created by the `APPLY` procedure. 
+                                          </li>
+<li>`num_quantiles`: Number of quantiles to be used in calculating lift. The default is 10. 
+                                          </li>
+<li>`cost_matrix_table_name`: (Optional) Table that defines the costs associated with misclassifications. If a cost matrix table is provided and the score_criterion_type parameter is set to `'COST'`, the costs will be used as the scoring criteria. 
+                                          </li>
+<li>`apply_result_schema_name`: Schema of the apply results table. If null, the user's schema is assumed. 
+                                          </li>
+<li>`target_schema_name`: Schema of the table containing the known targets. If null, the user's schema is assumed. 
+                                          </li>
+<li>`cost_matrix_schema_name`: Schema of the cost matrix table, if one is provided. If null, the user's schema is assumed. 
+                                          </li>
+<li>`score_criterion_type`: Whether to use probabilities or costs as the scoring criterion. Probabilities or costs are passed in the column identified in the score_criterion_column_name parameter. The default value of `score_criterion_type` is `'PROBABILITY'`. To use costs as the scoring criterion, specify `'COST'`. If `score_criterion_type` is set to `'COST'` but no cost matrix is provided and if there is a scoring cost matrix associated with the model, then the associated costs are used for scoring. 
+                                          </li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li class="stepexpand"><span>To view the cumulative gains, run the following statement: </span><div>
+<p>Cumulative gain is the ratio of the cumulative number of positive targets (`HOME_THEATER_PACKAGE`) to the total number of positive targets of a quantile. Cumulative gains act as a visual aid for measuring performance of a model. The chart consists of a curve and a baseline. The greater the area between the curve and the baseline, the better the model.
+                              </p>
+</div>
+<div><pre class="oac_no_warn" dir="ltr">%sql
+SELECT QUANTILE_NUMBER, GAIN_CUMULATIVE FROM LIFT_TABLE;</pre></div>
+<div><img alt="Cumulative gains with positive HOME_THEATER_PACKAGE respondents" height="610" id="GUID-D7516357-0333-4B6F-8D11-7B042C6FC2D2__IMAGE_DCP_4RB_Q4B" src="img/classification_cumulative_gains.png" title="Cumulative gains with positive HOME_THEATER_PACKAGE respondents" width="703"/><img alt="Cumulative gains for each quantile." height="616" id="GUID-D7516357-0333-4B6F-8D11-7B042C6FC2D2__IMAGE_B12_GFP_NPB" src="img/classification_cumulative_gains_chart.png" title="Cumulative gains for each quantile." width="717"/></div>
+</li>
+<li class="stepexpand"><span>To compute confusion matrix, run the following statement:</span><div>A confusion matrix evaluates the prediction results. It makes it easy to understand and estimate the effects of wrong predictions. You can observe the number and percentages in each cell of this matrix and notice how often the model predicted accurately.</div>
+<div><pre class="pre codeblock"><code>%script
+
+DECLARE
+   v_accuracy NUMBER;       
+   BEGIN
+        DBMS_DATA_MINING.COMPUTE_CONFUSION_MATRIX (
+                   accuracy =&gt; v_accuracy,
+                   apply_result_table_name =&gt; 'apply_result',
+                   target_table_name =&gt; 'test_data',
+                   case_id_column_name =&gt; 'cust_id',
+                   target_column_name =&gt; 'HOME_THEATER_PACKAGE',
+                   confusion_matrix_table_name =&gt; 'confusion_matrix',
+                   score_column_name =&gt; 'PREDICTION',
+                   score_criterion_column_name =&gt; 'PROBABILITY',
+                   cost_matrix_table_name =&gt; null,
+                   apply_result_schema_name =&gt; null,
+                   target_schema_name =&gt; null,
+                   cost_matrix_schema_name =&gt; null,
+                   score_criterion_type =&gt; 'PROBABILITY');
+        DBMS_OUTPUT.PUT_LINE('**** MODEL ACCURACY ****: ' || ROUND(v_accuracy,4));
+      END;
+      /</code></pre></div>
+<div><pre class="nocopybutton"><code>**** MODEL ACCURACY ****: .696
+---------------------------
+PL/SQL procedure successfully completed.
+---------------------------
+</code></pre><p>Examine the script:</p>
+<p>`v_accuracy` is a variable declared for this procedure to store and output the model accuracy percentage.
+                              </p>
+<p>The `COMPUTE_CONFUSION_MATRIX` procedure has the following parameters:
+                              </p>
+<ul id="GUID-D7516357-0333-4B6F-8D11-7B042C6FC2D2__UL_EGY_FSG_PPB" style="list-style-type: disc;">
+<li>`accuracy`: Output parameter containing the overall percentage accuracy of the predictions. Here, it is `v_accuracy`.
+                                 </li>
+<li>`apply_result_table_name`: Table containing the predictions. In this use case, it is `APPLY_RESULT`.
+                                 </li>
+<li>`target_table_name`: Table containing the known target values from the test data. In this use case, you are using `TEST_DATA`.
+                                 </li>
+<li>`case_id_column_name`: Case ID column in the apply results table. Must match the case identifier in the targets table. Here, it is `CUST_ID`.
+                                 </li>
+<li>`target_column_name`: Target column in the targets table. Contains the known target values from the test data. In this use case, the target column is `HOME_THEATER_PACKAGE`.
+                                 </li>
+<li>`confusion_matrix_table_name`: Table containing the confusion matrix. The table will be created by the procedure in the user's schema. Here set it as `confusion_matrix`.
+                                 </li>
+<li>`score_column_name`: Column containing the predictions in the apply results table. The default column name is `PREDICTION`, which is the default name created by the `APPLY` procedure. 
+                                 </li>
+<li>`score_criterion_column_name`: Column containing the scoring criterion in the apply results table. Contains either the probabilities or the costs that determine the predictions. By default, scoring is based on probability; the class with the highest probability is predicted for each case. If scoring is based on cost, the class with the lowest cost is predicted. The `score_criterion_type` parameter indicates whether probabilities or costs will be used for scoring. The default column name is `'PROBABILITY'`, which is the default name created by the `APPLY` procedure. 
+                                 </li>
+<li>`cost_matrix_table_name`: (Optional) Table that defines the costs associated with misclassifications. If a cost matrix table is provided and the `score_criterion_type` parameter is set to `'COSTS'`, the costs in this table will be used as the scoring criteria. Otherwise, set it as `null`.
+                                 </li>
+<li>`apply_result_schema_name`: Schema of the apply results table. If null, the user's schema is assumed.
+                                 </li>
+<li>`target_schema_name`: Schema of the table containing the known targets. If null, the user's schema is assumed.
+                                 </li>
+<li>`cost_matrix_schema_name`: Schema of the cost matrix table, if one is provided. If null, the user's schema is assumed.
+                                 </li>
+<li>`score_criterion_type`: Whether to use probabilities or costs as the scoring criterion. Probabilities or costs are passed in the column identified in the`score_criterion_column_name` parameter. The default value of `score_criterion_type` is `'PROBABILITY'`. To use costs as the scoring criterion, specify `'COST'`. If `score_criterion_type` is set to `'COST'` but no cost matrix is provided and if there is a scoring cost matrix associated with the model, then the associated costs are used for scoring. 
+                                 </li>
+</ul>
+<p>`DBMS_OUTPUT.PUT_LINE('**** MODEL ACCURACY ****: ' || ROUND(v_accuracy,4))`: Outputs the model accuracy percentage rounded to 4 digits after the decimal.
+                              </p>
+</div>
+</li>
+<li class="stepexpand"><span>To check the confusion matrix with predicted values and actual values, run the following statement:</span><div><pre class="pre codeblock"><code>select * from confusion_matrix;</code></pre></div>
+<div><pre class="nocopybutton"><code>
+ACTUAL_TARGET_VALUE   PREDICTED_TARGET_VALUE   VALUE   
+                    0                        1     501 
+                    0                        0     282 
+                    1                        0      38 
+                    1                        1     952 
+
+---------------------------</code></pre><p>The value column here indicates classification. From this confusion matrix, the model has predicted actual positive class (also called as True Positive (TP)) for this use case 952 times and incorrectly predicted (also called as False Negative (FN)) for this use case 38 times. The model correctly predicted the negative class (also called true negative (TN)) for this use case 282 times and incorrectly predicted (also called false positive (FP)) for this use case 501 times. </p>
+</div>
+</li>
+</ol>
+<div class="section">The accuracy percentage of 69% shows that the model is fairly good for this use case.</div>
+</div>
+<div>
+
+</div>
+</div>
+</div><div class="sect2"><a id="GUID-16518CCC-4084-4EB2-9502-E30A858C1D09" name="GUID-16518CCC-4084-4EB2-9502-E30A858C1D09"></a><h3 class="sect3" id="MLSQL-GUID-16518CCC-4084-4EB2-9502-E30A858C1D09">Score</h3>
+<div>
+<p>You are ready to  predict the likely customers for the `HOME_THEATER_PACKAGE` responders. For classification problems, you can use `PREDICTION`,  `PREDICTION_PROBABILITY`, or use analytic syntax to arrive at predictions.  
+                  </p>
+<div class="section"></div>
+<ol>
+<li class="stepexpand"><span>To view customers who have more than 50% chance of buying a home theater package, run the following statement:</span><div><pre class="oac_no_warn" dir="ltr">%sql
+SELECT CUST_ID, PREDICTION PRED, ROUND(PROBABILITY,3) PROB, ROUND(COST,2) COST
+  FROM APPLY_RESULT WHERE PREDICTION = 1 AND PROBABILITY &gt; 0.5
+  ORDER BY PROBABILITY DESC;</pre></div>
+<div><img alt="Prediction for customers with more than 50% chance of buying the product" height="433" id="GUID-16518CCC-4084-4EB2-9502-E30A858C1D09__IMAGE_JLF_3SB_Q4B" src="img/classification_prediction1.png" title="Prediction for customers with more than 50% chance of buying the product" width="859"/></div>
+</li>
+<li class="stepexpand"><span>You can score on multiple rows of test data. This is called batch scoring. This step shows how you can view and select customers who are likely or unlikely to respond to `HOME_THEATER_PACKAGE` with a probability of more than 50% and a cost matrix. </span><div><pre class="oac_no_warn" dir="ltr">%sql
+ 
+SELECT CUST_ID, PREDICTION, ROUND(PROBABILITY,2) PROB, ROUND(COST,2) COST
+  FROM APPLY_RESULT WHERE PREDICTION = ${PREDICTION='1','1'|'0'}
+  AND PROBABILITY &gt; 0.5 ORDER BY PROBABILITY DESC;</pre></div>
+<div><img alt="Probability of more than 50% that customers are likely or unlikely to buy home theater package." height="436" id="GUID-16518CCC-4084-4EB2-9502-E30A858C1D09__IMAGE_CZW_W5B_Q4B" src="img/classification_prediction2.png" title="Probability of more than 50% that customers are likely or unlikely to buy home theater package." width="856"/></div>
+</li>
+<li class="stepexpand"><span>To interactively view probability of `HOME_THEATER_PACKAGE` respondents, run the following statement:</span><div><pre class="oac_no_warn" dir="ltr">%sql
+SELECT A.*, B.*
+  FROM APPLY_RESULT A, TEST_DATA B
+  WHERE PREDICTION = ${PREDICTION='1','1'|'0'} AND A.CUST_ID = B.CUST_ID;</pre></div>
+<div><img alt="Interactive prediction" height="435" id="GUID-16518CCC-4084-4EB2-9502-E30A858C1D09__IMAGE_R2T_CVB_Q4B" src="img/classification_prediction3.png" title="Interactive prediction" width="1788"/></div>
+</li>
+<li class="stepexpand"><span>To dynamically score and select customers with more than 50% chance of purchasing a home theater package, run the following statement: </span><div><pre class="oac_no_warn" dir="ltr">%sql
+ 
+SELECT *
+FROM (  SELECT CUST_ID, ROUND(PREDICTION_PROBABILITY(MODEL_RF, '1'  USING A.*),3) PROBABILITY
+    FROM TEST_DATA A)
+WHERE PROBABILITY &gt; 0.5;
+</pre></div>
+<div>You can use `PREDICTION_PROBABILITY` to score in real-time.
+                        </div>
+<div><img alt="Dynamic scoring" height="538" id="GUID-16518CCC-4084-4EB2-9502-E30A858C1D09__IMAGE_YGJ_HVB_Q4B" src="img/classification_prediction4.png" title="Dynamic scoring" width="862"/></div>
+</li>
+<li class="stepexpand"><span>To apply the model to a single record (singleton scoring), run the following statement:</span><div><pre class="oac_no_warn" dir="ltr">%script
+SELECT ROUND(PREDICTION_PROBABILITY(MODEL_RF, '1' USING
+                                    '3' AS HOUSEHOLD_SIZE,
+                                     5 AS YRS_RESIDENCE,
+                                     1 AS CUST_INCOME_LEVEL),3) PROBABILITY_HOME_THEATER_PACKAGE_RESPONDER
+  FROM DUAL;</pre><p>This may be useful if you want to test the model manually and see how the model works.</p>
+</div>
+<div><pre class="nocopybutton"><code>
+PROBABILITY_HOME_TEATER_PACKAGE_RESPONDER   
+                                       0.65 
+
+---------------------------</code></pre></div>
+</li>
+</ol>
+<div class="section">To conclude, you have successfully identified customers who are likely to purchase `HOME_THEATER_PACKAGE`. This prediction helps to promote and offer home theater package to the target customers. 
+                  </div>
+</div>
+</div></div>
+===================================

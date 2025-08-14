@@ -1,0 +1,33 @@
+<li class="stepexpand"><span>Compute lift by </span><div><pre class="oac_no_warn" dir="ltr">%script
+ 
+BEGIN EXECUTE IMMEDIATE 'DROP TABLE APPLY_RESULT PURGE';
+EXCEPTION WHEN OTHERS THEN NULL; END;
+/
+ </pre></div>
+                           <div><pre class="nocopybutton"><code>
+PL/SQL procedure successfully completed.
+---------------------------
+PL/SQL procedure successfully completed.</code></pre><p>Examine the script:</p>
+                              <ul >
+                                 <li>This procedure creates a table 
+                                    <p>The procedure parameters:
+                                    </p>
+                                    <ul>
+                                       <li>model_name: Name of the model.
+                                       </li>
+                                       <li>data_table_name: Name of table or view 
+                                       </li>
+                                    </ul>
+                                 </li>
+                                 <li>DBMS_DATA_MINING.COMPUTE_LIFT:
+                                    <div class="p">The COMPUTE_LIFT procedure has the following parameters:
+                                       <ul>
+                                          <li>apply_result_table_name: Table containing the predictions. 
+                                          </li>
+                                          <li>target_table_name: Table containing the known target </li>
+                                       </ul>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>

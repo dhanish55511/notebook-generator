@@ -1,0 +1,83 @@
+<div>
+<p>You are working in a retail chain company that sells some products. To better target their marketing materials, they need to identify customers who are likely to purchase a home theater package. To resolve this, you are using the Random Forest algorithm to identify the customers.</p>
+<div class="section">
+<p class="subhead1" id="GUID-DBA5A69C-714A-4583-81D6-546B7081FD1D__TITLE_O1M_PMJ_BVB">Related Content</p>
+<div class="tblformalwide" id="GUID-DBA5A69C-714A-4583-81D6-546B7081FD1D__TABLE_TSR_BWL_V5B">
+<table border="1" cellpadding="4" cellspacing="0" class="FormalWide" frame="hsides" rules="rows" summary="Here is a table of related content for Regression" title="" width="100%">
+<thead>
+<tr align="left" valign="top">
+<th align="left" id="d30750e38" valign="bottom" width="0%">Topic </th>
+<th align="left" id="d30750e40" valign="bottom" width="0%">Link</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e38" id="d30750e44" valign="top" width="0%">OML4SQL GitHub Example</td>
+<td align="left" headers="d30750e44 d30750e40" valign="top" width="0%"><a href="https://github.com/oracle-samples/oracle-db-examples/blob/main/machine-learning/sql/21c/oml4sql-classification-random-forest.sql" target="_blank">Classification - Random Forest</a></td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e38" id="d30750e51" valign="top" width="0%">`CREATE_MODEL2` Procedure
+                              </td>
+<td align="left" headers="d30750e51 d30750e40" valign="top" width="0%"><a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMPRG-GUID-560517E9-646A-4C20-8814-63FDA763BFD9" target="_blank">CREATE_MODEL2 Procedure</a></td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e38" id="d30750e60" valign="top" width="0%">Generic Model Settings</td>
+<td align="left" headers="d30750e60 d30750e40" valign="top" width="0%"><a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=ARPLS-GUID-8987EE6F-41A9-4DF9-997C-129B41FDC59A" target="_blank">DBMS_DATA_MINING - Model Settings</a></td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e38" id="d30750e67" valign="top" width="0%">Random Forest Settings</td>
+<td align="left" headers="d30750e67 d30750e40" valign="top" width="0%"><a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=ARPLS-GUID-481B6C67-B26E-4689-AD4C-98062D5A2117" target="_blank">DBMS_DATA_MINING - Algorithm Settings: Random Forest</a></td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e38" id="d30750e74" valign="top" width="0%">Data Dictionary Settings</td>
+<td align="left" headers="d30750e74 d30750e40" valign="top" width="0%"><a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMPRG-GUID-06AF74F5-39D7-4B0F-996E-35CA4C904EA0" target="_blank">Oracle Machine Learning Data Dictionary Views</a></td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e38" id="d30750e81" valign="top" width="0%">Random Forest - Model Detail Views</td>
+<td align="left" headers="d30750e81 d30750e40" valign="top" width="0%"><a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMPRG-GUID-AEE0ADDE-AF4F-4F33-B5D7-F4A1805A989A" target="_blank">Model Detail Views for Random Forest</a></td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e38" id="d30750e88" valign="top" width="0%">About Classification</td>
+<td align="left" headers="d30750e88 d30750e40" valign="top" width="0%"><a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMCON-GUID-9F922514-0F8D-42F5-BEB1-F59A09FA1CD2" target="_blank">About Classification</a></td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" headers="d30750e38" id="d30750e95" valign="top" width="0%">About Random Forest (RF)</td>
+<td align="left" headers="d30750e95 d30750e40" valign="top" width="0%"><a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMCON-GUID-B8AA4B0A-EE14-4507-9D6E-08DA1DAC632E" target="_blank">About Random Forest</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="p">
+<p>Before you start your OML4SQL use case journey, ensure that you have the following:</p>
+<ul id="GUID-DBA5A69C-714A-4583-81D6-546B7081FD1D__UL_ZCF_4XD_F4B" style="list-style-type: disc;">
+<li>Data Set
+                        <p>The data set used for this use case is from the SH schema. The SH schema can be readily accessed in Oracle Autonomous Database. For on-premises databases, the schema is installed during the installation or can be manually installed by downloading the scripts. See <a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=COMSC-GUID-3820972A-08D7-4033-9524-1E36676594EE" target="_blank">Installing the Sample Schemas</a>.
+                        </p>
+</li>
+<li>Database 
+                        <div class="p">Select or create database out of the following options: 
+                           <ul id="GUID-DBA5A69C-714A-4583-81D6-546B7081FD1D__d180e26" style="list-style-type: disc;">
+<li>Get your FREE cloud account. Go to <a href="https://cloud.oracle.com/database" target="_blank"> https://cloud.oracle.com/database</a> and select Oracle Database Cloud Service (DBCS), or Oracle Autonomous Database. Create an account and create an instance. See <a href="https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=582" target="_blank">Autonomous Database Quick Start Workshop</a>.
+                              </li>
+<li>Download the latest version of <a href="https://www.oracle.com/in/database/technologies/oracle-database-software-downloads.html" target="_blank">Oracle Database</a> (on premises).
+                              </li>
+</ul>
+</div>
+</li>
+<li>Machine Learning Tools
+                        <div class="p">Depending on your database selection,
+                           <ul id="GUID-DBA5A69C-714A-4583-81D6-546B7081FD1D__d180e303" style="list-style-type: disc;">
+<li>Use OML Notebooks for Oracle Autonomous Database.</li>
+<li>Install and use Oracle SQL Developer connected to an on-premises database or DBCS. See <a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=RPTUG-GUID-156BEBA3-2F9B-4CE0-8E91-728581FF46AB" target="_blank">Installing and Getting Started with SQL Developer</a>.
+                              </li>
+</ul>
+</div>
+</li>
+<li>Other Requirements
+                        <p>Data Mining Privileges (this is automatically set for ADW). See <a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMPRG-GUID-34AABD01-9FF9-4C1A-A2A3-89A1827D10AE" target="_blank">System Privileges for Oracle Machine Learning for SQL</a>.
+                        </p>
+</li>
+</ul>
+</div>
+</div>

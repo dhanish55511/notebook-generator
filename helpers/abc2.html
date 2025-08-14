@@ -1,0 +1,28 @@
+<div class="sect2"><a></a><h3 class="sect3">Score</h3>
+<div>
+<p>You are ready</p>
+<div class="section">This is me chekcing the and testing and abla akdfjasfijalsfjafjl</div>
+<ol>
+<li class="stepexpand"><span>To view customers </span><div><pre class="oac_no_warn" dir="ltr">%sql
+SELECT CUST_ID, PREDICTION PRED, ROUND(PROBABILITY,3) PROB, ROUND(COST,2) COST
+  FROM APPLY_RESULT WHERE PREDICTION = 1 AND PROBABILITY &gt; 0.5
+  ORDER BY PROBABILITY DESC;</pre></div>
+<div><img alt="Prediction"></div>
+</li>
+<li class="stepexpand"><span>You can score </span><div><pre class="oac_no_warn" dir="ltr">%sql
+ 
+SELECT CUST_ID</pre></div>
+</li>
+<li class="stepexpand"><span>To apply the </span><div><pre class="oac_no_warn" dir="ltr">%script
+SELECT ROUND(PREDICTION_PROBABILITY(MODEL_RF),3)</pre><p>This may be useful</p>
+</div>
+<div><pre class="nocopybutton"><code>
+PROBABILITY_HOME_TEATER_PACKAGE_RESPONDE
+
+---------------------------</code></pre></div>
+</li>
+</ol>
+<div class="section">To conclude, you have successfully identified customers who are likely to purchase `HOME_THEATER_PACKAGE`. This prediction helps to promote and offer home theater package to the target customers. 
+                  </div>
+</div>
+</div></div>

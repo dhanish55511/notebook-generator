@@ -1,232 +1,801 @@
-The result is: [<div class="section">
-<p class="subhead1" id="GUID-DBA5A69C-714A-4583-81D6-546B7081FD1D__TITLE_O1M_PMJ_BVB">Related Content</p>
-<div class="tblformalwide" id="GUID-DBA5A69C-714A-4583-81D6-546B7081FD1D__TABLE_TSR_BWL_V5B">
+===================================
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+
+<html lang="en-us" xml:lang="en-us">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<meta content="task" name="DC.Type"/>
+<meta content="Regression Use Case Scenario" name="DC.Title"/>
+<meta content="A real estate agent approaches you, a data scientist, to provide assistance in evaluating house prices in Boston. The agent requires this information on a daily basis to provide targeted services to clients. Using the Generalized Linear Model algorithm for Regression, you estimate the median value of owner-occupied homes in the Boston area." name="abstract"/>
+<meta content="A real estate agent approaches you, a data scientist, to provide assistance in evaluating house prices in Boston. The agent requires this information on a daily basis to provide targeted services to clients. Using the Generalized Linear Model algorithm for Regression, you estimate the median value of owner-occupied homes in the Boston area." name="description"/>
+<meta content="regression, use case, Generalized Linear Model, data preparation, import data to cloud, Object Sotrage Credential, create, create table, evaluate, scoring" name="DC.subject"/>
+<meta content="regression, use case, Generalized Linear Model, data preparation, import data to cloud, Object Sotrage Credential, create, create table, evaluate, scoring" name="keywords"/>
+<meta content="Sarika Surampudi" name="DC.Creator"/>
+<meta content="April2025" name="DC.Publisher"/>
+<meta content="XHTML" name="DC.Format"/>
+<meta content="GUID-6DFD6D9A-6007-4B74-9BA7-697343EE8131" name="DC.Identifier"/>
+<meta content="en-US" name="DC.Language"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="A real estate agent approaches you, a data scientist, to provide assistance in evaluating house prices in Boston. The agent requires this information on a daily basis to provide targeted services to clients. Using the Generalized Linear Model algorithm for Regression, you estimate the median value of owner-occupied homes in the Boston area." name="abstract"/>
+<meta content="A real estate agent approaches you, a data scientist, to provide assistance in evaluating house prices in Boston. The agent requires this information on a daily basis to provide targeted services to clients. Using the Generalized Linear Model algorithm for Regression, you estimate the median value of owner-occupied homes in the Boston area." name="description"/>
+<title>Regression Use Case Scenario</title>
+<meta content="Oracle Help Center" property="og:site_name"/>
+<meta content="Machine Learning for SQL Use Cases" property="og:title"/>
+<meta content="A real estate agent approaches you, a data scientist, to provide assistance in evaluating house prices in Boston. The agent requires this information on a daily basis to provide targeted services to clients. Using the Generalized Linear Model algorithm for Regression, you estimate the median value of owner-occupied homes in the Boston area." property="og:description"/>
+<link href="/sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>
+<link href="/sp_common/book-template/ohc-common/img/favicon.ico" rel="shortcut icon"/>
+<meta content="Machine Learning for SQL Use Cases" name="application-name"/>
+<meta content="DITA Open Toolkit version 1.8.5 (Mode = doc)" name="generator"/>
+<meta content="SP_docbuilder HTML plugin release 18.2.2" name="plugin"/>
+<link href="oracle-machine-learning-sql-use-cases.pdf" rel="alternate" title="PDF File" type="application/pdf"/>
+<link href="http://purl.org/dc/terms/" rel="schema.dcterms"/>
+<meta content="2025-04-01T21:59:01-07:00" name="dcterms.created"/>
+<meta content="2021, 2025" name="dcterms.dateCopyrighted"/>
+<meta content="database" name="dcterms.category"/>
+<meta content="F74720-05" name="dcterms.identifier"/>
+<meta content="en/database/oracle/machine-learning/oml4sql/23" name="dcterms.product"/>
+<link href="use-cases1.html" rel="prev" title="Previous" type="text/html"/>
+<link href="classification2.html" rel="next" title="Next" type="text/html"/>
+<script>
+        document.write('<style type="text/css">');
+        document.write('body > .noscript, body > .noscript ~ * { visibility: hidden; }');
+        document.write('</style>');
+     </script>
+<script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"></script>
+<script>
+            if (window.require === undefined) {
+                document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+            }
+        </script>
+<script id="ssot-metadata" type="application/json">{"primary":{"category":{"short_name":"database","element_name":"Database","display_in_url":true},"suite":{"short_name":"oracle","element_name":"Oracle","display_in_url":true},"product_group":{"short_name":"machine-learning","element_name":"Machine Learning","display_in_url":true},"product":{"short_name":"oml4sql","element_name":"OML4SQL","display_in_url":true},"release":{"short_name":"23","element_name":"Release 23","display_in_url":true}}}</script>
+<meta content="Oracle Machine Learning for SQL Use Cases" name="dcterms.title"/>
+<meta content="MLSQL" name="dcterms.isVersionOf"/>
+<meta content="Release 23" name="dcterms.release"/>
+<script type="application/ld+json"> {"@context":"https://schema.org","@type":"WebPage","name":"Regression Use Case Scenario","description":"A real estate agent approaches you, a data scientist, to provide assistance in evaluating house prices in Boston. The agent requires this information on a daily basis to provide targeted services to clients. Using the Generalized Linear Model algorithm for Regression, you estimate the median value of owner-occupied homes in the Boston area.","datePublished":"2023-09-18 CST","dateModified":"2025-04-02 CST"} </script>
+<script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+<body>
+<div class="noscript alert alert-danger text-center" role="alert">
+<a class="pull-left" href="use-cases1.html"><span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>Previous</a>
+<a class="pull-right" href="classification2.html">Next<span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span></a>
+<span aria-hidden="true" class="fa fa-exclamation-triangle"></span> JavaScript must be enabled to correctly display this content
+        
+      </div>
+<article class="">
+<a id="GUID-6DFD6D9A-6007-4B74-9BA7-697343EE8131" name="GUID-6DFD6D9A-6007-4B74-9BA7-697343EE8131"></a>
+<h2 class="sect2" id="MLSQL-GUID-6DFD6D9A-6007-4B74-9BA7-697343EE8131">Regression Use Case Scenario</h2>
+<div class="ind">
+<div>
+<p>A real estate agent approaches you, a data scientist, to provide assistance in evaluating house prices in Boston. The agent requires this information on a daily basis to provide targeted services to clients. Using the Generalized Linear Model algorithm for Regression, you estimate the median value of owner-occupied homes in the Boston area. </p>
+<div class="section">
+<p class="subhead1" id="GUID-6DFD6D9A-6007-4B74-9BA7-697343EE8131__GUID-586398EE-06C2-4403-AFC0-42D954F5598B">Related Content</p>
+<div class="tblformalwide" id="GUID-6DFD6D9A-6007-4B74-9BA7-697343EE8131__TABLE_TSR_BWL_V5B">
 <table border="1" cellpadding="4" cellspacing="0" class="FormalWide" frame="hsides" rules="rows" summary="Here is a table of related content for Regression" title="" width="100%">
 <thead>
 <tr align="left" valign="top">
-<th align="left" id="d30750e38" valign="bottom" width="0%">Topic </th>
-<th align="left" id="d30750e40" valign="bottom" width="0%">Link</th>
+<th align="left" id="d27940e38" valign="bottom" width="0%">Topic </th>
+<th align="left" id="d27940e40" valign="bottom" width="0%">Link</th>
 </tr>
 </thead>
 <tbody>
 <tr align="left" valign="top">
-<td align="left" headers="d30750e38" id="d30750e44" valign="top" width="0%">OML4SQL GitHub Example</td>
-<td align="left" headers="d30750e44 d30750e40" valign="top" width="0%"><a href="https://github.com/oracle-samples/oracle-db-examples/blob/main/machine-learning/sql/21c/oml4sql-classification-random-forest.sql" target="_blank">Classification - Random Forest</a></td>
+<td align="left" headers="d27940e38" id="d27940e44" valign="top" width="0%">OML4SQL GitHub Example</td>
+<td align="left" headers="d27940e44 d27940e40" valign="top" width="0%"><a href="https://github.com/oracle-samples/oracle-db-examples/blob/main/machine-learning/sql/21c/oml4sql-regression-glm.sql" target="_blank">Regression - GLM</a></td>
 </tr>
 <tr align="left" valign="top">
-<td align="left" headers="d30750e38" id="d30750e51" valign="top" width="0%"><code class="codeph">CREATE_MODEL2</code> Procedure
+<td align="left" headers="d27940e38" id="d27940e51" valign="top" width="0%">`CREATE_MODEL2` Procedure
                               </td>
-<td align="left" headers="d30750e51 d30750e40" valign="top" width="0%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMPRG-GUID-560517E9-646A-4C20-8814-63FDA763BFD9" target="_blank">CREATE_MODEL2 Procedure</a></td>
+<td align="left" headers="d27940e51 d27940e40" valign="top" width="0%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMPRG-GUID-560517E9-646A-4C20-8814-63FDA763BFD9" target="_blank">CREATE_MODEL2 Procedure</a></td>
 </tr>
 <tr align="left" valign="top">
-<td align="left" headers="d30750e38" id="d30750e60" valign="top" width="0%">Generic Model Settings</td>
-<td align="left" headers="d30750e60 d30750e40" valign="top" width="0%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=ARPLS-GUID-8987EE6F-41A9-4DF9-997C-129B41FDC59A" target="_blank">DBMS_DATA_MINING - Model Settings</a></td>
+<td align="left" headers="d27940e38" id="d27940e60" valign="top" width="0%">Generic Model Settings</td>
+<td align="left" headers="d27940e60 d27940e40" valign="top" width="0%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=ARPLS-GUID-8987EE6F-41A9-4DF9-997C-129B41FDC59A" target="_blank">DBMS_DATA_MINING - Model Settings</a></td>
 </tr>
 <tr align="left" valign="top">
-<td align="left" headers="d30750e38" id="d30750e67" valign="top" width="0%">Random Forest Settings</td>
-<td align="left" headers="d30750e67 d30750e40" valign="top" width="0%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=ARPLS-GUID-481B6C67-B26E-4689-AD4C-98062D5A2117" target="_blank">DBMS_DATA_MINING - Algorithm Settings: Random Forest</a></td>
+<td align="left" headers="d27940e38" id="d27940e67" valign="top" width="0%">Generalized Linear Model Settings</td>
+<td align="left" headers="d27940e67 d27940e40" valign="top" width="0%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=ARPLS-GUID-4E3665B9-B1C2-4F6B-AB69-A7F353C70F5C" target="_blank">DBMS_DATA_MINING - Algorithm Settings: Generalized Linear Models</a></td>
 </tr>
 <tr align="left" valign="top">
-<td align="left" headers="d30750e38" id="d30750e74" valign="top" width="0%">Data Dictionary Settings</td>
-<td align="left" headers="d30750e74 d30750e40" valign="top" width="0%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMPRG-GUID-06AF74F5-39D7-4B0F-996E-35CA4C904EA0" target="_blank">Oracle Machine Learning Data Dictionary Views</a></td>
+<td align="left" headers="d27940e38" id="d27940e74" valign="top" width="0%">Data Dictionary Settings</td>
+<td align="left" headers="d27940e74 d27940e40" valign="top" width="0%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMPRG-GUID-06AF74F5-39D7-4B0F-996E-35CA4C904EA0" target="_blank">Oracle Machine Learning Data Dictionary Views</a></td>
 </tr>
 <tr align="left" valign="top">
-<td align="left" headers="d30750e38" id="d30750e81" valign="top" width="0%">Random Forest - Model Detail Views</td>
-<td align="left" headers="d30750e81 d30750e40" valign="top" width="0%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMPRG-GUID-AEE0ADDE-AF4F-4F33-B5D7-F4A1805A989A" target="_blank">Model Detail Views for Random Forest</a></td>
+<td align="left" headers="d27940e38" id="d27940e81" valign="top" width="0%">Generalized Linear Model - Model Detail Views</td>
+<td align="left" headers="d27940e81 d27940e40" valign="top" width="0%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMPRG-GUID-5451C38E-CDEF-4DA3-9741-3C811D3D66EA" target="_blank">Model Detail Views for Generalized Linear Model</a></td>
 </tr>
 <tr align="left" valign="top">
-<td align="left" headers="d30750e38" id="d30750e88" valign="top" width="0%">About Classification</td>
-<td align="left" headers="d30750e88 d30750e40" valign="top" width="0%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMCON-GUID-9F922514-0F8D-42F5-BEB1-F59A09FA1CD2" target="_blank">About Classification</a></td>
+<td align="left" headers="d27940e38" id="d27940e88" valign="top" width="0%">About Regression</td>
+<td align="left" headers="d27940e88 d27940e40" valign="top" width="0%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMCON-GUID-2AFA11F8-D4CE-43F5-97D7-9BE58B6C1401" target="_blank">About Regression</a></td>
 </tr>
 <tr align="left" valign="top">
-<td align="left" headers="d30750e38" id="d30750e95" valign="top" width="0%">About Random Forest (RF)</td>
-<td align="left" headers="d30750e95 d30750e40" valign="top" width="0%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMCON-GUID-B8AA4B0A-EE14-4507-9D6E-08DA1DAC632E" target="_blank">About Random Forest</a></td>
+<td align="left" headers="d27940e38" id="d27940e95" valign="top" width="0%">About Generalized Linear Model (GLM)</td>
+<td align="left" headers="d27940e95 d27940e40" valign="top" width="0%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMCON-GUID-2D4A68D3-06BC-45AA-BD0B-B15994CA94A0" target="_blank">About Generalized Linear Models</a></td>
 </tr>
 </tbody>
 </table>
 </div>
-</div>, <div class="section">
-<div class="infoboxnote" id="GUID-7D686C49-8F59-47C4-8CAA-1CE59CCD7D95__GUID-DC05744A-62B2-47A6-86B3-70851FC55556">
-<p class="notep1">Remember:</p>
-<p>The data set used for this use case is from the SH schema. The SH schema can be readily accessed in Oracle Autonomous Database. For on-premises databases, the schema is installed during the installation or can be manually installed by downloading the scripts. See <a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=COMSC-GUID-3820972A-08D7-4033-9524-1E36676594EE" target="_blank">Installing the Sample Schemas</a>.
-                        </p>
 </div>
-</div>, <div class="section">
-<div class="p">To understand the data, you will perform the following:
-                        <ul id="GUID-7D686C49-8F59-47C4-8CAA-1CE59CCD7D95__d180e62" style="list-style-type: disc;">
-<li>Access the data.</li>
-<li>Examine the various attributes or columns of the data set.</li>
-<li>Assess data quality (by exploring the data).</li>
+<div class="p"><a class="indexterm-anchor" id="d27940e102"></a><p>Before you start your OML4SQL use case journey, ensure that you have the following:</p>
+<ul id="GUID-6DFD6D9A-6007-4B74-9BA7-697343EE8131__UL_ZCF_4XD_F4B" style="list-style-type: disc;">
+<li>Data set<a class="indexterm-anchor" id="d27940e109"></a><div class="p"><a class="indexterm-anchor" id="d27940e112"></a>Download the data set from <a href="https://github.com/scikit-learn/scikit-learn/blob/master/sklearn/datasets/data/boston_house_prices.csv" target="_blank">https://github.com/scikit-learn/scikit-learn/blob/master/sklearn/datasets/data/boston_house_prices.csv</a>.
+                           <p><b>Note:</b> This data set is used for illustrative purpose only. 
+                           </p>
+</div>
+</li>
+<li>Database <a class="indexterm-anchor" id="d27940e123"></a><div class="p">Select or create database out of the following options: 
+                           <ul id="GUID-6DFD6D9A-6007-4B74-9BA7-697343EE8131__d180e26" style="list-style-type: disc;">
+<li>Get your FREE cloud account. Go to <a href="https://cloud.oracle.com/database" target="_blank"> https://cloud.oracle.com/database</a> and select Oracle Database Cloud Service (DBCS), or Oracle Autonomous Database. Create an account and create an instance. See <a href="https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=582" target="_blank">Autonomous Database Quick Start Workshop</a>.
+                              </li>
+<li>Download the latest version of <a href="https://www.oracle.com/in/database/technologies/oracle-database-software-downloads.html" target="_blank">Oracle Database</a> (on premises).
+                              </li>
 </ul>
 </div>
-</div>, <div class="section">
-<p class="subhead2" id="GUID-7D686C49-8F59-47C4-8CAA-1CE59CCD7D95__GUID-B64E4366-8C28-41C9-BD72-2C6F55B66C27">Access Data</p>
-<p>You will use <code class="codeph">CUSTOMERS</code> and <code class="codeph">SUPPLEMENTARY_DEMOGRAPHICS</code> table data from the SH schema.
-                     </p>
-</div>, <div class="section">
-<p class="subhead2" id="GUID-7D686C49-8F59-47C4-8CAA-1CE59CCD7D95__d180e70">Examine Data</p>
-<p>The following table displays information about the attributes from <code class="codeph">SUPPLEMENTARY_DEMOGRAPHICS</code>:
-                     </p>
-<div class="tblformal" id="GUID-7D686C49-8F59-47C4-8CAA-1CE59CCD7D95__d180e77">
-<table border="1" cellpadding="4" cellspacing="0" class="Formal" frame="hsides" rules="rows" summary="The SUPPLEMENTARY_DEMOGRAPHICS table displays attributes of the table and the description" title="">
+</li>
+<li>Machine Learning Tools<a class="indexterm-anchor" id="d27940e146"></a><div class="p">Depending on your database selection,
+                           <ul id="GUID-6DFD6D9A-6007-4B74-9BA7-697343EE8131__d180e303" style="list-style-type: disc;">
+<li>Use OML Notebooks for Oracle Autonomous Database.</li>
+<li>Install and use Oracle SQL Developer connected to an on-premises database or DBCS. See <a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=RPTUG-GUID-156BEBA3-2F9B-4CE0-8E91-728581FF46AB" target="_blank">Installing and Getting Started with SQL Developer</a>.
+                              </li>
+</ul>
+</div>
+</li>
+<li>Other Requirements<a class="indexterm-anchor" id="d27940e161"></a><p>Data Mining Privileges (this is automatically set for ADW). See <a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMPRG-GUID-34AABD01-9FF9-4C1A-A2A3-89A1827D10AE" target="_blank">System Privileges for Oracle Machine Learning for SQL</a>.
+                        </p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2"><a id="GUID-F045AF9E-F3EC-4036-898D-8BA277093A28" name="GUID-F045AF9E-F3EC-4036-898D-8BA277093A28"></a><h3 class="sect3" id="MLSQL-GUID-F045AF9E-F3EC-4036-898D-8BA277093A28">Load Data</h3>
+<div>
+<p>Examine the data set and its attributes. Load the data in your database.</p>
+<div class="section">In this use case, you will modify the data set to add a column and upload the data set to your database. If you are using the Oracle Autonomous Database, you will upload files to the Oracle Cloud Infrastructure (OCI) Object Storage, create a sample table, load data into the sample table from files on the OCI Object Storage, and explore the data. If you are using the on-premises database, you will use Oracle SQL developer to import the data set and explore the data.</div>
+<div class="section">
+<p class="subhead2" id="GUID-F045AF9E-F3EC-4036-898D-8BA277093A28__GUID-3B9DF311-9F4F-4853-BCDF-A10E80E7423B">Examine Data</p>
+<p>There are 13 attributes in the data set. This is a customized data set that excludes one attribute from the original data set. The following table displays information about the data attributes:</p>
+<div class="tblformal" id="GUID-F045AF9E-F3EC-4036-898D-8BA277093A28__GUID-8CA8832F-995F-4696-8F75-6238A9D8D962">
+<table border="1" cellpadding="4" cellspacing="0" class="Formal" frame="hsides" rules="rows" summary="This table describes the attributes of the data set and their description" title="">
 <thead>
 <tr align="left" valign="top">
-<th align="left" id="d30750e234" valign="bottom" width="40%">Attribute Name</th>
-<th align="left" id="d30750e236" valign="bottom" width="60%">Information</th>
+<th align="left" id="d27940e205" valign="bottom" width="30%">Attribute Name</th>
+<th align="left" id="d27940e207" valign="bottom" width="70%">Information</th>
 </tr>
 </thead>
 <tbody>
 <tr align="left" valign="top">
-<td align="left" headers="d30750e234" id="d30750e240" valign="top" width="40%"><code class="codeph">CUST_ID</code></td>
-<td align="left" headers="d30750e240 d30750e236" valign="top" width="60%">The ID of the customer</td>
+<td align="left" headers="d27940e205" id="d27940e211" valign="top" width="30%">CRIM</td>
+<td align="left" headers="d27940e211 d27940e207" valign="top" width="70%">Per capita crime rate by town</td>
 </tr>
 <tr align="left" valign="top">
-<td align="left" headers="d30750e234" id="d30750e246" valign="top" width="40%"><code class="codeph">EDUCATION</code></td>
-<td align="left" headers="d30750e246 d30750e236" valign="top" width="60%">Educational information of the customer</td>
+<td align="left" headers="d27940e205" id="d27940e216" valign="top" width="30%">ZN</td>
+<td align="left" headers="d27940e216 d27940e207" valign="top" width="70%">The proportion of residential land zoned for lots over 25,000 sq.ft.</td>
 </tr>
 <tr align="left" valign="top">
-<td align="left" headers="d30750e234" id="d30750e252" valign="top" width="40%"><code class="codeph">OCCUPATION</code></td>
-<td align="left" headers="d30750e252 d30750e236" valign="top" width="60%">Occupation of the customer</td>
+<td align="left" headers="d27940e205" id="d27940e221" valign="top" width="30%">INDUS</td>
+<td align="left" headers="d27940e221 d27940e207" valign="top" width="70%">The proportion of non-retail business acres per town</td>
 </tr>
 <tr align="left" valign="top">
-<td align="left" headers="d30750e234" id="d30750e258" valign="top" width="40%"><code class="codeph">HOUSEHOLD_SIZE</code></td>
-<td align="left" headers="d30750e258 d30750e236" valign="top" width="60%">People per house</td>
+<td align="left" headers="d27940e205" id="d27940e226" valign="top" width="30%">CHAS</td>
+<td align="left" headers="d27940e226 d27940e207" valign="top" width="70%">Charles River dummy variable (= 1 if tract bounds river; 0 otherwise)</td>
 </tr>
 <tr align="left" valign="top">
-<td align="left" headers="d30750e234" id="d30750e264" valign="top" width="40%"><code class="codeph">YRS_RESIDENCE</code></td>
-<td align="left" headers="d30750e264 d30750e236" valign="top" width="60%">Number of years of residence</td>
+<td align="left" headers="d27940e205" id="d27940e231" valign="top" width="30%">NOX</td>
+<td align="left" headers="d27940e231 d27940e207" valign="top" width="70%">Nitric oxides concentration (parts per 10 million)</td>
 </tr>
 <tr align="left" valign="top">
-<td align="left" headers="d30750e234" id="d30750e270" valign="top" width="40%"><code class="codeph">AFFINITY_CARD</code></td>
-<td align="left" headers="d30750e270 d30750e236" valign="top" width="60%">Whether the customer holds an affinity card</td>
+<td align="left" headers="d27940e205" id="d27940e236" valign="top" width="30%">RM</td>
+<td align="left" headers="d27940e236 d27940e207" valign="top" width="70%">The average number of rooms per dwelling</td>
 </tr>
 <tr align="left" valign="top">
-<td align="left" headers="d30750e234" id="d30750e276" valign="top" width="40%"><code class="codeph">BULK_PACK_DISKETTES</code></td>
-<td align="left" headers="d30750e276 d30750e236" valign="top" width="60%">
-<p>Product. Indicates whether the customer already owns the product.</p>
-<p>1 means Yes. 0 means No</p>
-</td>
+<td align="left" headers="d27940e205" id="d27940e241" valign="top" width="30%">AGE</td>
+<td align="left" headers="d27940e241 d27940e207" valign="top" width="70%">The proportion of owner-occupied units built before 1940</td>
 </tr>
 <tr align="left" valign="top">
-<td align="left" headers="d30750e234" id="d30750e285" valign="top" width="40%"><code class="codeph">FLAT_PANEL_MONITOR</code></td>
-<td align="left" headers="d30750e285 d30750e236" valign="top" width="60%">
-<p>Product. Indicates whether the customer already owns the product.</p>
-<p>1 means Yes. 0 means No</p>
-</td>
+<td align="left" headers="d27940e205" id="d27940e246" valign="top" width="30%">DIS</td>
+<td align="left" headers="d27940e246 d27940e207" valign="top" width="70%">Weighted distances to five Boston employment centers</td>
 </tr>
 <tr align="left" valign="top">
-<td align="left" headers="d30750e234" id="d30750e294" valign="top" width="40%"><code class="codeph">HOME_THEATER_PACKAGE</code></td>
-<td align="left" headers="d30750e294 d30750e236" valign="top" width="60%">
-<p>Product. Indicates whether the customer already owns the product.</p>
-<p>1 means Yes. 0 means No</p>
-</td>
+<td align="left" headers="d27940e205" id="d27940e251" valign="top" width="30%">RAD</td>
+<td align="left" headers="d27940e251 d27940e207" valign="top" width="70%">Index of accessibility to radial highways</td>
 </tr>
 <tr align="left" valign="top">
-<td align="left" headers="d30750e234" id="d30750e303" valign="top" width="40%"><code class="codeph">BOOKKEEPING_APPLICATION</code></td>
-<td align="left" headers="d30750e303 d30750e236" valign="top" width="60%">
-<p>Product. Indicates whether the customer already owns the product.</p>
-<p>1 means Yes. 0 means No</p>
-</td>
+<td align="left" headers="d27940e205" id="d27940e256" valign="top" width="30%">TAX</td>
+<td align="left" headers="d27940e256 d27940e207" valign="top" width="70%">Full-value property-tax rate per $10,000</td>
 </tr>
 <tr align="left" valign="top">
-<td align="left" headers="d30750e234" id="d30750e312" valign="top" width="40%"><code class="codeph">PRINTER_SUPPLIES</code></td>
-<td align="left" headers="d30750e312 d30750e236" valign="top" width="60%">
-<p>Product. Indicates whether the customer already owns the product.</p>
-<p>1 means Yes. 0 means No</p>
-</td>
+<td align="left" headers="d27940e205" id="d27940e261" valign="top" width="30%">PTRATIO</td>
+<td align="left" headers="d27940e261 d27940e207" valign="top" width="70%">The pupil-teacher ratio by town</td>
 </tr>
 <tr align="left" valign="top">
-<td align="left" headers="d30750e234" id="d30750e322" valign="top" width="40%"><code class="codeph">Y_BOX_GAMES</code></td>
-<td align="left" headers="d30750e322 d30750e236" valign="top" width="60%">
-<p>Product. Indicates whether the customer already owns the product.</p>
-<p>1 means Yes. 0 means No</p>
-</td>
+<td align="left" headers="d27940e205" id="d27940e267" valign="top" width="30%">LSTAT</td>
+<td align="left" headers="d27940e267 d27940e207" valign="top" width="70%">% lower status of the population</td>
 </tr>
 <tr align="left" valign="top">
-<td align="left" headers="d30750e234" id="d30750e331" valign="top" width="40%"><code class="codeph">OS_DOC_SET_KANJI</code></td>
-<td align="left" headers="d30750e331 d30750e236" valign="top" width="60%">
-<p>Product. Indicates whether the customer already owns the product.</p>
-<p>1 means Yes. 0 means No</p>
-</td>
-</tr>
-<tr align="left" valign="top">
-<td align="left" headers="d30750e234" id="d30750e340" valign="top" width="40%"><code class="codeph">COMMENTS</code></td>
-<td align="left" headers="d30750e340 d30750e236" valign="top" width="60%">
-<p>Product. Indicates whether the customer already owns the product.</p>
-<p>1 means Yes. 0 means No</p>
-</td>
+<td align="left" headers="d27940e205" id="d27940e272" valign="top" width="30%">MEDV</td>
+<td align="left" headers="d27940e272 d27940e207" valign="top" width="70%">The median value of owner-occupied homes in $1000âs</td>
 </tr>
 </tbody>
 </table>
 </div>
-</div>, <div class="section">
-<p class="subhead2" id="GUID-1C6B7E9B-57DB-4271-83E4-92EC32EE714D__d180e200">Assess Data Quality</p>
-<p>To assess the data, first, you must be able to view the data in your database. For this reason, you will use SQL statements to query the <code class="codeph">SH.CUSTOMERS</code> and the <code class="codeph">SH.SUPPLEMENTARY_DEMOGRAPHICS</code> table. 
-                     </p>
-<div class="p">If you are working with Oracle Autonomous Database, you can use the Oracle Machine Learning (OML) Notebooks for your data science project, including assessing data quality. If you are using on-premise Oracle Database, you can use the Oracle SQL Developer to assess data quality. Query the <code class="codeph">SH</code> schema as described. 
-                        <div class="infoboxnote" id="GUID-1C6B7E9B-57DB-4271-83E4-92EC32EE714D__d180e216">
-<p class="notep1">Note:</p>Each record in the database is called a case and each case is identified by a <code class="codeph">case_id</code>. In this use case, <code class="codeph">CUST_ID</code> is the <code class="codeph">case_id</code>.
-                        </div>
 </div>
-</div>, <div class="section">
-<p>This completes the data exploration stage. OML supports Automatic Data Preparation (ADP). ADP is enabled through the model settings. When ADP is enabled, the transformations required by the algorithm are performed automatically and embedded in the model. This step is done during the Build Model stage. The commonly used methods of data preparation are binning, normalization, and missing value treatment.</p>
-</div>, <div class="section">
-<p>For a supervised learning, like Classification, before creating the model, split the data into training and test data. Although you can use the entire data set to build a model, it is difficult to validate the model unless there are new data sets available. Therefore, to evaluate the model and to accurately assess the performance of the model on the same data, you generally split or separate the data into training and test data. You use the training data set to train the model and then use the test data set to test the accuracy of the model by running prediction queries. The testing data set already contains known values for the attribute that you want to predict. It is thus easy to determine whether the predictions of the model are correct. </p>
-</div>, <div class="section">
-<p class="subhead2" id="GUID-B2AF509E-03AD-40BE-A7CF-A2109FAC5DE5__GUID-A680E01E-E8AE-4701-A513-1EB6CD132993">Algorithm Selection</p>
-<p>Before you build a model, choose the suitable algorithm. You can choose one of the following algorithms to solve a classification problem:</p>
-<ul id="GUID-B2AF509E-03AD-40BE-A7CF-A2109FAC5DE5__UL_XPK_VCD_H4B" style="list-style-type: disc;">
-<li>Decision Tree</li>
-<li>Explicit Semantic Analysis (ESM)</li>
-<li>Generalized Linear Model (GLM)</li>
-<li>Naive Bayes</li>
-<li>Random Forest</li>
-<li>Support Vector Machine (SVM)</li>
-<li>XGBoost</li>
+</div>
+<div>
+<div class="relinfo">
+<p><strong>Related Topics</strong></p>
+<ul>
+<li><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMPRG-GUID-BCEF5F92-D129-4550-A4EF-85C509E68DE4" target="_blank">How ADP Transforms the Data</a></li>
 </ul>
-<p>From the above algorithms, ESM is more about Natural Language Processing (NLP) and text mining. ESM does not apply to this use case and data. If you were to select a relatively simple linear model like GLM, the prediction accuracy can be further improved by the Random Forest algorithm. Random Forest is an ensemble method that builds multiple decision trees on subsets of the data re-sampled at each time (bagging). This avoids the overfitting for a single decision tree. The random forest model is a widely used ensemble method that is known to have higher accuracy than linear models. Thus, Random Forest is selected for this use case.</p>
-<p>For this use case, split the data into 60/40 as training and test data. You build the model using the training data and once the model is built, score the test data using the model. </p>
+</div>
+</div>
+<div class="sect3"><a id="GUID-DB82779E-6C30-4B3E-B0EA-3FA07956C288" name="GUID-DB82779E-6C30-4B3E-B0EA-3FA07956C288"></a><h4 class="sect4" id="MLSQL-GUID-DB82779E-6C30-4B3E-B0EA-3FA07956C288">Add a Column</h4>
+<div>
+<p>In this data set, no row identifier uniquely identifies each record in the data set. Add a new `case_id` column. The `case_id` assists with reproducible results, joining scores for individual customers with other data in, example, scoring data table. 
+                     </p>
+<div class="section">Add a column called House ID (HID). The HID value is added as a primary key to the table so that identifying and retrieving each record is simple. Each record in the database is called a case and each case is identified by a `case_id`. Here, <span class="variable" translate="no">HID</span> is the `case_id`.
+                     </div>
+<div class="section">
+<p>To add the HID column: </p>
+</div>
+<ol id="GUID-DB82779E-6C30-4B3E-B0EA-3FA07956C288__STEPS_VNV_TDX_Q4B">
+<li><span>Open the .csv file in a spreadsheet.</span></li>
+<li><span>Delete the first row with 506 and 13. Now, the row with the column names becomes the first row.</span></li>
+<li><span>To the left of the data set, add a column.</span></li>
+<li><span>Enter <span class="variable" translate="no">HID</span> as the column name.</span></li>
+<li><span>In the <span class="variable" translate="no">HID</span> column enter 1 as the first value identifying the first row.</span></li>
+<li><span>You will see a + icon in the spreadsheet cell. Drag the + icon right to the bottom till the end of the records.</span></li>
+<li><span>Right-click and select <b>Fill Series</b>.</span></li>
+<li><span>To remove the column "B" from the data set, select the entire column with the title <span class="bold">B</span> by right clicking on the top of the column, and then select <b>Delete</b>.</span></li>
+</ol>
+</div>
+</div>
+<div class="sect3"><a id="GUID-897A5DDC-D18D-4643-BFBA-19189E4F894E" name="GUID-897A5DDC-D18D-4643-BFBA-19189E4F894E"></a><h4 class="sect4" id="MLSQL-GUID-897A5DDC-D18D-4643-BFBA-19189E4F894E">Import Data</h4>
+<div>
+<p>There are various methods to import data into the database. Two methods are explained here. One using SQL Developer (for on-premises) and the other using Object Storage (for Cloud). </p>
+</div>
+<div class="sect4"><a id="GUID-A50EC728-ACEE-4F27-8075-448585E57949" name="GUID-A50EC728-ACEE-4F27-8075-448585E57949"></a><h5 class="sect5" id="MLSQL-GUID-A50EC728-ACEE-4F27-8075-448585E57949">Import Data into the Database (On premises)</h5>
+<div>
+<p>To access the data set, import the modified data set into the database using SQL Developer. </p>
+<div class="section">The following steps help you to import the data set into an on premises database.</div>
+<div class="p">(Optional) Enter task prerequisites here.</div>
+<ol>
+<li><span>Launch SQL Developer on your system.</span></li>
+<li><span>Import the modified .csv file. See <a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=RPTUG-GUID-F1393151-347D-4BF5-BF15-C50BC74C5FC4" target="_blank">Tables</a>. </span></li>
+<li><span>Set House ID (HID) as a primary key. This column identifies each record and helps in retrieving information about a specific record. The HID column helps when you join tables or views. See <a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=RPTUG-GUID-A1969236-621C-493D-91E3-513EC4372886" target="_blank">Primary Key Constraint</a>. </span></li>
+</ol>
+<div class="section">You are now ready to query the table in SQL Developer.</div>
+</div>
+</div>
+<div class="sect4"><a id="GUID-7815D656-8814-4ABC-A941-FA3F4A736E02" name="GUID-7815D656-8814-4ABC-A941-FA3F4A736E02"></a><h5 class="sect5" id="MLSQL-GUID-7815D656-8814-4ABC-A941-FA3F4A736E02">Import Data to the Cloud</h5>
+<div>
+<p>If you are using a cloud account, one of the methods of importing the data is through Object Storage. Upload the data set to an Object Storage. The Object Storage URI will be used in another procedure.</p>
+<div class="section">
+<p>You can load data into your  Oracle Autonomous Database (Autonomous Data Warehouse [ADW] or Autonomous Transaction Processing [ATP]) using Oracle Database tools, and Oracle and 3rd party data integration tools. You can load data:</p>
+<ul id="GUID-7815D656-8814-4ABC-A941-FA3F4A736E02__UL_SMN_CY5_WPB" style="list-style-type: disc;">
+<li>from local files in your client computer, or</li>
+<li>from files stored in a cloud-based object store</li>
+</ul>
+</div>
+<div class="section">
+<p>Follow the steps to upload your data file to the Object Storage bucket.</p>
+</div>
+<ol>
+<li><span>Login to your cloud account.</span></li>
+<li><span>Click the left-side hamburger menu and select <b>Storage</b> from the menu.</span></li>
+<li><span>Select <b>Buckets</b> from the Object Storage &amp; Archive Storage option.</span></li>
+<li><span>Select the compartment in which you want to upload the data.</span></li>
+<li><span>Click <b>Create Bucket</b>.</span></li>
+<li><span>Enter a name for your bucket. For example, Bucket1. Leave the rest of the fields as default.</span></li>
+<li><span>Click <b>Create</b>.</span></li>
+<li><span>Click on the bucket that you created. Scroll down and click <b>Upload</b> under Objects.</span></li>
+<li><span>Leave the Object Name Prefix field black. Click <b>select files</b> to navigate to the data file that you want to upload or drag and drop the data file. In this use case, select the modified .csv file.</span></li>
+<li><span>Click <b>Upload</b>. The data file appears under Objects.</span></li>
+<li><span>Click the ellipses on the right side of the data file to view the menu. Click <b>View Object Details</b>.</span></li>
+<li><span>Copy the URL PATH (URI) to a text file. This URI is used in the`DBMS_CLOUD.COPY_DATA` procedure.</span></li>
+</ol>
+<div class="section">This procedure creates an object storage containing the data file in your cloud account.</div>
+</div>
+<div class="sect5"><a id="GUID-A244A98E-A33D-49E5-8747-B937FE3C58B9" name="GUID-A244A98E-A33D-49E5-8747-B937FE3C58B9"></a><h6 class="sect6" id="MLSQL-GUID-A244A98E-A33D-49E5-8747-B937FE3C58B9">Create Auth Token</h6>
+<div>
+<p>The Auth Token is required in the `DBMS_CLOUD.CREATE_CREDENTIAL` procedure. You can generate the Auth Token in your cloud account.
+                           </p>
+<ol>
+<li><span>Login into your ADW Cloud account.</span></li>
+<li><span>Hover your mouse cursor over the human figure icon at the top right of the console and click <b>User Settings</b> from the drop-down menu.</span></li>
+<li><span>Click <b>Auth Tokens</b> under Resources on the left of the console.</span></li>
+<li><span>Click <b>Generate Token</b>. A pop-up dialog appears.</span></li>
+<li><span>Enter a description (optional).</span></li>
+<li><span>Click <b>Generate Token</b>.</span></li>
+<li><span>Copy the generated token to a text file. The token does not appear again.</span></li>
+<li><span>Click <b>Close</b>.</span></li>
+</ol>
+</div>
+</div>
+<div class="sect5"><a id="GUID-EA0E39E9-14BA-40ED-B580-28EA16EF246A" name="GUID-EA0E39E9-14BA-40ED-B580-28EA16EF246A"></a><h6 class="sect6" id="MLSQL-GUID-EA0E39E9-14BA-40ED-B580-28EA16EF246A">Create Object Storage Credential</h6>
+<div>
+<p>The object storage credential is used in the `DBMS_CLOUD.COPY_DATA` procedure.
+                           </p>
+<ol>
+<li class="stepexpand"><span>Login to the OML Notebooks page and create a notebook. See <a href="access-oml-notebooks.html#GUID-F372F445-1036-403B-BEDF-D4ABF9E67407" title="A Notebook Classic is a web-based interface for data analysis, data discovery, data visualization and collaboration.">Create a Notebook Classic</a>.</span></li>
+<li class="stepexpand"><span>Open the notebook that you just created.</span></li>
+<li class="stepexpand"><span>Enter the following query to create an object storage credentials:</span><div><pre class="pre codeblock"><code>%script
+begin
+  DBMS_CLOUD.create_credential (
+    credential_name =&gt; 'CRED',
+    username =&gt; '&lt;your cloud account username&gt;',
+    password =&gt; '&lt;your Auth Token&gt;'
+  );
+end;
+/</code></pre></div>
+<div><pre class="nocopybutton"><code>
+---------------------------  PL/SQL procedure successfully completed.
+    ---------------------------</code></pre></div>
+<div><img alt="DBMS_CLOUD.CREATE_CREDENTIAL procedure" height="470" id="GUID-EA0E39E9-14BA-40ED-B580-28EA16EF246A__IMAGE_HMP_FR2_K5B" src="img/regression_create_cred.png" title="DBMS_CLOUD.CREATE_CREDENTIAL procedure" width="594"/></div>
+<div>Examine the query:
+                                    <div class="p">
+<ul id="GUID-EA0E39E9-14BA-40ED-B580-28EA16EF246A__UL_UZK_PFS_F4B" style="list-style-type: disc;">
+<li>`credential_name`: The name of the credential to be stored. Provide any name. Here, <span class="variable" translate="no">CRED</span> is the name given.
+                                          </li>
+<li>`username`: This is your cloud account username.
+                                          </li>
+<li>`password`: Enter your Auth Token password that you copied after generating the Auth Token.
+                                          </li>
+</ul>
+</div>
+</div>
+</li>
+<li class="stepexpand"><span>Click the play icon to run the query in your notebook. Your credentials are stored in the ADW user schema.</span></li>
+<li class="stepexpand"><span>In another para, run the following query to check the user credentials:</span><div><pre class="pre codeblock"><code>SELECT* FROM USER_CREDENTIALS;</code></pre></div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3"><a id="GUID-95B18371-769B-4CCB-A5E7-8EF5CA8F933A" name="GUID-95B18371-769B-4CCB-A5E7-8EF5CA8F933A"></a><h4 class="sect4" id="MLSQL-GUID-95B18371-769B-4CCB-A5E7-8EF5CA8F933A">Create a Table</h4>
+<div>
+<p>Create a table called `BOSTON_HOUSING`. This table is used in `DBMS_CLOUD.COPY_DATA` procedure to access the data set. 
+                     </p>
+<div class="section">
+<p>Enter the following code in a new pare of the notebook that you created and run the notebook.</p><pre class="pre codeblock"><code>%sql
+CREATE table boston_housing
+(
+ HID NUMBER NOT NULL,
+ CRIM NUMBER,
+ ZN NUMBER,
+ INDUS NUMBER,
+ CHAS VARCHAR2(32),
+ NOX NUMBER,
+ RM NUMBER,
+ AGE NUMBER,
+ DIS NUMBER,
+ RAD NUMBER,
+ TAX NUMBER,
+ PTRATIO NUMBER,
+ LSTAT NUMBER,
+ MEDV NUMBER
+);</code></pre></div>
+</div>
+</div>
+<div class="sect3"><a id="GUID-BD03C4AE-1253-4033-9BF7-6A0415B32616" name="GUID-BD03C4AE-1253-4033-9BF7-6A0415B32616"></a><h4 class="sect4" id="MLSQL-GUID-BD03C4AE-1253-4033-9BF7-6A0415B32616">Load Data in the Table</h4>
+<div>
+<p>Load the data set stored in object storage to the `BOSTON_HOUSING` table.
+                     </p>
+<div class="section">
+<div class="p">Add a new para in the OML Notebooks and enter the following statement: <pre class="pre codeblock"><code>%script
+BEGIN
+ DBMS_CLOUD.COPY_DATA(
+    table_name =&gt;'BOSTON_HOUSING',
+    credential_name =&gt;'CRED',
+    file_uri_list =&gt;'https://objectstorage.us-phoenix-1.oraclecloud.com/n/namespace-string/b/bucketname/o/filename.csv',
+    format =&gt; json_object('type' value 'CSV', 'skipheaders' value 1)
+ );
+END;</code></pre></div>
+<div class="p">Examine the statement:
+                           <ul style="list-style-type: disc;">
+<li>`table_name`: is the target tableâs name.
+                              </li>
+<li>`credential_name`: is the name of the credential created earlier.
+                              </li>
+<li>`file_uri_list`: is a comma delimited list of the source files you want to load.
+                              </li>
+<li>`format`: defines the options you can specify to describe the format of the source file, including whether the file is of type text, ORC, Parquet, or Avro.
+                              </li>
+</ul>
+</div>
+<p>In this example, <span class="variable" translate="no">namespace-string</span> is the Oracle Cloud Infrastructure object storage namespace and <span class="variable" translate="no">bucketname</span> is the storage bucket name that you created earlier (for example, Bucket1), and <span class="variable" translate="no">filename.csv</span> is the modified .csv file name that you uploaded to the storage bucket.
+                        </p>
+</div>
+</div>
+<div>
+<div class="relinfo">
+<p><strong>Related Topics</strong></p>
+<ul>
+<li><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=ADBSA-GUID-9428EA51-5DDD-43C2-B1F5-CD348C156122" target="_blank">DBMS_CLOUD.COPY_DATA Procedure</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2"><a id="GUID-F630BE4F-E312-4B1B-B0F8-22A4C795640F" name="GUID-F630BE4F-E312-4B1B-B0F8-22A4C795640F"></a><h3 class="sect3" id="MLSQL-GUID-F630BE4F-E312-4B1B-B0F8-22A4C795640F">Explore Data</h3>
+<div>
+<p>Explore the data to understand and assess the quality of the data. At this stage assess the data to identify data types and noise in the data. Look for missing values and numeric outlier values.</p>
+<div class="section">
+<p>The following steps help you with the exploratory analysis of the data:</p>
+</div>
+<ol>
+<li class="stepexpand"><span>View the data in the `BOSTON_HOUSING` table by running the following query:</span><div><pre class="pre codeblock"><code>SELECT * FROM BOSTON_HOUSING
+ORDER BY HID;</code></pre></div>
+<div><img alt="View the data in the BOSTON_HOUSING table." height="627" id="GUID-F630BE4F-E312-4B1B-B0F8-22A4C795640F__IMAGE_WKT_G4Z_J5B" src="img/regression_view_table.png" title="View the data in the BOSTON_HOUSING table." width="1810"/></div>
+</li>
+<li class="stepexpand"><span>Since you created the table specifying each column's datatype, you already know the datatype. However, to view the datatype of the columns, run the following script:</span><div><pre class="oac_no_warn" dir="ltr">%script
+DESCRIBE BOSTON_HOUSING;
+</pre></div>
+<div><pre class="nocopybutton"><code>
+Name    Null?    Type        
+------- -------- ------------
+HID  NOT NULL NUMBER
+CRIM          NUMBER
+ZN            NUMBER
+INDUS         NUMBER
+CHAS          VARCHAR2(32)
+NOX           NUMBER
+RM            NUMBER
+AGE           NUMBER
+DIS           NUMBER
+RAD           NUMBER(38)
+TAX           NUMBER
+PTRATIO       NUMBER
+LSTAT         NUMBER
+MEDV          NUMBER
+ 
+---------------------------</code></pre></div>
+</li>
+<li class="stepexpand"><span>Find the `COUNT` of the dataset to know how many rows are present.</span><div><pre class="pre codeblock"><code>SELECT COUNT (*) from BOSTON_HOUSING;</code></pre></div>
+<div><pre class="nocopybutton"><code>
+COUNT(*)   
+      506
+---------------------------</code></pre></div>
+</li>
+<li class="stepexpand"><span>To check if there are any missing values (NULL values), run the following query:</span><div><pre class="oac_no_warn" dir="ltr">SELECT COUNT(*) FROM BOSTON_HOUSING WHERE PTRATIO=NULL OR CHAS=NULL OR
+ LSTAT=NULL OR TAX=NULL OR CRIM=NULL OR MEDV=NULL OR ZN=NULL OR NOX=NULL
+ OR AGE=NULL OR INDUS=NULL OR DIS=NULL OR RAD=NULL OR PTRATIO=NULL OR RM=NULL;</pre></div>
+<div><pre class="nocopybutton"><code>
+COUNT(*)   
+      0
+---------------------------</code></pre><p>NULLs, if found, are automatically handled by the OML algorithms. Alternately, you can manually replace NULLs with `NVL` SQL function. 
+                           </p>
+</div>
+</li>
+<li class="stepexpand"><span>To list the distinct values for the categorical column CHAS and the number of records for each distinct value of CHAS, run the following query:</span><div><pre class="oac_no_warn" dir="ltr">%sql
+SELECT CHAS, COUNT(1)
+FROM BOSTON_HOUSING
+GROUP BY CHAS;</pre></div>
+<div><pre class="nocopybutton"><code>
+CHAS   COUNT(1)   
+0             471 
+1              35 
+---------------------------</code></pre></div>
+</li>
+<li class="stepexpand"><span>To calculate mean, median, min, max, and interquartile range (IQR) create a view called `unpivoted`.</span><div>The IQR describes the middle 50% of values (also called the mid spread or the H spread) when ordered from lowest to highest. To find the IQR, first, find the median (middle value) of the lower and upper half of the data. These values are quartile 1 (Q1) and quartile 3 (Q3). The IQR is the difference between Q3 and Q1. Sometimes, this assessment is helpful to find outliers in the data.<pre class="oac_no_warn" dir="ltr">%sql
+create or replace view unpivoted as
+select *
+  from (
+       
+SELECT 'CRIM' COL, ROUND(MIN(CRIM),2) MIN_VAL, PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY CRIM) FIRST_QUANTILE, ROUND(AVG(CRIM),2) MEAN_VAL, ROUND(MEDIAN(CRIM),2) MEDIAN_VAL, PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY CRIM) THIRD_QUANTILE, ROUND(MAX(CRIM),2) MAX_VAL
+FROM BOSTON_HOUSING
+UNION
+SELECT 'AGE' COL, ROUND(MIN(AGE),2) MIN_VAL,  PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY AGE) FIRST_QUANTILE, ROUND(AVG(AGE),2) MEAN_VAL, ROUND(MEDIAN(AGE),2) MEDIAN_VAL, PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY AGE) THIRD_QUANTILE, ROUND(MAX(AGE),2) MAX_VAL
+FROM BOSTON_HOUSING
+UNION
+SELECT 'DIS' COL, ROUND(MIN(DIS),2) MIN_VAL,  PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY DIS) FIRST_QUANTILE, ROUND(AVG(DIS),2) MEAN_VAL, ROUND(MEDIAN(DIS),2) MEDIAN_VAL, PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY DIS) THIRD_QUANTILE, ROUND(MAX(DIS),2) MAX_VAL
+FROM BOSTON_HOUSING
+  ) a
+unpivot
+(
+  VALUE
+    for stat in ("MIN_VAL", "FIRST_QUANTILE", "MEAN_VAL","MEDIAN_VAL", "THIRD_QUANTILE", "MAX_VAL")
+);</pre></div>
+</li>
+<li class="stepexpand"><span>To view the values, pivot the table by running the following query:</span><div><pre class="oac_no_warn" dir="ltr">%sql
+select *
+  from unpivoted
+pivot(
+  SUM(VALUE)
+    for COL in ('CRIM', 'AGE','DIS')
+);</pre></div>
+<div><pre class="nocopybutton"><code>
+
+STAT             'CRIM'      'AGE'    'DIS'      
+MEAN_VAL                3.61    68.57        3.8 
+THIRD_QUARTILE     3.6770825   94.075   5.188425 
+MAX_VAL                88.98      100      12.13 
+FIRST_QUARTILE      0.082045   45.025   2.100175 
+MEDIAN_VAL              0.26     77.5       3.21 
+MIN_VAL                 0.01      2.9       1.13 
+
+
+6 rows selected. 
+
+---------------------------</code></pre></div>
+</li>
+</ol>
+<div class="section">This completes the data understanding and data preparation stage. OML supports Automatic Data Preparation (ADP). ADP is enabled through the model settings. When ADP is enabled, the transformations required by the algorithm are performed automatically and embedded in the model. This step is done during the Build Model stage. The commonly used methods of data preparation are binning, normalization, and missing value treatment.</div>
+</div>
+<div>
+<div class="relinfo">
+<p><strong>Related Topics</strong></p>
+<ul>
+<li><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMPRG-GUID-BCEF5F92-D129-4550-A4EF-85C509E68DE4" target="_blank">How ADP Transforms the Data</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2"><a id="GUID-FC3FD883-487E-4921-B16E-A0B5F0E61AAA" name="GUID-FC3FD883-487E-4921-B16E-A0B5F0E61AAA"></a><h3 class="sect3" id="MLSQL-GUID-FC3FD883-487E-4921-B16E-A0B5F0E61AAA">Build Model</h3>
+<div>
+<p>Build your model using the training data set. Use the `DBMS_DATA_MINING.CREATE_MODEL2` procedure to build your model and specify model settings.  
+                  </p>
+<div class="section"> For a supervised learning, like Regression, before creating the model, split the data in to training and test data. Although you can use the entire data set to build a model, it is difficult to validate the model unless there are new data sets available. Therefore, to evaluate the model and to accurately assess the performance of the model on the same data, you generally split or separate the data into training and test data. You use the training data set to train the model and then use the test data set to test the accuracy of the model by running prediction queries. The testing data set already contains known values for the attribute that you want to predict. It is thus easy to determine whether the model's predictions are correct. </div>
+<div class="section">
+<p class="subhead2" id="GUID-FC3FD883-487E-4921-B16E-A0B5F0E61AAA__GUID-18FF8D5F-11BB-4B14-A0C6-7A4D94D9CBA7">Algorithm Selection</p>Before you build a model, choose the suitable algorithm. You can choose one of the following algorithms to solve a regression problem:
+                     <ul id="GUID-FC3FD883-487E-4921-B16E-A0B5F0E61AAA__UL_XPK_VCD_H4B" style="list-style-type: disc;">
+<li>Extreme Gradient Boosting</li>
+<li>Generalized Linear Model</li>
+<li>Neural Network</li>
+<li>Support Vector Machine</li>
+</ul>
+<p>When you want to understand the data set, you always start from a simple and easy baseline model. The Generalized Linear Model algorithm is the right choice because it is simple and easy to interpret since it fits a linear relationship between the feature and the target. You can get an initial understanding of a new data set from the result of the linear model. </p>
 <p>The following steps guide you to split your data and build your model with the selected algorithm.</p>
-</div>, <div class="section">
+</div>
+<ol>
+<li class="stepexpand"><span> Split the data into 80/20 as training and test data. Run the following statement:</span><div><pre class="oac_no_warn" dir="ltr">BEGIN
+    EXECUTE IMMEDIATE 'CREATE OR REPLACE VIEW TRAINING_DATA AS SELECT * FROM BOSTON_HOUSING SAMPLE (80) SEED (1)';
+    DBMS_OUTPUT.PUT_LINE ('Created TRAINING_DATA');
+    EXECUTE IMMEDIATE 'CREATE OR REPLACE VIEW TEST_DATA AS SELECT * FROM BOSTON_HOUSING MINUS SELECT * FROM TRAINING_DATA';
+    DBMS_OUTPUT.PUT_LINE ('Created TEST_DATA');
+    
+END;</pre></div>
+<div>After splitting the data, view the count of rows in `TRAINING_DATA` and `TEST_DATA`. You can verify the ratio of the training and test data by checking the number of rows of the training and test set. 
+                        </div>
+</li>
+<li class="stepexpand"><span>To find the count of rows in `TRAINING_DATA`, run the following statement:</span><div><pre class="oac_no_warn" dir="ltr">select count(*) from TRAINING_DATA;</pre></div>
+<div><pre class="pre codeblock"><code>COUNT(*)
+400
+---------------------------</code></pre></div>
+</li>
+<li class="stepexpand"><span>To find the count of rows from `TEST_DATA`, run the following statement:</span><div><pre class="oac_no_warn" dir="ltr">select COUNT(*) from TEST_DATA;</pre></div>
+<div><pre class="pre codeblock"><code>COUNT(*)
+106
+---------------------------</code></pre></div>
+</li>
+<li class="stepexpand"><span>To find if any rows are not sampled (left out) in both `TRAINING_DATA` and `TEST_DATA`, run the following query:</span><div><pre class="oac_no_warn" dir="ltr">SELECT COUNT(1)
+FROM TRAINING_DATA train
+JOIN TEST_DATA test
+ON train.HID = test.HID</pre></div>
+<div><pre class="pre codeblock"><code>COUNT(*)
+0
+---------------------------</code></pre></div>
+</li>
+<li class="stepexpand"><span>Build your model using the `CREATE_MODEL2` procedure. First, declare a variable to store model settings or hyperparameters. Run the following script:</span><div><pre class="oac_no_warn" dir="ltr">%script
+DECLARE
+    v_setlst DBMS_DATA_MINING.SETTING_LIST;
+    BEGIN
+    v_setlst('PREP_AUTO') := 'ON';
+    v_setlst('ALGO_NAME') := 'ALGO_GENERALIZED_LINEAR_MODEL';
+    v_setlst('GLMS_DIAGNOSTICS_TABLE_NAME') := 'GLMR_DIAG';
+    v_setlst('GLMS_FTR_SELECTION') := 'GLMS_FTR_SELECTION_ENABLE';
+    v_setlst('GLMS_FTR_GENERATION') := 'GLMS_FTR_GENERATION_ENABLE';
+     
+    DBMS_DATA_MINING.CREATE_MODEL2(
+      MODEL_NAME          =&gt;  'GLMR_REGR',
+      MINING_FUNCTION     =&gt; 'REGRESSION'
+      DATA_QUERY          =&gt;  'SELECT * FROM TRAINING_DATA',
+      SET_LIST            =&gt;  v_setlst,
+      CASE_ID_COLUMN_NAME =&gt;  'HID',
+      TARGET_COLUMN_NAME  =&gt;  'MEDV');
+END;</pre></div>
+<div>
+<p>Examine the script:</p>
+<ul id="GUID-FC3FD883-487E-4921-B16E-A0B5F0E61AAA__UL_FFS_3CX_J4B" style="list-style-type: disc;">
+<li>`v_setlst` is a variable to store `SETTING_LIST`.
+                              </li>
+<li>`SETTING_LIST` defines model settings or hyperparameters for your model. 
+                              </li>
+<li>`DBMS_DATA_MINING` is the PL/SQL package used for Oracle Machine Learning. These settings are described in <a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=ARPLS-GUID-8987EE6F-41A9-4DF9-997C-129B41FDC59A" target="_blank">DBMS_DATA_MINING - Model Settings</a>.
+                              </li>
+<li>`ALGO_NAME` specifies the algorithm name. Since you are using the Generalized Linear Model as your algorithm, set `ALGO_GENERALIZED_LINEAR_MODEL`.
+                              </li>
+<li>`PREP_AUTO` is the setting used for Automatic Data Preparation. Here, enable Automatic Data Preparation. The value of the setting is `ON`.
+                              </li>
+<li>`GLMS_DIAGNOSTICS_TABLE_NAME` generates per-row statistics if you specify the name of a diagnostics table in the setting. The value of the setting is `GLMR_DIAG`.
+                              </li>
+<li>`GLMS_FTR_SELECTION` indicates feature selection. The value `GLMS_FTR_SELECTION_ENABLE` indicates that feature selection is enabled. Feature selection selects columns that are most important in predicting a target attribute. If feature selection is not selected, then all the columns are considered for analysis which may not give accurate results.
+                              </li>
+<li>`GLMS_FTR_GENERATION` indicates feature generation. The value `GLMS_FTR_GENERATION_ENABLE` indicates that the feature generation is enabled. Feature generation generates new features from existing features which might be useful in our analysis.
+                              </li>
+</ul>
+<p>The `CREATE_MODEL2` procedure has the following parameters:
+                           </p>
+<ul id="GUID-FC3FD883-487E-4921-B16E-A0B5F0E61AAA__UL_GFS_3CX_J4B" style="list-style-type: disc;">
+<li>`MODEL_NAME`: A unique model name that you want to give to your model. The name of the model is in the form [schema_name.]model_name. If you do not specify a schema, then your own schema is used. Here, the model name is `GLMR_REGR`</li>
+<li>`MINING_FUNCTION`: Specifies the machine learning function. Since you are solving a linear regression problem, in this use case, select `REGRESSION`.
+                              </li>
+<li>`DATA_QUERY`: A query that provides training data for building the model. Here, the query is `SELECT * FROM TRAINING_DATA`.
+                              </li>
+<li>`SET_LIST`: Specifies `SETTING_LIST`.
+                              </li>
+<li>`CASE_ID_COLUMN_NAME`: A unique case identifier column in the training data. In this use case, case_id is `HID`. If there is a composite key, you must create a new attribute before creating the model. The `CASE_ID` assists with reproducible results, joining scores for individual customers with other data in, example, scoring data table.
+                              </li>
+<li>`TARGET_COLUMN_NAME`: Specifies the column that needs to be predicted. Also referred to as the target variable of the model. In this use case, you are predicting `MEDV` value.
+                              </li>
+</ul>
+<div class="p">
+<p><b>Note:</b> Any parameters or settings not specified are either system-determined or default values are used.
+                              </p>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2"><a id="GUID-CA77A99B-2419-4922-A441-AFB85905C0D0" name="GUID-CA77A99B-2419-4922-A441-AFB85905C0D0"></a><h3 class="sect3" id="MLSQL-GUID-CA77A99B-2419-4922-A441-AFB85905C0D0">Evaluate</h3>
+<div>
+<p>Evaluate your model by viewing diagnostic metrics and performing quality checks. </p>
+<p>Sometimes querying dictionary views and model detail views is sufficient to measure your model's performance. However, you can evaluate your model by computing test metrics such as Mean Absolute Error (MAE), Root Mean Squared Error (RMSE), confusion matrix, lift statistics, cost matrix, and so on. For Association Rules, you can inspect various rules to see if they reveal new insights for item dependencies (antecedent itemset implying consequent) or for unexpected relationships among items.</p>
+</div>
+<div class="sect3"><a id="GUID-457A38A6-F40D-4F98-BD82-C0EB979C6220" name="GUID-457A38A6-F40D-4F98-BD82-C0EB979C6220"></a><h4 class="sect4" id="MLSQL-GUID-457A38A6-F40D-4F98-BD82-C0EB979C6220">Dictionary and Model Views</h4>
+<div>
+<p>To obtain information about the model and view model settings, you can query data dictionary views and model detail views. Specific views in model detail views display model statistics which can help you evaluate the model. </p>
+<div class="section">
 <p>The data dictionary views for Oracle Machine Learning are listed in the following table. A database administrator (DBA) and USER versions of the views are also available.</p>
-<div class="tblformal" id="GUID-94527B67-D960-4506-942F-FD759589E89D__d180e253">
+<div class="tblformal" id="GUID-457A38A6-F40D-4F98-BD82-C0EB979C6220__d180e253">
 <table border="1" cellpadding="4" cellspacing="0" class="Formal" frame="hsides" rules="rows" summary="This table describes the data dictionary views available for machine learning" title="">
 <thead>
 <tr align="left" valign="top">
-<th align="left" id="d30750e827" valign="bottom" width="40%">View Name</th>
-<th align="left" id="d30750e829" valign="bottom" width="60%">Description</th>
+<th align="left" id="d27940e1176" valign="bottom" width="40%">View Name</th>
+<th align="left" id="d27940e1178" valign="bottom" width="60%">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr align="left" valign="top">
-<td align="left" headers="d30750e827" id="d30750e833" valign="top" width="40%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMAPI-GUID-955402B6-B52E-494A-865B-7BCAFDB124B2" target="_blank">ALL_MINING_MODELS</a></td>
-<td align="left" headers="d30750e833 d30750e829" valign="top" width="60%">Provides information about all accessible machine learning models</td>
+<td align="left" headers="d27940e1176" id="d27940e1182" valign="top" width="40%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMAPI-GUID-955402B6-B52E-494A-865B-7BCAFDB124B2" target="_blank">ALL_MINING_MODELS</a></td>
+<td align="left" headers="d27940e1182 d27940e1178" valign="top" width="60%">Provides information about all accessible machine learning models</td>
 </tr>
 <tr align="left" valign="top">
-<td align="left" headers="d30750e827" id="d30750e840" valign="top" width="40%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMAPI-GUID-E18029D5-09BB-41CB-82BA-894A0528E5EF" target="_blank">ALL_MINING_MODEL_ATTRIBUTES</a></td>
-<td align="left" headers="d30750e840 d30750e829" valign="top" width="60%">Provides information about the attributes of all accessible machine learning models</td>
+<td align="left" headers="d27940e1176" id="d27940e1189" valign="top" width="40%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMAPI-GUID-E18029D5-09BB-41CB-82BA-894A0528E5EF" target="_blank">ALL_MINING_MODEL_ATTRIBUTES</a></td>
+<td align="left" headers="d27940e1189 d27940e1178" valign="top" width="60%">Provides information about the attributes of all accessible machine learning models</td>
 </tr>
 <tr align="left" valign="top">
-<td align="left" headers="d30750e827" id="d30750e847" valign="top" width="40%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMAPI-GUID-8262B256-1DFD-40C1-B56C-8E391B5AA303" target="_blank">ALL_MINING_MODEL_SETTINGS</a></td>
-<td align="left" headers="d30750e847 d30750e829" valign="top" width="60%">Provides information about the configuration settings for all accessible machine learning models</td>
+<td align="left" headers="d27940e1176" id="d27940e1196" valign="top" width="40%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMAPI-GUID-8262B256-1DFD-40C1-B56C-8E391B5AA303" target="_blank">ALL_MINING_MODEL_SETTINGS</a></td>
+<td align="left" headers="d27940e1196 d27940e1178" valign="top" width="60%">Provides information about the configuration settings for all accessible machine learning models</td>
 </tr>
 <tr align="left" valign="top">
-<td align="left" headers="d30750e827" id="d30750e854" valign="top" width="40%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMAPI-GUID-69D3A987-CCD8-435A-B624-B3FD0583F02B" target="_blank">ALL_MINING_MODEL_VIEWS</a></td>
-<td align="left" headers="d30750e854 d30750e829" valign="top" width="60%">Provides information about the model views for all accessible machine learning models</td>
+<td align="left" headers="d27940e1176" id="d27940e1203" valign="top" width="40%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMAPI-GUID-69D3A987-CCD8-435A-B624-B3FD0583F02B" target="_blank">ALL_MINING_MODEL_VIEWS</a></td>
+<td align="left" headers="d27940e1203 d27940e1178" valign="top" width="60%">Provides information about the model views for all accessible machine learning models</td>
 </tr>
 <tr align="left" valign="top">
-<td align="left" headers="d30750e827" id="d30750e861" valign="top" width="40%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMAPI-GUID-40EB4505-47A6-4C1B-85F8-A49BA0906D07" target="_blank">ALL_MINING_MODEL_XFORMS</a></td>
-<td align="left" headers="d30750e861 d30750e829" valign="top" width="60%">Provides the user-specified transformations embedded in all accessible machine learning models.</td>
+<td align="left" headers="d27940e1176" id="d27940e1210" valign="top" width="40%"><a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMAPI-GUID-40EB4505-47A6-4C1B-85F8-A49BA0906D07" target="_blank">ALL_MINING_MODEL_XFORMS</a></td>
+<td align="left" headers="d27940e1210 d27940e1178" valign="top" width="60%">Provides the user-specified transformations embedded in all accessible machine learning models.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <p>Model detail views are specific to the algorithm. You can obtain more insights about the model you created by viewing the model detail views. The names of model detail views begin with DM$xx where xx corresponds to the view prefix. See <a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMPRG-GUID-AF7C531D-5327-4456-854C-9D6424C5F9EC" target="_blank">Model Detail Views</a>.
                         </p>
-</div>, <div class="section">
-<p>The following steps help you to view different dictionary views and model detail views.</p>
-</div>, <div class="section">Test metrics are used to assess how accurately the model predicts the known values. If the model performs well and meets your business requirements, it can then be applied to new data to predict the future. These matrices can help you to compare models to arrive at one model that satisfies your evaluation criteria.
-                        <p>Lift measures the degree to which the predictions of a classification model are better than randomly-generated predictions. Lift can be understood as a ratio of two percentages: the percentage of correct positive classifications made by the model to the percentage of actual positive classifications in the test data. </p>
-<p>A confusion matrix displays the number of correct and incorrect predictions made by the model compared with the actual classifications in the test data. The matrix is n-by-n, where n is the number of classes. </p>
-</div>, <div class="section">The accuracy percentage of 69% shows that the model is fairly good for this use case.</div>, <div class="section"></div>, <div class="section">To conclude, you have successfully identified customers who are likely to purchase <code class="codeph">HOME_THEATER_PACKAGE</code>. This prediction helps to promote and offer home theater package to the target customers. 
-                  </div>]
+</div>
+<div class="section">The following steps help you to view different dictionary views and model detail views.</div>
+<ol>
+<li class="stepexpand"><span>Run the following statement to view the settings in `USER_MINING_MODEL_SETTINGS`:</span><div>
+<div class="p"><pre class="oac_no_warn" dir="ltr">SELECT * FROM USER_MINING_MODEL_SETTINGS WHERE MODEL_NAME='GLMR_REGR';</pre></div>In this statement, you are selecting all the columns available in the `USER_MINING_MODEL_SETTINGS` view where the model name is `GLMR_REGR`.
+                           </div>
+<div><img alt="user_mining_model_settings" height="679" id="GUID-457A38A6-F40D-4F98-BD82-C0EB979C6220__IMAGE_EXR_GSM_P4B" src="img/regression_user_mining_model.png" title="user_mining_model_settings" width="1761"/></div>
+</li>
+<li class="stepexpand"><span>Run the following statement to view only the `SETTING_NAME` and `SETTING_VALUE` column from the above table:</span><div><pre class="pre codeblock"><code>SELECT SETTING_NAME, SETTING_VALUE FROM USER_MINING_MODEL_SETTINGS WHERE MODEL_NAME = 'GLMR_REGR' ORDER BY SETTING_NAME;</code></pre></div>
+<div><img alt="user_mining_model_settings" height="676" id="GUID-457A38A6-F40D-4F98-BD82-C0EB979C6220__IMAGE_O24_MSM_P4B" src="img/regression_user_mining_model_settings.png" title="user_mining_model_settings" width="1762"/></div>
+</li>
+<li class="stepexpand"><span>Run the following statement to see attribute information in `USER_MINING_MODEL_ATTRIBUTES` view:</span><div><pre class="pre codeblock"><code>SELECT ATTRIBUTE_NAME, ATTRIBUTE_TYPE FROM USER_MINING_MODEL_ATTRIBUTES WHERE MODEL_NAME = 'GLMR_REGR' ORDER BY ATTRIBUTE_NAME;</code></pre></div>
+<div><img alt="user_mining_model_attributes" height="466" id="GUID-457A38A6-F40D-4F98-BD82-C0EB979C6220__IMAGE_OHV_4SM_P4B" src="img/regression_user_mining_model_attributes.png" title="user_mining_model_attributes" width="1811"/></div>
+</li>
+<li class="stepexpand"><span>Run the following statement to see information on various views in `USER_MINING_MODEL_VIEWS`:</span><div><pre class="pre codeblock"><code>SELECT VIEW_NAME, VIEW_TYPE FROM USER_MINING_MODEL_VIEWS WHERE MODEL_NAME='GLMR_REGR' ORDER BY VIEW_NAME;</code></pre></div>
+<div><img alt="user_mining_model_views" height="442" id="GUID-457A38A6-F40D-4F98-BD82-C0EB979C6220__IMAGE_RRT_QSM_P4B" src="img/regression_user_mining_model_views.png" title="user_mining_model_views" width="1762"/></div>
+</li>
+<li class="stepexpand"><span>From the table above, query the Global details for linear regression. See <a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMPRG-GUID-5451C38E-CDEF-4DA3-9741-3C811D3D66EA" target="_blank">Model Detail Views for Generalized Linear Model</a>. Run the following query to see all the columns of the view:</span><div><pre class="pre codeblock"><code>SELECT * FROM DM$VGGLMR_REGR;</code></pre></div>
+<div><img alt="Global detail view" height="438" id="GUID-457A38A6-F40D-4F98-BD82-C0EB979C6220__IMAGE_L25_QTM_P4B" src="img/regression_global_detail_view.png" title="Global detail view" width="1759"/></div>
+</li>
+<li class="stepexpand"><span>From the above table, you can ignore the first column `PARTITION_NAME` and refine the query to display the rest of the columns ordered by name. Run the following statement:</span><div><pre class="pre codeblock"><code>SELECT NAME, NUMERIC_VALUE, STRING_VALUE FROM DM$VGGLMR_REGR ORDER BY NAME;</code></pre></div>
+<div>When comparing models, a model with a lower Root Mean Square Error (RMSE) value is better. RMSE, which squares the errors, gives more weight to large errors. When we have a low RMSE value, we can say that our model is good at predicting the target.</div>
+<div><img alt="Global detail view" height="736" id="GUID-457A38A6-F40D-4F98-BD82-C0EB979C6220__IMAGE_FLS_XTM_P4B" src="img/regression_global_detail_view2.png" title="Global detail view" width="1164"/></div>
+</li>
+<li class="stepexpand"><span>Query the GLM Regression Attributes Diagnostics view. </span><div><pre class="oac_no_warn" dir="ltr">SELECT FEATURE_EXPRESSION, round(COEFFICIENT,6) COEFFICIENT, round(P_VALUE,4) P_VALUE,
+CASE
+    when p_value &lt; 0.001 THEN '***'
+    when p_value &lt; 0.01 THEN '**'
+    when p_value &lt; 0.05 THEN '*'
+    when p_value &lt; 0.1 THEN '.'
+    else ' '
+END AS significance_statement
+FROM DM$VDGLMR_REGR ORDER BY FEATURE_EXPRESSION;</pre></div>
+<div>The columns of the view are described in <a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMPRG-GUID-5451C38E-CDEF-4DA3-9741-3C811D3D66EA" target="_blank">Model Detail Views for Generalized Linear Model</a>. 
+                              <div class="p">Let us examine the statement:
+                                 <ul id="GUID-457A38A6-F40D-4F98-BD82-C0EB979C6220__UL_NTK_N21_L4B" style="list-style-type: disc;">
+<li>`round(COEFFICIENT,6) COEFFICIENT`: returns the coefficient rounded to six places to the right of the decimal point.
+                                    </li>
+<li>`p_value`: provides information about the relationship between a dependent variable and independent variable such that you could decide to accept or reject the null hypothesis. Generally, p_value less than 0.05 means that you can reject the null hypothesis and accept that there is a correlation between the dependent and independent variables with a significant coefficient value.
+                                    </li>
+</ul>
+</div>
+</div>
+<div><img alt="Attributes diagnostic view" height="845" id="GUID-457A38A6-F40D-4F98-BD82-C0EB979C6220__IMAGE_PMQ_LTM_P4B" src="img/regression_attributes_detail_view.png" title="Attributes diagnostic view" width="1776"/></div>
+</li>
+<li class="stepexpand"><span>Now, run the following statement to query Normalization and Missing Value Handling view. The columns of the view are described in <a href="/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&amp;id=DMPRG-GUID-6411E882-982D-4EC3-9E25-758787876D53" target="_blank">Model Detail Views for Normalization and Missing Value Handling</a>.</span><div><pre class="pre codeblock"><code>SELECT ATTRIBUTE_NAME, round(NUMERIC_MISSING_VALUE,2) NUMERIC_MISSING_VALUE FROM DM$VNGLMR_REGR
+ORDER BY ATTRIBUTE_NAME;</code></pre></div>
+<div>Examine the query: 
+                              <ul id="GUID-457A38A6-F40D-4F98-BD82-C0EB979C6220__UL_SZC_Y21_L4B" style="list-style-type: disc;">
+<li>`ATTRIBUTE_NAME`: Provides the column names in the data set. 
+                                 </li>
+<li>`round(NUMERIC_MISSING_VALUE,2)NUMERIC_MISSING_VALUE`: Provides numeric replacements for the missing values (NULLs) in the data set. The `ROUND (n,integer)` returns results of `NUMERIC_MISSING_VALUE` rounded to integer places to the right. 
+                                 </li>
+</ul>
+</div>
+<div><img alt="Normalization and missing value view" height="607" id="GUID-457A38A6-F40D-4F98-BD82-C0EB979C6220__IMAGE_UHW_J5M_P4B" src="img/regression_normalization_missing_value_handling_view.png" title="Normalization and missing value view" width="1775"/><p>Since there are no missing values (NULLs) in your data, you can ignore the result.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3"><a id="GUID-64C35920-5ABD-42BA-BCDF-60B0E780DBD6" name="GUID-64C35920-5ABD-42BA-BCDF-60B0E780DBD6"></a><h4 class="sect4" id="MLSQL-GUID-64C35920-5ABD-42BA-BCDF-60B0E780DBD6">Test Your Model</h4>
+<div>
+<p>In this use case, you are evaluating a regression model by computing Root Mean Square Error (RMSE) and Mean Absolute Error Mean (MAE) on the test data with known target values and comparing the predicted values with the known values. </p>
+<div class="section">Test metrics are used to assess how accurately the model predicts the known values. If the model performs well and meets your business requirements, it can then be applied to new data to predict the future. These matrices can help you to compare models to arrive at one model that satisfies your evaluation criteria.
+                        <p>For this use case, you compute Root Mean Square Error (RMSE) and Mean Absolute Error Mean (MAE) values. The RMSE and MAE are popular regression statistics. RMSE is an estimator for predictive models. The score averages the residuals for each case to yield a single indicator of model error. Mean absolute error is useful for understanding how close overall the predictions were to actual values. A smaller score means predictions were more accurate. </p>
+<p>The following steps computes the error metrics for your model.</p>
+</div>
+<ul id="GUID-64C35920-5ABD-42BA-BCDF-60B0E780DBD6__STEPS-UNORDERED_LVG_LKH_ZPB">
+<li class="stepexpand"><span>To compute RMSE and MAE, run the following statement:</span><div><pre class="oac_no_warn" dir="ltr">%sql
+SELECT round(SQRT(AVG((A.PRED_MEDV - B.MEDV) * (A.PRED_MEDV - B.MEDV))),2) RMSE,
+       round(AVG(ABS(A.PRED_MEDV - B.MEDV)),2) MAE
+  FROM (SELECT HID, PREDICTION(GLMR_REGR using *) PRED_MEDV
+          FROM TEST_DATA) A,
+       TEST_DATA B
+  WHERE A.HID = B.HID;</pre><p>This statement is using the prediction query to score the median value from the test data. The predicted value and the actual value from the test data is used to compute RMSE and MAE .</p>
+</div>
+<div><img alt="RMSE and MAE values" height="99" id="GUID-64C35920-5ABD-42BA-BCDF-60B0E780DBD6__IMAGE_IZZ_BVM_P4B" src="img/regression_evaluation.png" title="RMSE and MAE values" width="506"/></div>
+</li>
+</ul>
+<div class="section">RMSE and MAE convey average model prediction errors in units consistent with the target variable. When comparing models, a model with lower values is better. RMSE, which squares the errors, gives more weight to large errors, while MAE error scales linearly. Therefore, the predictions look fair and the model is a good fit for prediction.</div>
+</div>
+</div>
+</div>
+<div class="sect2"><a id="GUID-C5C5F014-1D4A-4D8E-BBEF-AB705E27C668" name="GUID-C5C5F014-1D4A-4D8E-BBEF-AB705E27C668"></a><h3 class="sect3" id="MLSQL-GUID-C5C5F014-1D4A-4D8E-BBEF-AB705E27C668">Score</h3>
+<div>
+<p>Scoring involves applying the model to the target data. Use `PREDICTION` query to predict the `MEDV` value on the test data.  
+                  </p>
+<div class="section"></div>
+<div class="section">
+<p>The following step scores the test data comparing with the original data.</p>
+</div>
+<ul id="GUID-C5C5F014-1D4A-4D8E-BBEF-AB705E27C668__STEPS-UNORDERED_QHF_DLH_ZPB">
+<li class="stepexpand"><span>Predict the median value of owner-occupied homes in the Boston area from the `TEST_DATA` and compare the predicted `MEDV` value with the actual `MEDV` value in your result.</span><div><pre class="oac_no_warn" dir="ltr">SELECT HID, ROUND(PREDICTION(GLMR_REGR USING *), 1) AS 
+PREDICTED_MEDV, MEDV AS ACTUAL_MEDV FROM TEST_DATA ORDER BY HID;</pre><p>Examine the query:</p>
+<ul id="GUID-C5C5F014-1D4A-4D8E-BBEF-AB705E27C668__UL_YMK_HN1_L4B" style="list-style-type: disc;">
+<li>`HID:`is the House ID.
+                              </li>
+<li>`ROUND (n,integer):` in this case, is `ROUND (PREDICTION(GLMR_REGR USING *), 1)` returns results of `PREDICTION(GLMR_REGR USING *)` rounded to integer places to the right. Here, rounded to 1 place to the right. 
+                              </li>
+<li>`PREDICTED_MEDV:` is the predicted `MEDV` value.
+                              </li>
+<li>`ACTUAL_MEDV:` is the `MEDV` value in the test data. 
+                              </li>
+</ul>
+</div>
+<div><img alt="Predicted values vs actual values" height="546" id="GUID-C5C5F014-1D4A-4D8E-BBEF-AB705E27C668__IMAGE_NXS_HVM_P4B" src="img/regression_scoring.png" title="Predicted values vs actual values" width="1772"/></div>
+</li>
+</ul>
+<div class="section">âTo conclude, you have successfully predicted the median house prices in Boston using Generalized Linear Model algorithm.</div>
+</div>
+</div>
+</div>
+</article>
+</body>
+</html>
+===================================

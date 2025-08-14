@@ -1,6 +1,6 @@
 [
   {
-    "name": "Classification Use Case Scenario",
+    "name": "notebook_title",
     "paragraphs": [
       {
         "title": null,
@@ -8,11 +8,7 @@
         "message": [
           "%md",
           "",
-          "Related Content\n\n| Topic | Link |\n| --- | --- |\n|  |\n| OML4SQL GitHub Example | Classification - Random Forest |\n| CREATE_MODEL2Procedure | CREATE_MODEL2 Procedure |\n| Generic Model Settings | DBMS_DATA_MINING - Model Settings |\n| Random Forest Settings | DBMS_DATA_MINING - Algorithm Settings: Random Forest |\n| Data Dictionary Settings | Oracle Machine Learning Data Dictionary Views |\n| Random Forest - Model Detail Views | Model Detail Views for Random Forest |\n| About Classification | About Classification |\n| About Random Forest (RF) | About Random Forest |",
-          "",
-          "[Source](https://docs.oracle.com/en/database/oracle/machine-learning/oml4sql/23/mlsql/classification2.html)",
-          "",
-          "*In the business since: (2021/2025)*"
+          "## **Classification Use Case Scenario**\n\nYou are working in a retail chain company that sells some products. To better target their marketing materials, they need to identify customers who are likely to purchase a home theater package. To resolve this, you are using the Random Forest algorithm to identify the customers.   \nRefer to the documentation, [here](https://docs.oracle.com/en/database/oracle/machine-learning/oml4sql/23/mlsql/classification2.html)   \nCopyright (c) 2025 Oracle Corporation    \n###### [The Universal Permissive License (UPL), Version 1.0](https://oss.oracle.com/licenses/upl/)"
         ]
       },
       {
@@ -21,7 +17,133 @@
         "message": [
           "%md",
           "",
-          "Remember:\n\nThe data set used for this use case is from the SH schema. The SH schema can be readily accessed in Oracle Autonomous Database. For on-premises databases, the schema is installed during the installation or can be manually installed by downloading the scripts. SeeInstalling the Sample Schemas."
+          "**Related Content**\n| Topic | Link |\n| --- | --- |\n| OML4SQL GitHub Example | [Classification - Random Forest](https://github.com/oracle-samples/oracle-db-examples/blob/main/machine-learning/sql/21c/oml4sql-classification-random-forest.sql) |\n| `CREATE_MODEL2` Procedure | [CREATE_MODEL2 Procedure](https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&id=DMPRG-GUID-560517E9-646A-4C20-8814-63FDA763BFD9) |\n| Generic Model Settings | [DBMS_DATA_MINING - Model Settings](https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&id=ARPLS-GUID-8987EE6F-41A9-4DF9-997C-129B41FDC59A) |\n| Random Forest Settings | [DBMS_DATA_MINING - Algorithm Settings: Random Forest](https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&id=ARPLS-GUID-481B6C67-B26E-4689-AD4C-98062D5A2117) |\n| Data Dictionary Settings | [Oracle Machine Learning Data Dictionary Views](https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&id=DMPRG-GUID-06AF74F5-39D7-4B0F-996E-35CA4C904EA0) |\n| Random Forest - Model Detail Views | [Model Detail Views for Random Forest](https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&id=DMPRG-GUID-AEE0ADDE-AF4F-4F33-B5D7-F4A1805A989A) |\n| About Classification | [About Classification](https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&id=DMCON-GUID-9F922514-0F8D-42F5-BEB1-F59A09FA1CD2) |\n| About Random Forest (RF) | [About Random Forest](https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&id=DMCON-GUID-B8AA4B0A-EE14-4507-9D6E-08DA1DAC632E) |\n\nBefore you start your OML4SQL use case journey, ensure that you have the following:\n- Data Set The data set used for this use case is from the SH schema. The SH schema can be readily accessed in Oracle Autonomous Database. For on-premises databases, the schema is installed during the installation or can be manually installed by downloading the scripts. See [Installing the Sample Schemas](https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&id=COMSC-GUID-3820972A-08D7-4033-9524-1E36676594EE) Installing the Sample Schemas .\n- Database Select or create database out of the following options: Get your FREE cloud account. Go to [https://cloud.oracle.com/database](https://cloud.oracle.com/database) https://cloud.oracle.com/database and select Oracle Database Cloud Service (DBCS), or Oracle Autonomous Database. Create an account and create an instance. See [Autonomous Database Quick Start Workshop](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=582) Autonomous Database Quick Start Workshop . Download the latest version of [Oracle Database](https://www.oracle.com/in/database/technologies/oracle-database-software-downloads.html) Oracle Database (on premises).\n- Machine Learning Tools Depending on your database selection, Use OML Notebooks for Oracle Autonomous Database. Install and use Oracle SQL Developer connected to an on-premises database or DBCS. See [Installing and Getting Started with SQL Developer](https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&id=RPTUG-GUID-156BEBA3-2F9B-4CE0-8E91-728581FF46AB) Installing and Getting Started with SQL Developer .\n- Other Requirements Data Mining Privileges (this is automatically set for ADW). See [System Privileges for Oracle Machine Learning for SQL](https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&id=DMPRG-GUID-34AABD01-9FF9-4C1A-A2A3-89A1827D10AE) System Privileges for Oracle Machine Learning for SQL ."
+        ]
+      },
+      {
+        "title": "Load Data",
+        "hasTitle": true,
+        "message": [
+          "%md",
+          "",
+          "### Load Data\n\nAccess the data set from the SH Schema and explore the data to understand the attributes.\n\n**Remember:**\n\nThe data set used for this use case is from the SH schema. The SH schema can be readily accessed in Oracle Autonomous Database. For on-premises databases, the schema is installed during the installation or can be manually installed by downloading the scripts. See [Installing the Sample Schemas](https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&id=COMSC-GUID-3820972A-08D7-4033-9524-1E36676594EE) .\n\nTo understand the data, you will perform the following:\n\n* Access the data.\n* Examine the various attributes or columns of the data set.\n* Assess data quality (by exploring the data).\n\n**Access Data**\n\nYou will use `CUSTOMERS` and `SUPPLEMENTARY_DEMOGRAPHICS` table data from the SH schema.\n\n\n**Examine Data**\n\nThe following table displays information about the attributes from `SUPPLEMENTARY_DEMOGRAPHICS`:\n\n| Attribute Name | Information |\n| --- | --- |\n| `CUST_ID` | The ID of the customer |\n| `EDUCATION` | Educational information of the customer |\n| `OCCUPATION` | Occupation of the customer |\n| `HOUSEHOLD_SIZE` | People per house |\n| `YRS_RESIDENCE` | Number of years of residence |\n| `AFFINITY_CARD` | Whether the customer holds an affinity card |\n| `BULK_PACK_DISKETTES` | Product. Indicates whether the customer already owns the product.<br>1 means Yes. 0 means No |\n| `FLAT_PANEL_MONITOR` | Product. Indicates whether the customer already owns the product.<br>1 means Yes. 0 means No |\n| `HOME_THEATER_PACKAGE` | Product. Indicates whether the customer already owns the product.<br>1 means Yes. 0 means No |\n| `BOOKKEEPING_APPLICATION` | Product. Indicates whether the customer already owns the product.<br>1 means Yes. 0 means No |\n| `PRINTER_SUPPLIES` | Product. Indicates whether the customer already owns the product.<br>1 means Yes. 0 means No |\n| `Y_BOX_GAMES` | Product. Indicates whether the customer already owns the product.<br>1 means Yes. 0 means No |\n| `OS_DOC_SET_KANJI` | Product. Indicates whether the customer already owns the product.<br>1 means Yes. 0 means No |\n| `COMMENTS` | Product. Indicates whether the customer already owns the product.<br>1 means Yes. 0 means No |\n\n"
+        ]
+      },
+      {
+        "title": "Explore Data",
+        "hasTitle": true,
+        "message": [
+          "%md",
+          "",
+          "### Explore Data\n\nExplore the data to understand and assess the quality of the data. At this stage assess the data to identify data types and noise in the data. Look for missing values and numeric outlier values.\n\n\n**Assess Data Quality**\n\nTo assess the data, first, you must be able to view the data in your database. For this reason, you will use SQL statements to query the `SH.CUSTOMERS` and the `SH.SUPPLEMENTARY_DEMOGRAPHICS` table.\n\nIf you are working with Oracle Autonomous Database, you can use the Oracle Machine Learning (OML) Notebooks for your data science project, including assessing data quality. If you are using on-premise Oracle Database, you can use the Oracle SQL Developer to assess data quality. Query the `SH` schema as described.\n\n**Note:** Each record in the database is called a case and each case is identified by a `case_id`. In this use case, `CUST_ID` is the `case_id`.\n"
+        ]
+      },
+      {
+        "title": "View the data in the `SH.CUSTOMERS` table by running the following statement:",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "SELECT * FROM SH.CUSTOMERS;"
+        ]
+      },
+      {
+        "title": "To see distinct data from the table, run the following statement:",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "SELECT DISTINCT * FROM SH.CUSTOMERS;"
+        ]
+      },
+      {
+        "title": "Find the `COUNT` of rows in the data set by running the following statement:",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "SELECT COUNT(*) from SH.CUSTOMERS;"
+        ]
+      },
+      {
+        "title": "To identify distinct or unique customers in the table, run the following statement:",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "%script\nSELECT COUNT (DISTINCT CUST_ID) FROM SH.CUSTOMERS;"
+        ]
+      },
+      {
+        "title": "Similarly, query the `SH.SUPPLEMENTARY_DEMOGRAPHICS` table.",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "SELECT * FROM SH.SUPPLEMENTARY_DEMOGRAPHICS;"
+        ]
+      },
+      {
+        "title": "To view the count of `SH.SUPPLEMENTARY_DEMOGRAPHICS`, run the following statement:",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "SELECT COUNT(*) from SH.SUPPLEMENTARY_DEMOGRAPHICS;"
+        ]
+      },
+      {
+        "title": "Create a table called `CUSTOMERDATA` by selecting the required columns from the `SH.CUSTOMERS` and the `SH.SUPPLIMENTARY_DEMOGRAPHICS` tables.",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "%script\nCREATE TABLE CUSTOMERDATA AS\n   SELECT a.CUST_ID,\n         a.CUST_INCOME_LEVEL, a.CUST_CREDIT_LIMIT,\n          b.HOUSEHOLD_SIZE, b.OCCUPATION, b.HOME_THEATER_PACKAGE\n   FROM SH.CUSTOMERS a, SH.SUPPLEMENTARY_DEMOGRAPHICS b\n   WHERE a.CUST_ID = b.CUST_ID;"
+        ]
+      },
+      {
+        "title": "View the `CUSTOMERDATA` table.",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "SELECT * FROM CUSTOMERDATA;"
+        ]
+      },
+      {
+        "title": "Find the count of rows in the new table `CUSTOMERDATA`:",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "SELECT COUNT(*) FROM CUSTOMERDATA;"
+        ]
+      },
+      {
+        "title": "To view the data type of the columns, run the following script:",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "%script\nDESCRIBE CUSTOMERDATA;"
+        ]
+      },
+      {
+        "title": "To check if there are any missing values (NULL values), run the following statement:",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "SELECT COUNT(*) FROM CUSTOMERDATA WHERE CUST_ID=NULL OR CUST_GENDER=NULL\n OR CUST_MARITAL_STATUS=NULL OR CUST_YEAR_OF_BIRTH=NULL OR CUST_INCOME_LEVEL=NULL\n OR CUST_CREDIT_LIMIT=NULL OR HOUSEHOLD_SIZE=NULL OR YRS_RESIDENCE=NULL OR Y_BOX_GAMES=NULL;"
+        ]
+      },
+      {
+        "title": "To know the income level of customers who responded to `HOME_THEATER_PACKAGE`, run the following statement:",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "SELECT COUNT(CUST_ID) AS NUM_CUSTOMERS, CUST_INCOME_LEVEL, HOME_THEATER_PACKAGE\nFROM   CUSTOMERDATA\nGROUP BY CUST_INCOME_LEVEL, HOME_THEATER_PACKAGE;"
         ]
       },
       {
@@ -30,7 +152,69 @@
         "message": [
           "%md",
           "",
-          "- Access the data.\n- Examine the various attributes or columns of the data set.\n- Assess data quality (by exploring the data)."
+          "This completes the data exploration stage. OML supports Automatic Data Preparation (ADP). ADP is enabled through the model settings. When ADP is enabled, the transformations required by the algorithm are performed automatically and embedded in the model. This step is done during the Build Model stage. The commonly used methods of data preparation are binning, normalization, and missing value treatment.\n"
+        ]
+      },
+      {
+        "title": "Build Model",
+        "hasTitle": true,
+        "message": [
+          "%md",
+          "",
+          "### Build Model\n\nBuild your model using the training data set. Use the `DBMS_DATA_MINING.CREATE_MODEL2` procedure to build your model and specify the model settings.\n\nFor a supervised learning, like Classification, before creating the model, split the data into training and test data. Although you can use the entire data set to build a model, it is difficult to validate the model unless there are new data sets available. Therefore, to evaluate the model and to accurately assess the performance of the model on the same data, you generally split or separate the data into training and test data. You use the training data set to train the model and then use the test data set to test the accuracy of the model by running prediction queries. The testing data set already contains known values for the attribute that you want to predict. It is thus easy to determine whether the predictions of the model are correct.\n\n\n**Algorithm Selection**\n\nBefore you build a model, choose the suitable algorithm. You can choose one of the following algorithms to solve a classification problem:\n\n* Decision Tree\n* Explicit Semantic Analysis (ESM)\n* Generalized Linear Model (GLM)\n* Naive Bayes\n* Random Forest\n* Support Vector Machine (SVM)\n* XGBoost\nFrom the above algorithms, ESM is more about Natural Language Processing (NLP) and text mining. ESM does not apply to this use case and data. If you were to select a relatively simple linear model like GLM, the prediction accuracy can be further improved by the Random Forest algorithm. Random Forest is an ensemble method that builds multiple decision trees on subsets of the data re-sampled at each time (bagging). This avoids the overfitting for a single decision tree. The random forest model is a widely used ensemble method that is known to have higher accuracy than linear models. Thus, Random Forest is selected for this use case.\n\nFor this use case, split the data into 60/40 as training and test data. You build the model using the training data and once the model is built, score the test data using the model.\n\nThe following steps guide you to split your data and build your model with the selected algorithm.\n"
+        ]
+      },
+      {
+        "title": "To create the training and test data with 60/40 split, run the following statement:",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "CREATE OR REPLACE VIEW TRAINING_DATA AS SELECT * FROM CUSTOMERDATA SAMPLE (60) SEED (1);\n--DBMS_OUTPUT.PUT_LINE ('Created TRAINING_DATA');\nCREATE OR REPLACE VIEW TEST_DATA AS SELECT * FROM CUSTOMERDATA MINUS SELECT * FROM TRAINING_DATA;\n--DBMS_OUTPUT.PUT_LINE ('Created TEST_DATA');"
+        ]
+      },
+      {
+        "title": "To view the data in the `training_data` view, run the following statement:",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "SELECT * FROM TRAINING_DATA;"
+        ]
+      },
+      {
+        "title": "To view the data in the `test_data` view, run the following statement:",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "SELECT* FROM TEST_DATA;"
+        ]
+      },
+      {
+        "title": "To view the distribution of `HOME_THEATER_PACKAGE` (target) owners, run the following script:",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "%script\nselect HOME_THEATER_PACKAGE, count(1)\nfrom training_data\ngroup by HOME_THEATER_PACKAGE;"
+        ]
+      },
+      {
+        "title": "Build your model using the `CREATE_MODEL2` procedure. First, declare a variable to store model settings or hyperparameters. Run the following script:",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "%script\n \nBEGIN DBMS_DATA_MINING.DROP_MODEL('MODEL_RF');\nEXCEPTION WHEN OTHERS THEN NULL; END;\n/\nDECLARE\n    v_setlist DBMS_DATA_MINING.SETTING_LIST;\n     \nBEGIN\n    v_setlist('PREP_AUTO') := 'ON';\n    v_setlist('ALGO_NAME') := 'ALGO_RANDOM_FOREST';\n    v_setlist('RFOR_NUM_TREES') := '25';\n     \n    DBMS_DATA_MINING.CREATE_MODEL2(\n      MODEL_NAME          =>  'MODEL_RF',\n      MINING_FUNCTION     => 'CLASSIFICATION',\n      DATA_QUERY          =>  'SELECT * FROM TRAINING_DATA',\n      SET_LIST            =>  v_setlist,\n      CASE_ID_COLUMN_NAME =>  'CUST_ID',\n      TARGET_COLUMN_NAME  =>  'HOME_THEATER_PACKAGE');\nEND;"
+        ]
+      },
+      {
+        "hasTitle": false,
+        "message": [
+          "%md",
+          "",
+          "Examine the script:\n\n-  -  -  -  -  -\n\nThe `CREATE_MODEL2` procedure takes the following parameters:\n\n-  -  -  -  -\n\n`MODEL_NAME`: A unique model name that you will give to the model. The name of the model is in the form [schema_name.]model_name. If you do not specify a schema, then your own schema is used. Here, the model name is `MODEL_RF`\n\n`MINING_FUNCTION`: Specifies the machine learning function. Since it is a classification problem in this use case, select `CLASSIFICATION`.\n\n`DATA_QUERY`: A query that provides training data for building the model. Here, the query is `SELECT * FROM TRAINING_DATA`.\n\n`CASE_ID_COLUMN_NAME`: A unique case identifier column in the build data. In this use case, case_id is `CUST_ID`. If there is a composite key, you must create a new attribute before creating the model. The `CASE_ID` assists with reproducible results, joining scores for individual customers with other data in, example, scoring data table.\n\n**Note:** OML uses either system-determined or default values for any parameters or settings not specified.\n\n**Note:** OML uses either system-determined or default values for any parameters or settings not specified."
         ]
       },
       {
@@ -39,7 +223,52 @@
         "message": [
           "%md",
           "",
-          "**Access Data**\n\nYou will useCUSTOMERSandSUPPLEMENTARY_DEMOGRAPHICStable data from the SH schema."
+          "\n* `v_setlist` is a variable to store `SETTING_LIST`.\n* `SETTING_LIST` defines model settings or hyperparameters for your model.\n* `DBMS_DATA_MINING` is the PL/SQL package used for machine learning. These settings are described inDBMS_DATA_MINING - Model Settings.\n* `ALGO_NAME` specifies the algorithm name. Since you are using Random Forest as the algorithm, set `ALGO_RANDOM_FOREST`.\n* `PREP_AUTO` is the setting used for Automatic Data Preparation. Here, enable Automatic Data Preparation. The value of the setting is `ON`.\n* `RFOR_NUM_TREES` is the number of trees in the forest. The value here is `25`. Random forest resolves the overfitting problem by training multiple trees on distinct sampled subsets of the data instead of on the same, entire training set. The more trees you select, the more accuracy it can obtain. However, keep in mind that more trees mean more computation load and longer model building time. You need to do a trade-off between the time cost and model accuracy here. Choosing the number of trees equal to 25 allows you to build the model in a reasonably short time and obtain an accurate enough model.\n* `MODEL_NAME`: A unique model name that you will give to the model. The name of the model is in the form [schema_name.]model_name. If you do not specify a schema, then your own schema is used. Here, the model name is `MODEL_RF`\n* `MINING_FUNCTION`: Specifies the machine learning function. Since it is a classification problem in this use case, select `CLASSIFICATION`.\n* `DATA_QUERY`: A query that provides training data for building the model. Here, the query is `SELECT * FROM TRAINING_DATA`.\n* `SET_LIST`: Specifies `SETTING_LIST`.\n* `CASE_ID_COLUMN_NAME`: A unique case identifier column in the build data. In this use case, case_id is `CUST_ID`. If there is a composite key, you must create a new attribute before creating the model. The `CASE_ID` assists with reproducible results, joining scores for individual customers with other data in, example, scoring data table."
+        ]
+      },
+      {
+        "title": "Evaluate",
+        "hasTitle": true,
+        "message": [
+          "%md",
+          "",
+          "### Evaluate\n\nEvaluate your model by viewing diagnostic metrics and performing quality checks.\n\nSometimes querying dictionary views and model detail views is sufficient to measure your model's performance. However, you can evaluate your model by computing test metrics such as Mean Absolute Error (MAE), Root Mean Squared Error (RMSE), confusion matrix, lift statistics, cost matrix, and so on. For Association Rules, you can inspect various rules to see if they reveal new insights for item dependencies (antecedent itemset implying consequent) or for unexpected relationships among items.\n\nTo obtain information about the model and view model settings, you can query data dictionary views and model detail views. Specific views in model detail views display model statistics which can help you evaluate the model.\n\nThe data dictionary views for Oracle Machine Learning are listed in the following table. A database administrator (DBA) and USER versions of the views are also available.\n\n| View Name | Description |\n| --- | --- |\n| [ALL_MINING_MODELS](https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&id=DMAPI-GUID-955402B6-B52E-494A-865B-7BCAFDB124B2) | Provides information about all accessible machine learning models |\n| [ALL_MINING_MODEL_ATTRIBUTES](https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&id=DMAPI-GUID-E18029D5-09BB-41CB-82BA-894A0528E5EF) | Provides information about the attributes of all accessible machine learning models |\n| [ALL_MINING_MODEL_SETTINGS](https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&id=DMAPI-GUID-8262B256-1DFD-40C1-B56C-8E391B5AA303) | Provides information about the configuration settings for all accessible machine learning models |\n| [ALL_MINING_MODEL_VIEWS](https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&id=DMAPI-GUID-69D3A987-CCD8-435A-B624-B3FD0583F02B) | Provides information about the model views for all accessible machine learning models |\n| [ALL_MINING_MODEL_XFORMS](https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&id=DMAPI-GUID-40EB4505-47A6-4C1B-85F8-A49BA0906D07) | Provides the user-specified transformations embedded in all accessible machine learning models. |\n\n\nModel detail views are specific to the algorithm. You can obtain more insights about the model you created by viewing the model detail views. The names of model detail views begin with DM$xx where xx corresponds to the view prefix. See [Model Detail Views](https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&id=DMPRG-GUID-AF7C531D-5327-4456-854C-9D6424C5F9EC) .\n\nThe following steps help you to view different dictionary views and model detail views.\n"
+        ]
+      },
+      {
+        "title": "Run the following statement to view the settings in `USER_MINING_MODEL_SETTINGS`:",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "%script\n\nSELECT SETTING_NAME, SETTING_VALUE \n  FROM USER_MINING_MODEL_SETTINGS\n  WHERE MODEL_NAME='MODEL_RF'\n  ORDER BY SETTING_NAME;"
+        ]
+      },
+      {
+        "title": "Run the following statement to see attribute information in `USER_MINING_MODEL_ATTRIBUTES` view:",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "%script\nSELECT ATTRIBUTE_NAME, ATTRIBUTE_TYPE \nFROM USER_MINING_MODEL_ATTRIBUTES \nWHERE MODEL_NAME = 'MODEL_RF' \nORDER BY ATTRIBUTE_NAME;"
+        ]
+      },
+      {
+        "title": "Run the following statement to view various model detail views from `USER_MINING_MODEL_VIEWS`:",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "%script\nSELECT VIEW_NAME, VIEW_TYPE\n  FROM USER_MINING_MODEL_VIEWS\n  WHERE MODEL_NAME='MODEL_RF'\n  ORDER BY VIEW_NAME;"
+        ]
+      },
+      {
+        "title": "Now, view the Classification targets view. This view describes the target (`HOME_THEATER_PACKAGE`) distribution for classification models.",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "%script\nSELECT* from DM$VTMODEL_RF;"
         ]
       },
       {
@@ -48,7 +277,52 @@
         "message": [
           "%md",
           "",
-          "**Examine Data**\n\nThe following table displays information about the attributes fromSUPPLEMENTARY_DEMOGRAPHICS:\n\n| Attribute Name | Information |\n| --- | --- |\n|  |\n| CUST_ID | The ID of the customer |\n| EDUCATION | Educational information of the customer |\n| OCCUPATION | Occupation of the customer |\n| HOUSEHOLD_SIZE | People per house |\n| YRS_RESIDENCE | Number of years of residence |\n| AFFINITY_CARD | Whether the customer holds an affinity card |\n| BULK_PACK_DISKETTES | Product. Indicates whether the customer already owns the product.1 means Yes. 0 means No |\n| FLAT_PANEL_MONITOR | Product. Indicates whether the customer already owns the product.1 means Yes. 0 means No |\n| HOME_THEATER_PACKAGE | Product. Indicates whether the customer already owns the product.1 means Yes. 0 means No |\n| BOOKKEEPING_APPLICATION | Product. Indicates whether the customer already owns the product.1 means Yes. 0 means No |\n| PRINTER_SUPPLIES | Product. Indicates whether the customer already owns the product.1 means Yes. 0 means No |\n| Y_BOX_GAMES | Product. Indicates whether the customer already owns the product.1 means Yes. 0 means No |\n| OS_DOC_SET_KANJI | Product. Indicates whether the customer already owns the product.1 means Yes. 0 means No |\n| COMMENTS | Product. Indicates whether the customer already owns the product.1 means Yes. 0 means No |\n\nProduct. Indicates whether the customer already owns the product.\n\n1 means Yes. 0 means No\n\nProduct. Indicates whether the customer already owns the product.\n\n1 means Yes. 0 means No\n\nProduct. Indicates whether the customer already owns the product.\n\n1 means Yes. 0 means No\n\nProduct. Indicates whether the customer already owns the product.\n\n1 means Yes. 0 means No\n\nProduct. Indicates whether the customer already owns the product.\n\n1 means Yes. 0 means No\n\nProduct. Indicates whether the customer already owns the product.\n\n1 means Yes. 0 means No\n\nProduct. Indicates whether the customer already owns the product.\n\n1 means Yes. 0 means No\n\nProduct. Indicates whether the customer already owns the product.\n\n1 means Yes. 0 means No"
+          "In this use case, you are evaluating a classification model by computing Lift and Confusion Matrix on the test data with known target values and comparing the predicted values with the known values.\n\nLift measures the degree to which the predictions of a classification model are better than randomly-generated predictions. Lift can be understood as a ratio of two percentages: the percentage of correct positive classifications made by the model to the percentage of actual positive classifications in the test data.\n\nA confusion matrix displays the number of correct and incorrect predictions made by the model compared with the actual classifications in the test data. The matrix is n-by-n, where n is the number of classes.\n"
+        ]
+      },
+      {
+        "title": "Create a result table to store the predictions for each row with likely and unlikely probabilities. Run the following script:",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "%script\n \nBEGIN EXECUTE IMMEDIATE 'DROP TABLE APPLY_RESULT PURGE';\nEXCEPTION WHEN OTHERS THEN NULL; END;\n/\n \nCREATE TABLE APPLY_RESULT AS\n    SELECT cust_id, t.prediction, t.probability\n    FROM TEST_DATA, TABLE(PREDICTION_SET(MODEL_RF USING *)) t;"
+        ]
+      },
+      {
+        "title": "Compute lift by using the `DBMS_DATA_MINING.APPLY` and the `DBMS_DATA_MINING.COMPUTE_LIFT` procedures:",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "%script\n \nBEGIN EXECUTE IMMEDIATE 'DROP TABLE APPLY_RESULT PURGE';\nEXCEPTION WHEN OTHERS THEN NULL; END;\n/\n \nBEGIN\n  DBMS_DATA_MINING.APPLY('MODEL_RF','TEST_DATA','CUST_ID','APPLY_RESULT');\n   \n                                  \n     \n       DBMS_DATA_MINING.COMPUTE_LIFT (\n          apply_result_table_name           => 'APPLY_RESULT',\n          target_table_name                  => 'TEST_DATA',\n          case_id_column_name               => 'CUST_ID',\n          target_column_name                 => 'HOME_THEATER_PACKAGE',\n          lift_table_name                       => 'LIFT_TABLE',\n          positive_target_value           =>  to_char(1),\n          score_column_name                  => 'PREDICTION',\n          score_criterion_column_name    => 'PROBABILITY',\n          num_quantiles                       =>  10,\n          cost_matrix_table_name             =>  null,\n          apply_result_schema_name         =>  null,\n          target_schema_name                 =>  null,\n          cost_matrix_schema_name           =>  null,\n          score_criterion_type             =>  'PROBABILITY');\n     \n                                  \nEND;"
+        ]
+      },
+      {
+        "title": "To view the cumulative gains, run the following statement:",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "%sql\nSELECT QUANTILE_NUMBER, GAIN_CUMULATIVE FROM LIFT_TABLE;"
+        ]
+      },
+      {
+        "title": "To compute confusion matrix, run the following statement:",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "%script\n\nDECLARE\n   v_accuracy NUMBER;       \n   BEGIN\n        DBMS_DATA_MINING.COMPUTE_CONFUSION_MATRIX (\n                   accuracy => v_accuracy,\n                   apply_result_table_name => 'apply_result',\n                   target_table_name => 'test_data',\n                   case_id_column_name => 'cust_id',\n                   target_column_name => 'HOME_THEATER_PACKAGE',\n                   confusion_matrix_table_name => 'confusion_matrix',\n                   score_column_name => 'PREDICTION',\n                   score_criterion_column_name => 'PROBABILITY',\n                   cost_matrix_table_name => null,\n                   apply_result_schema_name => null,\n                   target_schema_name => null,\n                   cost_matrix_schema_name => null,\n                   score_criterion_type => 'PROBABILITY');\n        DBMS_OUTPUT.PUT_LINE('**** MODEL ACCURACY ****: ' || ROUND(v_accuracy,4));\n      END;\n      /"
+        ]
+      },
+      {
+        "title": "To check the confusion matrix with predicted values and actual values, run the following statement:",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "select * from confusion_matrix;"
         ]
       },
       {
@@ -57,7 +331,61 @@
         "message": [
           "%md",
           "",
-          "**Assess Data Quality**\n\nTo assess the data, first, you must be able to view the data in your database. For this reason, you will use SQL statements to query theSH.CUSTOMERSand theSH.SUPPLEMENTARY_DEMOGRAPHICStable.\n\nNote:"
+          "* `DBMS_DATA_MINING.APPLY`: This procedure creates a table in the user's schema to hold the results. The `APPLY` procedure generates predictions (scores) in a target column.The `APPLY` procedure has the following parameters:`model_name`: Name of the model in the form [schema_name.]model_name. If you do not specify a schema, then your own schema is used. Here, the model name is `MODEL_RF`.`data_table_name`: Name of table or view containing the data to be scored. Here, you are using `TEST_DATA`.`case_id_column_name`: Name of the case identifier column. The case ID is `CUST_ID`.`result_table_name`: Name of the table in which to store apply results. Here, the result table name is `APPLY_RESULT`.\n* `model_name`: Name of the model in the form [schema_name.]model_name. If you do not specify a schema, then your own schema is used. Here, the model name is `MODEL_RF`.\n* `data_table_name`: Name of table or view containing the data to be scored. Here, you are using `TEST_DATA`.\n* `case_id_column_name`: Name of the case identifier column. The case ID is `CUST_ID`.\n* `result_table_name`: Name of the table in which to store apply results. Here, the result table name is `APPLY_RESULT`.\n* `DBMS_DATA_MINING.COMPUTE_LIFT`: This procedure computes lift and stores them in the user's schema. To compute lift, one of the target values must be designated as the positive class.The `COMPUTE_LIFT` procedure has the following parameters:`apply_result_table_name`: Table containing the predictions. For this use case, it is `APPLY_RESULT`.`target_table_name`: Table containing the known target values from the test data. In this use case, the target table name is `TEST_DATA`.`case_id_column_name`: Case ID column in the apply results table. Must match the case identifier in the targets table. The case ID column is `CUST_ID`.`target_column_name`: Target column in the targets table. Contains the known target values from the test data. In this use case, the target is `HOME_THEATER_PACKAGE`.`lift_table_name`: Table containing the lift statistics. The table will be created by the procedure in the user's schema. Type `LIFT_TABLE`.`positive_target_value`: The positive class. This should be the class of interest, for which you want to calculate lift. If the target column is a `NUMBER`, you can use the `TO_CHAR()` operator to provide the value as a string.`score_column_name`: Column containing the predictions in the apply results table. The default column name is `'PREDICTION'`, which is the default name created by the `APPLY` procedure.`score_criterion_column_name`: Column containing the scoring criterion in the apply results table. Contains either the probabilities or the costs that determine the predictions. By default, scoring is based on probability; the class with the highest probability is predicted for each case. If scoring is based on cost, the class with the lowest cost is predicted. The `score_criterion_type` parameter indicates whether probabilities or costs will be used for scoring. The default column name is `'PROBABILITY'`, which is the default name created by the `APPLY` procedure.`num_quantiles`: Number of quantiles to be used in calculating lift. The default is 10.`cost_matrix_table_name`: (Optional) Table that defines the costs associated with misclassifications. If a cost matrix table is provided and the score_criterion_type parameter is set to `'COST'`, the costs will be used as the scoring criteria.`apply_result_schema_name`: Schema of the apply results table. If null, the user's schema is assumed.`target_schema_name`: Schema of the table containing the known targets. If null, the user's schema is assumed.`cost_matrix_schema_name`: Schema of the cost matrix table, if one is provided. If null, the user's schema is assumed.`score_criterion_type`: Whether to use probabilities or costs as the scoring criterion. Probabilities or costs are passed in the column identified in the score_criterion_column_name parameter. The default value of `score_criterion_type` is `'PROBABILITY'`. To use costs as the scoring criterion, specify `'COST'`. If `score_criterion_type` is set to `'COST'` but no cost matrix is provided and if there is a scoring cost matrix associated with the model, then the associated costs are used for scoring.\n* `apply_result_table_name`: Table containing the predictions. For this use case, it is `APPLY_RESULT`.\n* `target_table_name`: Table containing the known target values from the test data. In this use case, the target table name is `TEST_DATA`.\n* `case_id_column_name`: Case ID column in the apply results table. Must match the case identifier in the targets table. The case ID column is `CUST_ID`.\n* `target_column_name`: Target column in the targets table. Contains the known target values from the test data. In this use case, the target is `HOME_THEATER_PACKAGE`.\n* `lift_table_name`: Table containing the lift statistics. The table will be created by the procedure in the user's schema. Type `LIFT_TABLE`.\n* `positive_target_value`: The positive class. This should be the class of interest, for which you want to calculate lift. If the target column is a `NUMBER`, you can use the `TO_CHAR()` operator to provide the value as a string.\n* `score_column_name`: Column containing the predictions in the apply results table. The default column name is `'PREDICTION'`, which is the default name created by the `APPLY` procedure.\n* `score_criterion_column_name`: Column containing the scoring criterion in the apply results table. Contains either the probabilities or the costs that determine the predictions. By default, scoring is based on probability; the class with the highest probability is predicted for each case. If scoring is based on cost, the class with the lowest cost is predicted. The `score_criterion_type` parameter indicates whether probabilities or costs will be used for scoring. The default column name is `'PROBABILITY'`, which is the default name created by the `APPLY` procedure.\n* `num_quantiles`: Number of quantiles to be used in calculating lift. The default is 10.\n* `cost_matrix_table_name`: (Optional) Table that defines the costs associated with misclassifications. If a cost matrix table is provided and the score_criterion_type parameter is set to `'COST'`, the costs will be used as the scoring criteria.\n* `apply_result_schema_name`: Schema of the apply results table. If null, the user's schema is assumed.\n* `target_schema_name`: Schema of the table containing the known targets. If null, the user's schema is assumed.\n* `cost_matrix_schema_name`: Schema of the cost matrix table, if one is provided. If null, the user's schema is assumed.\n* `score_criterion_type`: Whether to use probabilities or costs as the scoring criterion. Probabilities or costs are passed in the column identified in the score_criterion_column_name parameter. The default value of `score_criterion_type` is `'PROBABILITY'`. To use costs as the scoring criterion, specify `'COST'`. If `score_criterion_type` is set to `'COST'` but no cost matrix is provided and if there is a scoring cost matrix associated with the model, then the associated costs are used for scoring.\n* `model_name`: Name of the model in the form [schema_name.]model_name. If you do not specify a schema, then your own schema is used. Here, the model name is `MODEL_RF`.\n* `data_table_name`: Name of table or view containing the data to be scored. Here, you are using `TEST_DATA`.\n* `case_id_column_name`: Name of the case identifier column. The case ID is `CUST_ID`.\n* `result_table_name`: Name of the table in which to store apply results. Here, the result table name is `APPLY_RESULT`.\n* `apply_result_table_name`: Table containing the predictions. For this use case, it is `APPLY_RESULT`.\n* `target_table_name`: Table containing the known target values from the test data. In this use case, the target table name is `TEST_DATA`.\n* `case_id_column_name`: Case ID column in the apply results table. Must match the case identifier in the targets table. The case ID column is `CUST_ID`.\n* `target_column_name`: Target column in the targets table. Contains the known target values from the test data. In this use case, the target is `HOME_THEATER_PACKAGE`.\n* `lift_table_name`: Table containing the lift statistics. The table will be created by the procedure in the user's schema. Type `LIFT_TABLE`.\n* `positive_target_value`: The positive class. This should be the class of interest, for which you want to calculate lift. If the target column is a `NUMBER`, you can use the `TO_CHAR()` operator to provide the value as a string.\n* `score_column_name`: Column containing the predictions in the apply results table. The default column name is `'PREDICTION'`, which is the default name created by the `APPLY` procedure.\n* `score_criterion_column_name`: Column containing the scoring criterion in the apply results table. Contains either the probabilities or the costs that determine the predictions. By default, scoring is based on probability; the class with the highest probability is predicted for each case. If scoring is based on cost, the class with the lowest cost is predicted. The `score_criterion_type` parameter indicates whether probabilities or costs will be used for scoring. The default column name is `'PROBABILITY'`, which is the default name created by the `APPLY` procedure.\n* `num_quantiles`: Number of quantiles to be used in calculating lift. The default is 10.\n* `cost_matrix_table_name`: (Optional) Table that defines the costs associated with misclassifications. If a cost matrix table is provided and the score_criterion_type parameter is set to `'COST'`, the costs will be used as the scoring criteria.\n* `apply_result_schema_name`: Schema of the apply results table. If null, the user's schema is assumed.\n* `target_schema_name`: Schema of the table containing the known targets. If null, the user's schema is assumed.\n* `cost_matrix_schema_name`: Schema of the cost matrix table, if one is provided. If null, the user's schema is assumed.\n* `score_criterion_type`: Whether to use probabilities or costs as the scoring criterion. Probabilities or costs are passed in the column identified in the score_criterion_column_name parameter. The default value of `score_criterion_type` is `'PROBABILITY'`. To use costs as the scoring criterion, specify `'COST'`. If `score_criterion_type` is set to `'COST'` but no cost matrix is provided and if there is a scoring cost matrix associated with the model, then the associated costs are used for scoring.\n* `accuracy`: Output parameter containing the overall percentage accuracy of the predictions. Here, it is `v_accuracy`.\n* `apply_result_table_name`: Table containing the predictions. In this use case, it is `APPLY_RESULT`.\n* `target_table_name`: Table containing the known target values from the test data. In this use case, you are using `TEST_DATA`.\n* `case_id_column_name`: Case ID column in the apply results table. Must match the case identifier in the targets table. Here, it is `CUST_ID`.\n* `target_column_name`: Target column in the targets table. Contains the known target values from the test data. In this use case, the target column is `HOME_THEATER_PACKAGE`.\n* `confusion_matrix_table_name`: Table containing the confusion matrix. The table will be created by the procedure in the user's schema. Here set it as `confusion_matrix`.\n* `score_column_name`: Column containing the predictions in the apply results table. The default column name is `PREDICTION`, which is the default name created by the `APPLY` procedure.\n* `score_criterion_column_name`: Column containing the scoring criterion in the apply results table. Contains either the probabilities or the costs that determine the predictions. By default, scoring is based on probability; the class with the highest probability is predicted for each case. If scoring is based on cost, the class with the lowest cost is predicted. The `score_criterion_type` parameter indicates whether probabilities or costs will be used for scoring. The default column name is `'PROBABILITY'`, which is the default name created by the `APPLY` procedure.\n* `cost_matrix_table_name`: (Optional) Table that defines the costs associated with misclassifications. If a cost matrix table is provided and the `score_criterion_type` parameter is set to `'COSTS'`, the costs in this table will be used as the scoring criteria. Otherwise, set it as `null`.\n* `apply_result_schema_name`: Schema of the apply results table. If null, the user's schema is assumed.\n* `target_schema_name`: Schema of the table containing the known targets. If null, the user's schema is assumed.\n* `cost_matrix_schema_name`: Schema of the cost matrix table, if one is provided. If null, the user's schema is assumed.\n* `score_criterion_type`: Whether to use probabilities or costs as the scoring criterion. Probabilities or costs are passed in the column identified in the`score_criterion_column_name` parameter. The default value of `score_criterion_type` is `'PROBABILITY'`. To use costs as the scoring criterion, specify `'COST'`. If `score_criterion_type` is set to `'COST'` but no cost matrix is provided and if there is a scoring cost matrix associated with the model, then the associated costs are used for scoring."
+        ]
+      },
+      {
+        "title": "Score",
+        "hasTitle": true,
+        "message": [
+          "%md",
+          "",
+          "### Score\n\nYou are ready to  predict the likely customers for the `HOME_THEATER_PACKAGE` responders. For classification problems, you can use `PREDICTION`,  `PREDICTION_PROBABILITY`, or use analytic syntax to arrive at predictions.\n"
+        ]
+      },
+      {
+        "title": "To view customers who have more than 50% chance of buying a home theater package, run the following statement:",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "%sql\nSELECT CUST_ID, PREDICTION PRED, ROUND(PROBABILITY,3) PROB, ROUND(COST,2) COST\n  FROM APPLY_RESULT WHERE PREDICTION = 1 AND PROBABILITY > 0.5\n  ORDER BY PROBABILITY DESC;"
+        ]
+      },
+      {
+        "title": "You can score on multiple rows of test data. This is called batch scoring. This step shows how you can view and select customers who are likely or unlikely to respond to `HOME_THEATER_PACKAGE` with a probability of more than 50% and a cost matrix.",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "%sql\n \nSELECT CUST_ID, PREDICTION, ROUND(PROBABILITY,2) PROB, ROUND(COST,2) COST\n  FROM APPLY_RESULT WHERE PREDICTION = ${PREDICTION='1','1'|'0'}\n  AND PROBABILITY > 0.5 ORDER BY PROBABILITY DESC;"
+        ]
+      },
+      {
+        "title": "To interactively view probability of `HOME_THEATER_PACKAGE` respondents, run the following statement:",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "%sql\nSELECT A.*, B.*\n  FROM APPLY_RESULT A, TEST_DATA B\n  WHERE PREDICTION = ${PREDICTION='1','1'|'0'} AND A.CUST_ID = B.CUST_ID;"
+        ]
+      },
+      {
+        "title": "To dynamically score and select customers with more than 50% chance of purchasing a home theater package, run the following statement:",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "%sql\n \nSELECT *\nFROM (  SELECT CUST_ID, ROUND(PREDICTION_PROBABILITY(MODEL_RF, '1'  USING A.*),3) PROBABILITY\n    FROM TEST_DATA A)\nWHERE PROBABILITY > 0.5;"
+        ]
+      },
+      {
+        "title": "To apply the model to a single record (singleton scoring), run the following statement:",
+        "hasTitle": true,
+        "message": [
+          "%python",
+          "",
+          "%script\nSELECT ROUND(PREDICTION_PROBABILITY(MODEL_RF, '1' USING\n                                    '3' AS HOUSEHOLD_SIZE,\n                                     5 AS YRS_RESIDENCE,\n                                     1 AS CUST_INCOME_LEVEL),3) PROBABILITY_HOME_THEATER_PACKAGE_RESPONDER\n  FROM DUAL;"
         ]
       },
       {
@@ -66,52 +394,7 @@
         "message": [
           "%md",
           "",
-          "This completes the data exploration stage. OML supports Automatic Data Preparation (ADP). ADP is enabled through the model settings. When ADP is enabled, the transformations required by the algorithm are performed automatically and embedded in the model. This step is done during the Build Model stage. The commonly used methods of data preparation are binning, normalization, and missing value treatment."
-        ]
-      },
-      {
-        "title": null,
-        "hasTitle": false,
-        "message": [
-          "%md",
-          "",
-          "For a supervised learning, like Classification, before creating the model, split the data into training and test data. Although you can use the entire data set to build a model, it is difficult to validate the model unless there are new data sets available. Therefore, to evaluate the model and to accurately assess the performance of the model on the same data, you generally split or separate the data into training and test data. You use the training data set to train the model and then use the test data set to test the accuracy of the model by running prediction queries. The testing data set already contains known values for the attribute that you want to predict. It is thus easy to determine whether the predictions of the model are correct."
-        ]
-      },
-      {
-        "title": null,
-        "hasTitle": false,
-        "message": [
-          "%md",
-          "",
-          "**Algorithm Selection**\n\nBefore you build a model, choose the suitable algorithm. You can choose one of the following algorithms to solve a classification problem:\n\n- Decision Tree\n- Explicit Semantic Analysis (ESM)\n- Generalized Linear Model (GLM)\n- Naive Bayes\n- Random Forest\n- Support Vector Machine (SVM)\n- XGBoost\n\nFrom the above algorithms, ESM is more about Natural Language Processing (NLP) and text mining. ESM does not apply to this use case and data. If you were to select a relatively simple linear model like GLM, the prediction accuracy can be further improved by the Random Forest algorithm. Random Forest is an ensemble method that builds multiple decision trees on subsets of the data re-sampled at each time (bagging). This avoids the overfitting for a single decision tree. The random forest model is a widely used ensemble method that is known to have higher accuracy than linear models. Thus, Random Forest is selected for this use case.\n\nFor this use case, split the data into 60/40 as training and test data. You build the model using the training data and once the model is built, score the test data using the model.\n\nThe following steps guide you to split your data and build your model with the selected algorithm."
-        ]
-      },
-      {
-        "title": null,
-        "hasTitle": false,
-        "message": [
-          "%md",
-          "",
-          "The data dictionary views for Oracle Machine Learning are listed in the following table. A database administrator (DBA) and USER versions of the views are also available.\n\n| View Name | Description |\n| --- | --- |\n|  |\n| ALL_MINING_MODELS | Provides information about all accessible machine learning models |\n| ALL_MINING_MODEL_ATTRIBUTES | Provides information about the attributes of all accessible machine learning models |\n| ALL_MINING_MODEL_SETTINGS | Provides information about the configuration settings for all accessible machine learning models |\n| ALL_MINING_MODEL_VIEWS | Provides information about the model views for all accessible machine learning models |\n| ALL_MINING_MODEL_XFORMS | Provides the user-specified transformations embedded in all accessible machine learning models. |\n\nModel detail views are specific to the algorithm. You can obtain more insights about the model you created by viewing the model detail views. The names of model detail views begin with DM$xx where xx corresponds to the view prefix. SeeModel Detail Views."
-        ]
-      },
-      {
-        "title": null,
-        "hasTitle": false,
-        "message": [
-          "%md",
-          "",
-          "The following steps help you to view different dictionary views and model detail views."
-        ]
-      },
-      {
-        "title": null,
-        "hasTitle": false,
-        "message": [
-          "%md",
-          "",
-          "Lift measures the degree to which the predictions of a classification model are better than randomly-generated predictions. Lift can be understood as a ratio of two percentages: the percentage of correct positive classifications made by the model to the percentage of actual positive classifications in the test data.\n\nA confusion matrix displays the number of correct and incorrect predictions made by the model compared with the actual classifications in the test data. The matrix is n-by-n, where n is the number of classes."
+          "### Related link\n- [Create a Notebook](https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&id=OMLUG-GUID-F372F445-1036-403B-BEDF-D4ABF9E67407)\n- [Edit your Notebook](https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&id=OMLUG-GUID-BA28139C-3343-4A3A-95A8-EFA3EB43F4D4)\n- [Uninstalling HR Schema](https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&id=COMSC-GUID-C0254DAB-F54C-4B20-9B1E-4F9E21781B96)\n- [How ADP Transforms the Data](https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&id=DMPRG-GUID-BCEF5F92-D129-4550-A4EF-85C509E68DE4)\n- [PREDICTION_SET](https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/machine-learning/oml4sql/23/mlsql&id=SQLRF-GUID-25AE84A7-C733-4BC5-8C57-2E5574C49AFC)"
         ]
       }
     ]
