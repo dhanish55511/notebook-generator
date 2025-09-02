@@ -12,14 +12,14 @@ from urllib.parse import urlparse
 # url = "https://abc.com"
 
 #OML4SQL Classification 
-url = "https://docs.oracle.com/en/database/oracle/machine-learning/oml4sql/23/mlsql/classification2.html"
+# url = "https://docs.oracle.com/en/database/oracle/machine-learning/oml4sql/23/mlsql/classification2.html"
 
 #OML4SQL Clustering
 # Error-Notebook is not being generated
 # url = "https://docs.oracle.com/en/database/oracle/machine-learning/oml4sql/23/mlsql/clustering1.html"
 
 # OML$SQL Regression
-# url = "https://docs.oracle.com/en/database/oracle/machine-learning/oml4sql/23/mlsql/regression2.html"
+url = "https://docs.oracle.com/en/database/oracle/machine-learning/oml4sql/23/mlsql/regression2.html"
 
 # UAT Regression
 # url = "https://docs-uat.us.oracle.com/en/database/oracle/machine-learning/oml4sql/21/mlsql/regression.html"
