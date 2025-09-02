@@ -95,6 +95,7 @@
 
 11. Delete the feature branch locally
 
+  **Not a command to run**
   git branch -D feature/refine-url-interpreter-handling
   git branch
   
@@ -103,7 +104,7 @@
 
 12. Delete the feature branch on remote
 
-  git checkout main   # or master if that’s the default branch
+  git checkout main or master   # or master if that’s the default branch
   git branch -D feature/refine-url-interpreter-handling  # in case not deleted locally
   git push origin --delete feature/refine-url-interpreter-handling
   git status
